@@ -51,7 +51,7 @@ Use thus:
         ]
 
         // display posts
-        echo $posts->get();
+        echo $posts->render();
     ]);
 
 Full list of arguments, with their defaults, are as follows:

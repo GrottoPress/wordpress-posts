@@ -1,0 +1,28 @@
+{
+    "name": "wordpress-posts",
+    "version": "0.1.0",
+    "description": "A library to display queried Posts in WordPress",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GrottoPress/wordpress-posts.git"
+    },
+    "keywords": [
+        "wordpress"
+    ],
+    "author": "GrottoPress.com",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/GrottoPress/wordpress-posts/issues"
+    },
+    "homepage": "https://github.com/GrottoPress/wordpress-posts#readme",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-clean-css": "^3.9.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-rtlcss": "^1.0.0",
+        "gulp-sass": "^3.1.0"
+    }
+}

@@ -1,0 +1,64 @@
+////
+/// Base Styles
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Base
+ */
+
+.posts-wrap {
+    font-size: 1em;
+	line-height: 160%;
+	@include paragraph;
+}
+
+.post-wrap {
+    @include paragraph(map-get($gutter, 'small'));
+    @include clearfix;
+    
+    .entry-title,
+    .entry-summary,
+    .entry-meta {
+        @include paragraph(map-get($gutter, 'tiny'));
+    }
+
+    .entry-title {
+        font-size: 1.2em;
+    }
+
+    .entry-meta {
+        color: $font-color-grey;
+        font-size: 0.9em;
+    }
+
+    > header,
+    > footer {
+        @include paragraph(map-get($gutter, 'small'));
+    }
+
+    .more-link {
+        font-size: 0.9em;
+    }
+}
+
+.big {
+    > .post-wrap {
+        @include paragraph;
+
+        > header > .entry-title,
+        > .entry-summary,
+        > footer > .entry-meta,
+        > header > .entry-meta {
+            @include paragraph(map-get($gutter, 'small'));
+        }
+
+        > header > .entry-title {
+            font-size: 1.6em;
+        }
+    }
+}

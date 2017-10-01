@@ -1,0 +1,52 @@
+////
+/// Archive
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Archive
+ */
+
+.archive-posts {
+    > .post-wrap,
+    > li > .post-wrap {
+        border-bottom: $separator;
+    }
+
+    > li > .post-wrap {
+        padding-bottom: map-get($gutter, 'tiny');
+        margin-top: map-get($gutter, 'tiny');
+        margin-bottom: map-get($gutter, 'tiny');
+    }
+
+    > .post-wrap {
+        padding-bottom: map-get($gutter, 'small');
+        margin-bottom: map-get($gutter, 'small');
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+    }
+
+    &.big > .post-wrap {
+        padding-bottom: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    &.show-content > .post-wrap {
+        padding-bottom: map-get($gutter, 'normal');
+        margin-top: map-get($gutter, 'normal');
+        margin-bottom: map-get($gutter, 'normal');
+    }
+}

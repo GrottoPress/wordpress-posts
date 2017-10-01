@@ -1,0 +1,54 @@
+////
+/// Mixins
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/// Clear fix
+///
+/// 
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/// Inline block
+///
+///
+@mixin inline-block {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+}
+
+/// Float
+///
+/// @param {string} $direction Direction
+@mixin float($direction) {
+    float: $direction;
+    display: inline;
+}
+
+/// Block
+///
+/// Add top and bottom margin
+@mixin paragraph($vertical-margin: map-get($gutter, 'normal')) {
+    margin-top: $vertical-margin;
+    margin-bottom: $vertical-margin;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

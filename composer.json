@@ -1,0 +1,35 @@
+{
+    "name": "grottopress/wordpress-posts",
+    "description": "A library to display queried Posts in WordPress",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "GrottoPress.com",
+            "email": "info@grottopress.com",
+            "homepage": "https://www.grottopress.com"
+        },
+        {
+          "name": "N Atta Kusi Adusei",
+          "homepage": "https://twitter.com/akadusei",
+          "role": "Developer"
+        }
+    ],
+    "keywords": [ "wordpress" ],
+    "support": {
+        "issues": "https://github.com/GrottoPress/wordpress-posts/issues",
+        "wiki": "https://github.com/GrottoPress/wordpress-posts/wiki",
+        "source": "https://github.com/GrottoPress/wordpress-posts/"
+    },
+    "require": {
+        "php": ">=7.0",
+        "grottopress/mobile-detector": "0.1.0"
+    },
+    "require-dev": {
+        "lucatume/wp-browser": "^1.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "GrottoPress\\WordPress\\": "src/lib/"
+        }
+    }
+}

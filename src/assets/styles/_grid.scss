@@ -1,0 +1,68 @@
+////
+/// Grid Layout
+///
+/// @since 0.1.0
+///
+/// @author [GrottoPress](https://www.grottopress.com)
+/// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
+////
+
+/**
+ * Grid Layout
+ */
+
+.layout-grid.posts-wrap {
+    font-size: 0; /** Inline-block whitespace fix */
+    margin-left: - map-get($gutter, 'small');
+    margin-right: - map-get($gutter, 'small');
+    margin-top: - map-get($gutter, 'normal');
+
+    &:first-child {
+        margin-top: - map-get($gutter, 'normal');
+    }
+
+    > * {
+        // line-height: 160%;
+        font-size: 1em;
+    }
+
+    > .post-wrap {
+        padding-left: map-get($gutter, 'small');
+        padding-right: map-get($gutter, 'small');
+        margin-top: map-get($gutter, 'normal');
+        margin-bottom: 0;
+        width: 100%;
+        @include inline-block;
+        // font-size: 1em;
+
+        > header > .entry-title {
+            font-size: 1.6em;
+        }
+    }
+
+    .pagination {
+        @include paragraph;
+    }
+}
+
+@media (min-width: map-get($breakpoints, 'medium')) {
+    .big {
+        > .post-wrap > header > .entry-title {
+            font-size: 1.8em;
+        }
+	}
+
+	.layout-grid.posts-wrap {
+        > .post-wrap {
+            width: 50%;
+        }
+	}
+}
+
+@media (min-width: map-get($breakpoints, 'wide')) {
+    .layout-grid.posts-wrap {
+        > .post-wrap {
+            width: 33.33%;
+        }
+	}
+}

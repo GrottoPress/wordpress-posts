@@ -2,7 +2,7 @@
 
 ## Description
 
-A library to display queried Posts in WordPress.
+A library to query and display posts in WordPress.
 
 ## Usage
 
@@ -49,10 +49,10 @@ Use thus:
         'wp_query' => [ // WP_Query args
             // See https://codex.wordpress.org/Class_Reference/WP_Query
         ]
-
-        // display posts
-        echo $posts->render();
     ]);
+
+    // display posts
+    echo $posts->render();
 
 Full list of arguments, with their defaults, are as follows:
 

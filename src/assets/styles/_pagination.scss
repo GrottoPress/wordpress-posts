@@ -11,30 +11,32 @@
  * Pagination
  */
 
-.pagination {
-	color: $font-color-grey;
-	font-size: 1em;
-	font-weight: bold;
-    @include paragraph(map-get($gutter, 'small'));
-
-    .page-numbers,
-    a {
-        padding: 5px;
-    }
-
-    .page-numbers {
-        &.dots {
-            padding: 0;
-        }
-
-        &.current {
-            text-decoration: underline;
-        }
-    }
-}
-
-.big {
+.posts-wrap {
     .pagination {
-        @include paragraph;
+        color: $font-color-grey;
+        font-size: 1em;
+        font-weight: bold;
+        @include paragraph(map-get($gutter, 'small'));
+    
+        .page-numbers,
+        a {
+            padding: 5px;
+        }
+    
+        .page-numbers {
+            &.dots {
+                padding: 0;
+            }
+    
+            &.current {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &.big {
+        .pagination {
+            @include paragraph;
+        }
     }
 }

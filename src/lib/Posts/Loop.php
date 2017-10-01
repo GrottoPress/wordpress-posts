@@ -187,7 +187,7 @@ final class Loop
     /**
      * Body of single post
      *
-     * Contains the shortcode logic to display a single post
+     * Contains the logic to display a single post
      * within the while have_posts loop
      *
      * @param int $post_id Post ID.
@@ -203,6 +203,7 @@ final class Loop
         $post = $this->posts->post($post_id);
         
         return
+        
         $this->openPostTag($post, $count).
         $this->thumb('side', $post, $count).
         $this->openHeader($post, $count).

@@ -121,6 +121,3 @@ node_modules/
 
 # VS Code
 .vscode/
-
-# Dist
-dist/

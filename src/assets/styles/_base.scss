@@ -28,12 +28,12 @@
     }
 
     .entry-title {
-        font-size: 1.2em;
+        font-size: 1.14em;
     }
 
     .entry-meta {
         color: $font-color-grey;
-        font-size: 0.9em;
+        font-size: 0.93em;
     }
 
     > header,
@@ -42,7 +42,7 @@
     }
 
     .more-link {
-        font-size: 0.9em;
+        font-size: 0.93em;
     }
 }
 
@@ -58,7 +58,15 @@
         }
 
         > header > .entry-title {
-            font-size: 1.6em;
+            font-size: 1.43em;
         }
     }
+}
+
+@media (min-width: map-get($breakpoints, 'medium')) {
+    .big {
+        > .post-wrap > header > .entry-title {
+            font-size: 1.71em;
+        }
+	}
 }

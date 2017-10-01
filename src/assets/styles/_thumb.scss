@@ -15,7 +15,7 @@
     .thumb,
     .avatar {
         @include float(left);
-        margin-right: 0.8em;
+        margin-right: 10px;
     }
 
     .entry-meta {
@@ -46,7 +46,7 @@
         > .avatar {
             float: right;
             margin-right: 0;
-            margin-left: 0.8em;
+            margin-left: 10px;
         }
     }
 }

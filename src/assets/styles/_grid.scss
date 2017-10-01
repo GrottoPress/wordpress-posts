@@ -35,8 +35,8 @@
         @include inline-block;
         // font-size: 1em;
 
-        > header > .entry-title {
-            font-size: 1.6em;
+        &.big > header > .entry-title {
+            font-size: 1.43em;
         }
     }
 
@@ -46,13 +46,7 @@
 }
 
 @media (min-width: map-get($breakpoints, 'medium')) {
-    .big {
-        > .post-wrap > header > .entry-title {
-            font-size: 1.8em;
-        }
-	}
-
-	.layout-grid.posts-wrap {
+    .layout-grid.posts-wrap {
         > .post-wrap {
             width: 50%;
         }

@@ -15,7 +15,7 @@ You may use the styles defined in `dist/assets/styles` in your theme (or plugin)
     add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style(
             'wordpress-posts',
-            get_template_dir_uri().'/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
+            get_template_directory_uri().'/vendor/grottopress/wordpress-posts/dist/assets/styles/posts.min.css'
         );
     });
 

@@ -12,7 +12,7 @@
  * Base
  */
 .posts-wrap {
-  font-size: 1em;
+  font-size: 14px;
   line-height: 160%;
   margin-top: 20px;
   margin-bottom: 20px; }
@@ -60,6 +60,8 @@
     .post-wrap > header:last-child,
     .post-wrap > footer:last-child {
       margin-bottom: 0; }
+  .post-wrap > header {
+    margin-top: 0; }
   .post-wrap .more-link {
     font-size: 0.93em; }
 
@@ -135,9 +137,6 @@
   .show-content > .post-wrap > header > .entry-meta:last-child,
   .show-content > .post-wrap > footer > .entry-meta:last-child {
     margin-bottom: 0; }
-
-.show-content > .post-wrap > header {
-  margin-top: 0; }
 
 /**
  * Lists

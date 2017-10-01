@@ -12,7 +12,7 @@
  */
 
 .posts-wrap {
-    font-size: 1em;
+    font-size: 14px;
 	line-height: 160%;
 	@include paragraph;
 }
@@ -39,6 +39,10 @@
     > header,
     > footer {
         @include paragraph(map-get($gutter, 'small'));
+    }
+
+    > header {
+        margin-top: 0;
     }
 
     .more-link {

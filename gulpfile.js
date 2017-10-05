@@ -18,14 +18,12 @@ const cleanCSS = require('gulp-clean-css');
 const sass = require('gulp-sass');
 
 // Files/Paths
-const sass_src = './src/assets/styles';
-const sass_file = [sass_src+'/posts.scss'];
-const sass_files = [sass_src+'/**/*.scss'];
+const sass_files = ['./src/assets/styles/**/*.scss'];
 const sass_dest = './dist/assets/styles';
 
 // Compile scss, rtl and minify scss
 gulp.task('compile_sass', function () {
-    return gulp.src(sass_file)
+    return gulp.src(sass_files)
         .pipe(sass().on('error', sass.logError))
         // .pipe(cleanCSS({format: 'beautify'}))
         .pipe(gulp.dest(sass_dest))

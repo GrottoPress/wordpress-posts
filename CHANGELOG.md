@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased 0.1.0 - 
+## 0.1.1 - 2017-10-06
+### Fixed
+- Fixed incorrect attribute name when getting attributes from `\WP_Post`.
+- Fixed `googleplus_link` post info not working.
+
+## 0.1.0 - 2017-10-05
 ### Added
-- Initial public release
+- Initial public release.

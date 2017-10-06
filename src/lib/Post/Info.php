@@ -500,7 +500,7 @@ final class Info
      *
      * @return string Google+ share link
      */
-    private function render_googlesplus_link(): string
+    private function render_googleplus_link(): string
     {
         return '<a class="googleplus-link social-link share-link" rel="external nofollow noopener" href="https://plus.google.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp()->ID)).

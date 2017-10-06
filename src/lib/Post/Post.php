@@ -185,7 +185,7 @@ final class Post
             $more_text = \apply_filters('excerpt_more', ' '.'[&hellip;]');
         }
 
-        $excerpt = $this->wp->wp_excerpt
+        $excerpt = $this->wp->post_excerpt
             ? $this->wp->post_excerpt : $this->wp->post_content;
 
         $excerpt = \strip_shortcodes($excerpt);
@@ -271,7 +271,7 @@ final class Post
             if (0 === \stripos($size, 'avatar__')) {
                 $size = \absint(\str_ireplace('avatar__', '', $size));
 
-                return \get_avatar($this->wp->wp_author, $size);
+                return \get_avatar($this->wp->post_author, $size);
             }
 
             $size_split = \explode(',', $size);

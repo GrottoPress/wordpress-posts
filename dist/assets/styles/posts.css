@@ -173,6 +173,10 @@
   padding-bottom: 5px;
   margin-top: 5px;
   margin-bottom: 5px; }
+  .archive-posts > li > .post-wrap:first-child {
+    margin-top: 0; }
+  .archive-posts > li > .post-wrap:last-child {
+    margin-bottom: 0; }
 
 .archive-posts > .post-wrap {
   padding-bottom: 10px;
@@ -182,9 +186,6 @@
     margin-top: 0; }
   .archive-posts > .post-wrap:last-child {
     margin-bottom: 0; }
-  .archive-posts > .post-wrap:last-child {
-    padding-bottom: 0;
-    border-bottom: 0; }
 
 .archive-posts.big > .post-wrap {
   padding-bottom: 15px;
@@ -194,14 +195,20 @@
     margin-top: 0; }
   .archive-posts.big > .post-wrap:last-child {
     margin-bottom: 0; }
-  .archive-posts.big > .post-wrap:last-child {
-    padding-bottom: 0;
-    border-bottom: 0; }
 
 .archive-posts.show-content > .post-wrap {
   padding-bottom: 20px;
   margin-top: 20px;
   margin-bottom: 20px; }
+  .archive-posts.show-content > .post-wrap:first-child {
+    margin-top: 0; }
+  .archive-posts.show-content > .post-wrap:last-child {
+    margin-bottom: 0; }
+
+.archive-posts > .post-wrap:last-child,
+.archive-posts > li > .post-wrap:last-child {
+  padding-bottom: 0;
+  border-bottom: 0; }
 
 /**
  * Grid Layout

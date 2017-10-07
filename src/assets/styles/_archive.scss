@@ -19,34 +19,27 @@
 
     > li > .post-wrap {
         padding-bottom: map-get($gutter, 'tiny');
-        margin-top: map-get($gutter, 'tiny');
-        margin-bottom: map-get($gutter, 'tiny');
+        @include paragraph(map-get($gutter, 'tiny'));
     }
 
     > .post-wrap {
         padding-bottom: map-get($gutter, 'small');
-        margin-bottom: map-get($gutter, 'small');
-
-        &:first-child {
-            margin-top: 0;
-        }
-
-        &:last-child {
-            padding-bottom: 0;
-            margin-bottom: 0;
-            border-bottom: 0;
-        }
+        @include paragraph(map-get($gutter, 'small'));
     }
 
     &.big > .post-wrap {
         padding-bottom: 15px;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        @include paragraph(15px);
     }
 
     &.show-content > .post-wrap {
         padding-bottom: map-get($gutter, 'normal');
-        margin-top: map-get($gutter, 'normal');
-        margin-bottom: map-get($gutter, 'normal');
+        @include paragraph(map-get($gutter, 'normal'));
+    }
+
+    > .post-wrap:last-child,
+    > li > .post-wrap:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
     }
 }

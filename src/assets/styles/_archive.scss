@@ -25,23 +25,22 @@
 
     > .post-wrap {
         padding-bottom: map-get($gutter, 'small');
-        margin-bottom: map-get($gutter, 'small');
-
-        &:first-child {
-            margin-top: 0;
-        }
+        @include paragraph(map-get($gutter, 'small'));
 
         &:last-child {
             padding-bottom: 0;
-            margin-bottom: 0;
             border-bottom: 0;
         }
     }
 
     &.big > .post-wrap {
         padding-bottom: 15px;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        @include paragraph(15px);
+
+        &:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
     }
 
     &.show-content > .post-wrap {

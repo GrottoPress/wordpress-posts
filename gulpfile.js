@@ -14,6 +14,7 @@ const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
 const cleanCSS = require('gulp-clean-css')
 const sass = require('gulp-sass')
+const sourcemaps = require('gulp-sourcemaps')
 
 // Paths
 const sass_files = ['./src/assets/styles/**/*.scss']
@@ -22,11 +23,13 @@ const sass_dest = './dist/assets/styles'
 // Compile scss, rtl and minify scss
 gulp.task('compile_sass', () =>
     gulp.src(sass_files)
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     // .pipe(cleanCSS({format: 'beautify'}))
-    .pipe(gulp.dest(sass_dest))
+    // .pipe(gulp.dest(sass_dest))
     .pipe(cleanCSS())
     .pipe(rename({'suffix' : '.min'}))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(sass_dest))
     .pipe(rtlcss())
     .pipe(rename((path) =>

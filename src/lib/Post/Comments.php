@@ -56,7 +56,7 @@ final class Comments
         $this->post = $post;
         
         if (!\post_type_supports(
-            $this->post->wp()->post_type,
+            $this->post->wp->post_type,
             'comments'
         )) {
             return new WP_Error(
@@ -65,7 +65,7 @@ final class Comments
             );
         }
         
-        $this->count = \get_comments_number($this->post->wp());
+        $this->count = \get_comments_number($this->post->wp);
     }
 
     /**
@@ -81,15 +81,15 @@ final class Comments
      */
     public function link(): string
     {
-        if (\post_password_required($this->post->wp())
-            || !\comments_open($this->post->wp())
+        if (\post_password_required($this->post->wp)
+            || !\comments_open($this->post->wp)
         ) {
             return $this->text();
         }
 
-        return '<a class="comments-link post-'.$this->post->wp()->ID.
+        return '<a class="comments-link post-'.$this->post->wp->ID.
             '-comments-link" itemprop="discussionUrl" href="'.
-            \esc_attr(\get_comments_link($this->post->wp())).'">'.
+            \esc_attr(\get_comments_link($this->post->wp)).'">'.
             $this->text().'</a>';
     }
 
@@ -105,7 +105,7 @@ final class Comments
      */
     public function text(): string
     {
-        if (\comments_open($this->post->wp()) || $this->count > 0) {
+        if (\comments_open($this->post->wp) || $this->count > 0) {
             if ($this->count < 1) {
                 return $this->noCommentsText();
             }

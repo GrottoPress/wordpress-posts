@@ -51,11 +51,11 @@ final class Post
      * Get WordPress post
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return WP_Post
      */
-    public function wp(): WP_Post
+    private function getWP(): WP_Post
     {
         return $this->wp;
     }

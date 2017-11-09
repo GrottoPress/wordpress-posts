@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "427fba7a72e0f6e753650077ec93131b",
-    "content-hash": "6604e25096097f043460ce5c2e950b36",
+    "hash": "db69891cad58c129b17bad5fc2f3bad7",
+    "content-hash": "a987f7735d29b29b9b34a25f54506df3",
     "packages": [
         {
             "name": "grottopress/getter",
-            "version": "dev-dev",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrottoPress/getter.git",
-                "reference": "4cc8a0447421ef19e5e5434c45df6b9894de959c"
+                "reference": "8ba28fe17b846ea3518fee470d0420c22706b73e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/4cc8a0447421ef19e5e5434c45df6b9894de959c",
-                "reference": "4cc8a0447421ef19e5e5434c45df6b9894de959c",
+                "url": "https://api.github.com/repos/GrottoPress/getter/zipball/8ba28fe17b846ea3518fee470d0420c22706b73e",
+                "reference": "8ba28fe17b846ea3518fee470d0420c22706b73e",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
                 "OOP",
                 "getter"
             ],
-            "time": "2017-11-08 22:25:34"
+            "time": "2017-11-09 22:21:51"
         },
         {
             "name": "grottopress/mobile-detector",
@@ -5840,9 +5840,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "grottopress/getter": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

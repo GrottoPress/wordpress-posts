@@ -100,7 +100,7 @@ final class Post
      */
     public function info(array $args): Info
     {
-         return new Info($this, $args);
+        return new Info($this, $args);
     }
 
     /**
@@ -113,7 +113,7 @@ final class Post
      */
     public function author(): Author
     {
-         return new Author($this);
+        return new Author($this);
     }
 
     /**

@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Changed
 - Using `GrottoPress\Getter\Getter` package to get object attributes.
+- Not showing any posts if `posts_per_page` is `0`
+- Converted all `==` and `!=` checks to their stricter `===` and `!==` equivalents.
 
 ## 0.1.1 - 2017-10-06
 

@@ -423,7 +423,7 @@ final class Loop
         }
         
         return '<header'.(
-            'top' == $this->posts->args['title']['position']
+            'top' === $this->posts->args['title']['position']
             ? '' : $this->textOffset($post)
         ).'>';
     }
@@ -534,9 +534,9 @@ final class Loop
         
         $text_offset = ' style="';
         
-        if ('right' == $this->posts->args['image']['align']) {
+        if ('right' === $this->posts->args['image']['align']) {
             $text_offset .= 'margin-right:'.$offset.'px;';
-        } elseif ('left' == $this->posts->args['image']['align']) {
+        } elseif ('left' === $this->posts->args['image']['align']) {
             $text_offset .= 'margin-left:'.$offset.'px;';
         }
         

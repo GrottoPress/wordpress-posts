@@ -69,7 +69,7 @@ final class Time
         $this->context = \in_array($context, ['published', 'updated'])
             ? \sanitize_key($context) : 'published';
 
-        $this->timestamp = ('updated' == $this->context
+        $this->timestamp = ('updated' === $this->context
             ? \strtotime($this->post->wp()->post_modified)
             : \strtotime($this->post->wp()->post_date));
     }
@@ -133,7 +133,7 @@ final class Time
     private function render_actual(): string
     {
         if ($this->hoursSince() < 24) {
-            if (\date('D', $this->timestamp) == \date(
+            if (\date('D', $this->timestamp) === \date(
                 'D',
                 \current_time('timestamp')
             )) { // If same day

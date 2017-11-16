@@ -332,13 +332,13 @@ final class Post
         $taxonomies = [];
 
         foreach ($taxes as $slug => $tax) {
-            if ('hierarchical' == $context
+            if ('hierarchical' === $context
                 && !\is_taxonomy_hierarchical($slug)
             ) {
                 continue;
             }
             
-            if ('non_hierarchical' == $context
+            if ('non_hierarchical' === $context
                 && \is_taxonomy_hierarchical($slug)
             ) {
                 continue;

@@ -57,6 +57,12 @@ final class Loop
      */
     public function run(): string
     {
+        $out = '';
+        
+        if (0 === $this->posts->args['wp_query']['posts_per_page']) {
+            return $out;
+        }
+        
         $query = new WP_Query($this->posts->args['wp_query']);
 
         /**
@@ -67,8 +73,6 @@ final class Loop
          * @since 0.1.0
          */
         \do_action('grotto_wp_posts_loop_before', $query, $this->posts->args);
-
-        $out = '';
         
         if ($query->have_posts()) {
             $count = 0;

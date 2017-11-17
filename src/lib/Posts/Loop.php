@@ -57,7 +57,13 @@ final class Loop
      */
     public function run(): string
     {
-        $query = new WP_Query($this->posts->args()['wp_query']);
+        $out = '';
+        
+        if (0 === $this->posts->args['wp_query']['posts_per_page']) {
+            return $out;
+        }
+        
+        $query = new WP_Query($this->posts->args['wp_query']);
 
         /**
          * @action grotto_query_posts_loop_before
@@ -66,15 +72,13 @@ final class Loop
           *
          * @since 0.1.0
          */
-        \do_action('grotto_wp_posts_loop_before', $query, $this->posts->args());
-
-        $out = '';
+        \do_action('grotto_wp_posts_loop_before', $query, $this->posts->args);
         
         if ($query->have_posts()) {
             $count = 0;
             
             $out .= $this->openWrapTag();
-            $out .= $this->posts->pagination()->render('top', $query);
+            $out .= $this->posts->pagination->render('top', $query);
             
             while ($query->have_posts()) {
                 $query->the_post();
@@ -85,7 +89,7 @@ final class Loop
                 $out .= $this->filter('after', \get_the_ID(), $count);
             }
             
-            $out .= $this->posts->pagination()->render('bottom', $query);
+            $out .= $this->posts->pagination->render('bottom', $query);
             $out .= $this->closeWrapTag();
         }
 
@@ -101,7 +105,7 @@ final class Loop
             'grotto_wp_posts_loop',
             $out,
             $query,
-            $this->posts->args()
+            $this->posts->args
         );
         
         \wp_reset_postdata();
@@ -121,17 +125,17 @@ final class Loop
     {
         $out = '';
 
-        if (!($wrap_tag = \sanitize_key($this->posts->args()['tag']))) {
+        if (!($wrap_tag = \sanitize_key($this->posts->args['tag']))) {
             return $out;
         }
 
         $out .= '<'.$wrap_tag.'';
         
-        $out .=' class="posts-wrap'.($this->posts->args()['class']
-            ? ' '.$this->posts->args()['class'] : '').'"';
+        $out .=' class="posts-wrap'.($this->posts->args['class']
+            ? ' '.$this->posts->args['class'] : '').'"';
         
-        if ($this->posts->args()['id']) {
-            $out .= ' id="'.\sanitize_title($this->posts->args()['id']).'"';
+        if ($this->posts->args['id']) {
+            $out .= ' id="'.\sanitize_title($this->posts->args['id']).'"';
         }
         
         $out .= '>';
@@ -149,7 +153,7 @@ final class Loop
      */
     private function closeWrapTag(): string
     {
-        if (!($wrap_tag = \sanitize_key($this->posts->args()['tag']))) {
+        if (!($wrap_tag = \sanitize_key($this->posts->args['tag']))) {
             return '';
         }
 
@@ -180,7 +184,7 @@ final class Loop
             '',
             $post_id,
             $count,
-            $this->posts->args()
+            $this->posts->args
         );
     }
     
@@ -239,7 +243,7 @@ final class Loop
         Post $post,
         int $count
     ): string {
-        return $post->info($this->posts->args()[$context][$position])->list();
+        return $post->info($this->posts->args[$context][$position])->list();
     }
 
     /**
@@ -254,23 +258,23 @@ final class Loop
     {
         $out = '';
         
-        if (0 === ($title_words = $this->posts->args()['title']['length'])) {
+        if (0 === ($title_words = $this->posts->args['title']['length'])) {
             return $out;
         }
 
-        if (!($title = \get_the_title($post->wp()))) {
+        if (!($title = \get_the_title($post->wp))) {
             return $out;
         }
         
         $out .= '<'.($title_tag = \sanitize_key(
-            $this->posts->args()['title']['tag']
+            $this->posts->args['title']['tag']
         )).' class="entry-title" itemprop="name headline">';
         
         $anchor_title = ($title_words > 0)
             ? ' title="'.\esc_attr(\wp_strip_all_tags($title, true)).'" ' : '';
         
-        if (($title_link = $this->posts->args()['title']['link'])) {
-            $out .= '<a itemprop="url" href="'.\get_permalink($post->wp()).
+        if (($title_link = $this->posts->args['title']['link'])) {
+            $out .= '<a itemprop="url" href="'.\get_permalink($post->wp).
                 '" '. $anchor_title.' rel="bookmark">';
         }
         
@@ -310,8 +314,8 @@ final class Loop
         }
 
         $excerpt = $post->excerpt(
-            $this->posts->args()['excerpt']['length'],
-            $this->posts->args()['excerpt']['more_text']
+            $this->posts->args['excerpt']['length'],
+            $this->posts->args['excerpt']['more_text']
         );
 
         if (!$excerpt) {
@@ -343,9 +347,9 @@ final class Loop
         }
 
         $content = $post->content(
-            $this->posts->args()['excerpt']['more_text'],
+            $this->posts->args['excerpt']['more_text'],
             '',
-            $this->posts->args()['excerpt']['paginate']
+            $this->posts->args['excerpt']['paginate']
         );
 
         if (!$content) {
@@ -375,7 +379,7 @@ final class Loop
             $out .= '<li>';
         }
         
-        $out .= '<article data-post-id="'.\absint($post->wp()->ID).
+        $out .= '<article data-post-id="'.\absint($post->wp->ID).
             '" class="'.\esc_attr($this->postClass($post, $count)).
             '" itemscope itemtype="http://schema.org/Article">';
         
@@ -419,7 +423,7 @@ final class Loop
         }
         
         return '<header'.(
-            'top' == $this->posts->args()['title']['position']
+            'top' === $this->posts->args['title']['position']
             ? '' : $this->textOffset($post)
         ).'>';
     }
@@ -488,25 +492,25 @@ final class Loop
      */
     private function thumb(string $title_pos, Post $post, int $count): string
     {
-        if ($title_pos != $this->posts->args()['title']['position']
-            || !$this->posts->args()['image']['size']
+        if ($title_pos != $this->posts->args['title']['position']
+            || !$this->posts->args['image']['size']
         ) {
             return '';
         }
 
         $attr = [];
 
-        if ($this->posts->args()['image']['margin']) {
+        if ($this->posts->args['image']['margin']) {
             $attr['style'] = 'margin:'.\sanitize_text_field(
-                \rtrim($this->posts->args()['image']['margin']),
+                \rtrim($this->posts->args['image']['margin']),
                 ';'
             ).';';
         }
 
         return $post->thumbnail(
-            $this->posts->args()['image']['size'],
+            $this->posts->args['image']['size'],
             $attr,
-            $this->posts->args()['image']['link']
+            $this->posts->args['image']['link']
         );
     }
 
@@ -520,19 +524,19 @@ final class Loop
      */
     private function textOffset(Post $post): string
     {
-        if (($offset = \absint($this->posts->args()['text_offset'])) < 1) {
+        if (($offset = \absint($this->posts->args['text_offset'])) < 1) {
             return '';
         }
         
-        if (!$this->posts->args()['image']['size'] || !$post->hasThumbnail()) {
+        if (!$this->posts->args['image']['size'] || !$post->hasThumbnail()) {
             return '';
         }
         
         $text_offset = ' style="';
         
-        if ('right' == $this->posts->args()['image']['align']) {
+        if ('right' === $this->posts->args['image']['align']) {
             $text_offset .= 'margin-right:'.$offset.'px;';
-        } elseif ('left' == $this->posts->args()['image']['align']) {
+        } elseif ('left' === $this->posts->args['image']['align']) {
             $text_offset .= 'margin-left:'.$offset.'px;';
         }
         
@@ -557,9 +561,9 @@ final class Loop
             $odd_even_class = 'odd';
         }
         
-        $class = \get_post_class(['post-wrap', 'post-count-'.$count, $odd_even_class], $post->wp()->ID);
+        $class = \get_post_class(['post-wrap', 'post-count-'.$count, $odd_even_class], $post->wp->ID);
         
-        $class[] = ($this->posts->args()['image']['size']
+        $class[] = ($this->posts->args['image']['size']
             && !$post->hasThumbnail())
             ? 'no-post-thumb' : '';
         

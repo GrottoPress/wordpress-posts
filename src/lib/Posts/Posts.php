@@ -15,6 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\WordPress\Posts;
 
 use GrottoPress\WordPress\Post\Post;
+use GrottoPress\Getter\Getter;
 
 /**
  * WordPress Posts
@@ -23,6 +24,8 @@ use GrottoPress\WordPress\Post\Post;
  */
 final class Posts
 {
+    use Getter;
+    
     /**
      * Arguments
      *
@@ -73,11 +76,11 @@ final class Posts
      * Get args
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return array Args.
      */
-    public function args(): array
+    private function getArgs(): array
     {
         return $this->args;
     }
@@ -86,11 +89,11 @@ final class Posts
      * Get pagination
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return Pagination
      */
-    public function pagination(): Pagination
+    private function getPagination(): Pagination
     {
         return $this->pagination;
     }

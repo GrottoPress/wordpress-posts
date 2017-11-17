@@ -22,7 +22,8 @@
     },
     "require": {
         "php": ">=7.0",
-        "grottopress/mobile-detector": "0.1.0"
+        "grottopress/mobile-detector": "^0.1",
+        "grottopress/getter": "^0.2"
     },
     "require-dev": {
         "lucatume/wp-browser": "^1.21"

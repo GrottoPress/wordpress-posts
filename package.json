@@ -1,6 +1,6 @@
 {
     "name": "wordpress-posts",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "A library to query and display posts in WordPress",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,7 @@
         "gulp-clean-css": "^3.9.0",
         "gulp-rename": "^1.2.2",
         "gulp-rtlcss": "^1.0.0",
-        "gulp-sass": "^3.1.0"
+        "gulp-sass": "^3.1.0",
+        "gulp-sourcemaps": "^2.6.1"
     }
 }

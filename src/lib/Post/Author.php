@@ -11,7 +11,7 @@
  */
 
 declare (strict_types = 1);
- 
+
 namespace GrottoPress\WordPress\Post;
 
 use WP_Error;
@@ -45,7 +45,7 @@ final class Author
     {
         $this->post = $post;
         
-        if (!\post_type_supports($this->post->wp()->post_type, 'author')) {
+        if (!\post_type_supports($this->post->wp->post_type, 'author')) {
             return new WP_Error(
                 'author_not_supported',
                 \esc_html__('Author support not registered for post type.')
@@ -106,7 +106,7 @@ final class Author
     private function url(): string
     {
         if ('#' ==
-            ($user_url = \get_author_posts_url($this->post->wp()->post_author))
+            ($user_url = \get_author_posts_url($this->post->wp->post_author))
         ) {
             return '';
         }
@@ -126,7 +126,7 @@ final class Author
     {
         return \get_the_author_meta(
             'display_name',
-            $this->post->wp()->post_author
+            $this->post->wp->post_author
         );
     }
 }

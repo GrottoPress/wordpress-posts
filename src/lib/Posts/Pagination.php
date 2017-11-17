@@ -79,7 +79,7 @@ final class Pagination
      */
     public function currentPage(): int
     {
-         return $this->current_page;
+        return $this->current_page;
     }
 
     /**
@@ -96,7 +96,7 @@ final class Pagination
 
         if (!\in_array(
             $position,
-            $this->posts->args()['pagination']['position']
+            $this->posts->args['pagination']['position']
         )) {
             return $out;
         }
@@ -125,9 +125,9 @@ final class Pagination
      */
     private function setKey()
     {
-        if (($key = $this->posts->args()['pagination']['key'])) {
+        if (($key = $this->posts->args['pagination']['key'])) {
             $this->key = \sanitize_key($key);
-        } elseif (($id = $this->posts->args()['id'])) {
+        } elseif (($id = $this->posts->args['id'])) {
             $this->key = \sanitize_key($id.'_pag');
         } else {
             $this->key = 'pag';
@@ -200,20 +200,20 @@ final class Pagination
 
         $args['total'] = $query->max_num_pages;
         $args['current'] = $this->current_page;
-        $args['mid_size'] = $this->posts->args()['pagination']['mid_size'];
-        $args['end_size'] = $this->posts->args()['pagination']['end_size'];
-        $args['prev_text'] = $this->posts->args()['pagination']['prev_text'];
-        $args['next_text'] = $this->posts->args()['pagination']['next_text'];
+        $args['mid_size'] = $this->posts->args['pagination']['mid_size'];
+        $args['end_size'] = $this->posts->args['pagination']['end_size'];
+        $args['prev_text'] = $this->posts->args['pagination']['prev_text'];
+        $args['next_text'] = $this->posts->args['pagination']['next_text'];
 
         if (!$this->isBuiltIn()) {
             $args['format'] = '?'.$this->key.'=%#%';
         }
 
-        $args['prev_next'] = ($this->posts->args()['pagination']['prev_text']
-            && $this->posts->args()['pagination']['next_text']);
+        $args['prev_next'] = ($this->posts->args['pagination']['prev_text']
+            && $this->posts->args['pagination']['next_text']);
 
-        $args['add_fragment'] = ($this->posts->args()['id']
-            ? '#'.$this->posts->args()['id'] : '');
+        $args['add_fragment'] = ($this->posts->args['id']
+            ? '#'.$this->posts->args['id'] : '');
 
         return $args;
     }

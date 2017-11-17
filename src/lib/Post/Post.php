@@ -16,6 +16,7 @@ namespace GrottoPress\WordPress\Post;
 
 use WP_Post;
 use WP_Post_Type;
+use GrottoPress\Getter\Getter;
 
 /**
  * WordPress Post
@@ -24,6 +25,8 @@ use WP_Post_Type;
  */
 final class Post
 {
+    use Getter;
+    
     /**
      * WordPress Post
      *
@@ -51,11 +54,11 @@ final class Post
      * Get WordPress post
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return WP_Post
      */
-    public function wp(): WP_Post
+    private function getWP(): WP_Post
     {
         return $this->wp;
     }
@@ -100,7 +103,7 @@ final class Post
      */
     public function info(array $args): Info
     {
-         return new Info($this, $args);
+        return new Info($this, $args);
     }
 
     /**
@@ -113,7 +116,7 @@ final class Post
      */
     public function author(): Author
     {
-         return new Author($this);
+        return new Author($this);
     }
 
     /**
@@ -329,13 +332,13 @@ final class Post
         $taxonomies = [];
 
         foreach ($taxes as $slug => $tax) {
-            if ('hierarchical' == $context
+            if ('hierarchical' === $context
                 && !\is_taxonomy_hierarchical($slug)
             ) {
                 continue;
             }
             
-            if ('non_hierarchical' == $context
+            if ('non_hierarchical' === $context
                 && \is_taxonomy_hierarchical($slug)
             ) {
                 continue;

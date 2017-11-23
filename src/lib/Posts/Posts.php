@@ -203,10 +203,6 @@ final class Posts
 
         $this->args['class'] = \str_ireplace($class, '', $this->args['class']);
         $this->args['class'] .= ' '.$class;
-
-        $this->args['class'] = \str_replace(',', ' ', $this->args['class']);
-        $this->args['class'] = \preg_replace('/\s\s+/', ' ', $this->args['class']);
-        $this->args['class'] = \sanitize_text_field($this->args['class']);
     }
     
     /**

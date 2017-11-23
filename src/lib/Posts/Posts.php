@@ -67,9 +67,9 @@ final class Posts
     public function __construct(array $args = [])
     {
         $this->setArgs($args);
-
-        $this->loop = new Loop($this);
+        
         $this->pagination = new Pagination($this);
+        $this->loop = new Loop($this);
     }
 
     /**
@@ -110,6 +110,7 @@ final class Posts
         $this->applyImageAlign();
         $this->applyRelatedTo();
         $this->applyLayout();
+        $this->sanitizeClassAttr();
         
         return $this->loop->run();
     }
@@ -503,5 +504,22 @@ final class Posts
     public function post(int $id = 0): Post
     {
         return new Post($id);
+    }
+
+    /**
+     * Sanitize 'class' arg
+     *
+     * @since 0.1.0
+     * @access private
+     */
+    private function sanitizeClassAttr()
+    {
+        $this->args['class'] = \str_replace(',', ' ', $this->args['class']);
+        $this->args['class'] = \preg_replace(
+            '/\s\s+/',
+            ' ',
+            $this->args['class']
+        );
+        $this->args['class'] = \sanitize_text_field($this->args['class']);
     }
 }

@@ -129,8 +129,6 @@ final class Loop
             return $out;
         }
 
-        $this->sanitizeClassArg();
-
         $out .= '<'.$wrap_tag.'';
         
         $out .=' class="posts-wrap'.($this->posts->args['class']
@@ -570,28 +568,5 @@ final class Loop
             ? 'no-post-thumb' : '';
         
         return \join(' ', $class);
-    }
-
-    /**
-     * Sanitize 'class' arg
-     *
-     * @since 0.1.0
-     * @access private
-     */
-    private function sanitizeClassArg()
-    {
-        $this->posts->args['class'] = \str_replace(
-            ',',
-            ' ',
-            $this->posts->args['class']
-        );
-        $this->posts->args['class'] = \preg_replace(
-            '/\s\s+/',
-            ' ',
-            $this->posts->args['class']
-        );
-        $this->posts->args['class'] = \sanitize_text_field(
-            $this->posts->args['class']
-        );
     }
 }

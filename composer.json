@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GrottoPress\\WordPress\\": "src/lib/"
+            "GrottoPress\\WordPress\\": "src/libraries/"
         }
     }
 }

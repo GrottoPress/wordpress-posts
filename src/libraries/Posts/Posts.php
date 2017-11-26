@@ -492,21 +492,6 @@ final class Posts
     }
 
     /**
-     * Get post
-     *
-     * @param int $id Post ID.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Post
-     */
-    public function post(int $id = 0): Post
-    {
-        return new Post($id);
-    }
-
-    /**
      * Sanitize 'class' arg
      *
      * @since 0.1.0
@@ -521,5 +506,20 @@ final class Posts
             $this->args['class']
         );
         $this->args['class'] = \sanitize_text_field($this->args['class']);
+    }
+
+    /**
+     * Get post
+     *
+     * @param int $id Post ID.
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return Post
+     */
+    public function post(int $id = 0): Post
+    {
+        return new Post($id);
     }
 }

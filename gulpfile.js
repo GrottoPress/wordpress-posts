@@ -17,8 +17,8 @@ const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 
 // Paths
-const sass_files = ['./src/assets/styles/**/*.scss']
-const sass_dest = './dist/assets/styles'
+const sass_files = ['./assets/styles/**/*.scss']
+const sass_dest = './dist/styles'
 
 // Compile scss, rtl and minify scss
 gulp.task('compile_sass', () =>

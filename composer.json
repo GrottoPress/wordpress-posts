@@ -28,6 +28,17 @@
     "require-dev": {
         "lucatume/wp-browser": "^1.21"
     },
+    "scripts": {
+        "post-update-cmd": [
+            "npm update"
+        ],
+        "post-install-cmd": [
+            "npm install"
+        ],
+        "test": [
+            "codecept run wpunit"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "GrottoPress\\WordPress\\": "src/libraries/"

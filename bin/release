@@ -24,7 +24,7 @@ doChecks()
 
 updateFiles()
 {
-    sed -ri "s/\"version\": \"[0-9\.\-]+\"/\"version\": \"${TO_VERSION}\"/i" package.json
+    sed -ri "s/\"version\": \"[0-9\.\-]*\"/\"version\": \"${TO_VERSION}\"/i" package.json
 }
 
 createCommit()
@@ -40,6 +40,7 @@ createTag()
     git merge --no-ff ${DEV_BRANCH} -m "Merge branch ${DEV_BRANCH} into master"
     git tag -a "${TO_VERSION}" -m "version ${TO_VERSION}"
     git checkout ${DEV_BRANCH}
+    git merge master -m "Merge branch master into ${DEV_BRANCH}"
 }
 
 run()

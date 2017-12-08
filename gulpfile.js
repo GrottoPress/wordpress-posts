@@ -6,21 +6,25 @@
 
 'use strict'
 
-// Include gulp
+/**
+ * Import gulp, plugins
+ */
 const gulp = require('gulp')
-
-// Include plugins
 const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
 const cleanCSS = require('gulp-clean-css')
 const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 
-// Paths
+/**
+ * File paths
+ */
 const sass_files = ['./assets/styles/**/*.scss']
 const sass_dest = './dist/styles'
 
-// Compile scss, rtl and minify scss
+/**
+ * Compile scss, rtl and minify css
+ */
 gulp.task('compile_sass', () =>
     gulp.src(sass_files)
     .pipe(sourcemaps.init())
@@ -38,12 +42,16 @@ gulp.task('compile_sass', () =>
     .pipe(gulp.dest(sass_dest))
 )
 
-// Watchfiles for changes
+/**
+ * Watch files for changes
+ */
 gulp.task('watch', () =>
     gulp.watch(sass_files, ['compile_sass'])
 )
 
-// Default task
+/**
+ * Default task
+ */
 gulp.task('default', [
     'compile_sass',
     'watch'

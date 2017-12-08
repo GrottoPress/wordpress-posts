@@ -30,13 +30,19 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "npm update"
+            "npm update",
+            "./bin/migrate-assets"
         ],
         "post-install-cmd": [
-            "npm install"
+            "npm install",
+            "chmod +x ./bin/*",
+            "./bin/migrate-assets"
         ],
         "test": [
             "codecept run wpunit"
+        ],
+        "release": [
+            "./bin/release"
         ]
     },
     "autoload": {

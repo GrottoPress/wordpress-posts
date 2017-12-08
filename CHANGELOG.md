@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - New directory structure:  
     .
     ├── assets
+    ├── bin
     ├── dist
     ├── libraries
     ├── node_modules
     └── vendor
+- Added development binaries in a new `bin` directory
 
 ## 0.2.2 - 2017-11-26
 

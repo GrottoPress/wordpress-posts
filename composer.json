@@ -1,6 +1,6 @@
 {
     "name": "grottopress/wordpress-posts",
-    "description": "A library to query and display posts in WordPress",
+    "description": "Query and display posts in WordPress",
     "license": "MIT",
     "authors": [
         {

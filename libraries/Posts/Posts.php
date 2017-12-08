@@ -402,7 +402,7 @@ final class Posts
      */
     public function isContent(): bool
     {
-        return ((int)$this->args['excerpt']['length'] < -1);
+        return ($this->args['excerpt']['length'] < -1);
     }
 
     /**

@@ -1,6 +1,6 @@
 {
     "name": "grottopress/wordpress-posts",
-    "description": "A library to query and display posts in WordPress",
+    "description": "Query and display posts in WordPress",
     "license": "MIT",
     "authors": [
         {
@@ -28,9 +28,29 @@
     "require-dev": {
         "lucatume/wp-browser": "^1.21"
     },
+    "scripts": {
+        "post-update-cmd": [
+            "npm update",
+            "./bin/migrate-assets"
+        ],
+        "post-install-cmd": [
+            "npm install",
+            "chmod +x ./bin/*",
+            "./bin/migrate-assets"
+        ],
+        "test": [
+            "codecept run wpunit"
+        ],
+        "release": [
+            "./bin/release"
+        ]
+    },
     "autoload": {
         "psr-4": {
-            "GrottoPress\\WordPress\\": "src/libraries/"
+            "GrottoPress\\WordPress\\": "libraries/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": { "GrottoPress\\WordPress\\": "tests/" }
     }
 }

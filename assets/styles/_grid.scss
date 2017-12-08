@@ -13,12 +13,12 @@
 
 .layout-grid.posts-wrap {
     font-size: 0; /** Inline-block whitespace fix */
-    margin-left: - map-get($gutter, 'small');
-    margin-right: - map-get($gutter, 'small');
-    margin-top: - map-get($gutter, 'normal');
+    margin-left: - map-get($gutter, small);
+    margin-right: - map-get($gutter, small);
+    margin-top: - map-get($gutter, normal);
 
     &:first-child {
-        margin-top: - map-get($gutter, 'normal');
+        margin-top: - map-get($gutter, normal);
     }
 
     > * {
@@ -27,9 +27,9 @@
     }
 
     > .post-wrap {
-        padding-left: map-get($gutter, 'small');
-        padding-right: map-get($gutter, 'small');
-        margin-top: map-get($gutter, 'normal');
+        padding-left: map-get($gutter, small);
+        padding-right: map-get($gutter, small);
+        margin-top: map-get($gutter, normal);
         margin-bottom: 0;
         width: 100%;
         @include inline-block;
@@ -45,7 +45,7 @@
     }
 }
 
-@media (min-width: map-get($breakpoints, 'medium')) {
+@media (min-width: map-get($breakpoints, medium)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
             width: 50%;
@@ -53,7 +53,7 @@
 	}
 }
 
-@media (min-width: map-get($breakpoints, 'wide')) {
+@media (min-width: map-get($breakpoints, wide)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
             width: 33.33%;

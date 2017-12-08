@@ -222,7 +222,7 @@ final class Post
     public function content(
         string $more_text = '',
         string $stripteaser = '',
-        bool $paging = fals
+        bool $paging = false
     ): string {
         global $post, $more;
 

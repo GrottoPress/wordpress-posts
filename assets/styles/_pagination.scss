@@ -16,7 +16,7 @@
         color: $font-color-grey;
         font-size: 1em;
         font-weight: bold;
-        @include paragraph(map-get($gutter, 'small'));
+        @include paragraph(map-get($gutter, small));
     
         .page-numbers,
         a {

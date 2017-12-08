@@ -40,7 +40,7 @@
 /// Block
 ///
 /// Add top and bottom margin
-@mixin paragraph($vertical-margin: map-get($gutter, 'normal')) {
+@mixin paragraph($vertical-margin: map-get($gutter, normal)) {
     margin-top: $vertical-margin;
     margin-bottom: $vertical-margin;
 

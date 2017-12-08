@@ -18,13 +18,13 @@
     }
 
     > li > .post-wrap {
-        padding-bottom: map-get($gutter, 'tiny');
-        @include paragraph(map-get($gutter, 'tiny'));
+        padding-bottom: map-get($gutter, tiny);
+        @include paragraph(map-get($gutter, tiny));
     }
 
     > .post-wrap {
-        padding-bottom: map-get($gutter, 'small');
-        @include paragraph(map-get($gutter, 'small'));
+        padding-bottom: map-get($gutter, small);
+        @include paragraph(map-get($gutter, small));
     }
 
     &.big > .post-wrap {
@@ -33,8 +33,8 @@
     }
 
     &.show-content > .post-wrap {
-        padding-bottom: map-get($gutter, 'normal');
-        @include paragraph(map-get($gutter, 'normal'));
+        padding-bottom: map-get($gutter, normal);
+        @include paragraph(map-get($gutter, normal));
     }
 
     > .post-wrap:last-child,

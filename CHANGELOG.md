@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     ├── node_modules
     └── vendor
 - Added development binaries in a new `bin` directory
+- Set up tests scaffold
 
 ## 0.2.2 - 2017-11-26
 

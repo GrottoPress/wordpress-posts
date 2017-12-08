@@ -49,5 +49,8 @@
         "psr-4": {
             "GrottoPress\\WordPress\\": "libraries/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": { "GrottoPress\\WordPress\\": "tests/" }
     }
 }

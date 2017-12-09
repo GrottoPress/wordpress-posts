@@ -15,7 +15,7 @@
         }
     ],
     "dependencies": {
-        "@grottopress/scss": "^0.1.4"
+        "@grottopress/scss": "^0.1.5"
     },
     "devDependencies": {
         "gulp": "^3.9.1",

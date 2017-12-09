@@ -14,8 +14,8 @@
 .layout-grid.posts-wrap {
     @include grid((
         gutter: map-get($gutter, normal),
-        font-size: 1em,
         columns: '.post-wrap',
+        use: 'float',
     ));
 
     > .post-wrap {

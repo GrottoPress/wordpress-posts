@@ -15,8 +15,9 @@
     @include grid((
         gutter: map-get($gutter, normal),
         font-size: 1em,
+        columns: '.post-wrap',
     ));
-    
+
     > .post-wrap {
         &.big > header > .entry-title {
             font-size: 1.43em;

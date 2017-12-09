@@ -15,7 +15,6 @@
     @include grid((
         gutter: map-get($gutter, normal),
         columns: '.post-wrap',
-        use: 'float',
     ));
 
     > .post-wrap {

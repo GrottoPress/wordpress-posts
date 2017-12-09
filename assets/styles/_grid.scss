@@ -12,29 +12,14 @@
  */
 
 .layout-grid.posts-wrap {
-    font-size: 0; /** Inline-block whitespace fix */
-    margin-left: - map-get($gutter, small);
-    margin-right: - map-get($gutter, small);
-    margin-top: - map-get($gutter, normal);
-
-    &:first-child {
-        margin-top: - map-get($gutter, normal);
-    }
-
-    > * {
-        // line-height: 160%;
-        font-size: 1em;
-    }
+    @include grid((
+        gutter: map-get($gutter, normal),
+        columns: '.post-wrap',
+    ));
 
     > .post-wrap {
-        padding-left: map-get($gutter, small);
-        padding-right: map-get($gutter, small);
-        margin-top: map-get($gutter, normal);
         margin-bottom: 0;
-        width: 100%;
-        @include inline-block;
-        // font-size: 1em;
-
+        
         &.big > header > .entry-title {
             font-size: 1.43em;
         }

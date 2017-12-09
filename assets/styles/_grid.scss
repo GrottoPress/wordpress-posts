@@ -19,6 +19,8 @@
     ));
 
     > .post-wrap {
+        margin-bottom: 0;
+        
         &.big > header > .entry-title {
             font-size: 1.43em;
         }

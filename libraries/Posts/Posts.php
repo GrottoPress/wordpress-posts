@@ -339,7 +339,7 @@ final class Posts
             ['top', 'bottom'],
             $this->args['pagination']['position']
         )) {
-            $this->args['wp_query']['paged'] = $this->pagination->currentPage();
+            $this->args['wp_query']['paged'] = $this->pagination->currentPage;
         } else {
             $this->args['wp_query']['paged'] = 1;
         }
@@ -357,7 +357,7 @@ final class Posts
          */
         $this->args['wp_query']['offset'] =
             \absint($this->args['wp_query']['offset']) + (
-                ($this->pagination->currentPage() - 1)
+                ($this->pagination->currentPage - 1)
                 * \absint($this->args['wp_query']['posts_per_page'])
            );
     }

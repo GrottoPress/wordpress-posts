@@ -14,6 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
 
+use GrottoPress\Getter\Getter;
 use WP_Query;
 
 /**
@@ -23,6 +24,8 @@ use WP_Query;
  */
 final class Pagination
 {
+    use Getter;
+
     /**
      * Posts
      *
@@ -49,10 +52,10 @@ final class Pagination
      * @since 0.1.0
      * @access private
      *
-     * @var int $current_page Current page number.
+     * @var int $currentPage Current page number.
      */
-    private $current_page;
-    
+    private $currentPage;
+
     /**
      * Constructor
      *
@@ -73,13 +76,13 @@ final class Pagination
      * Get current page
      *
      * @since 0.1.0
-     * @access public
+     * @access private
      *
      * @return int current page number.
      */
-    public function currentPage(): int
+    private function getCurrentPage(): int
     {
-        return $this->current_page;
+        return $this->currentPage;
     }
 
     /**
@@ -143,12 +146,12 @@ final class Pagination
     private function setCurrentPage()
     {
         if ($this->isBuiltIn()) {
-            $this->current_page = $this->currentPageBuiltin();
+            $this->currentPage = $this->currentPageBuiltin();
         } elseif (!empty($_GET[$this->key])) {
-            $this->current_page = \absint($_GET[$this->key]);
+            $this->currentPage = \absint($_GET[$this->key]);
         }
         
-        $this->current_page = $this->current_page ? $this->current_page : 1;
+        $this->currentPage = $this->currentPage ? $this->currentPage : 1;
     }
 
     /**
@@ -182,7 +185,7 @@ final class Pagination
 
         return (
             $this->key === $wp_rewrite->pagination_base
-            && $wp_rewrite->using_permalinks()
+                && $wp_rewrite->using_permalinks()
         );
     }
 
@@ -199,7 +202,7 @@ final class Pagination
         $args = [];
 
         $args['total'] = $query->max_num_pages;
-        $args['current'] = $this->current_page;
+        $args['current'] = $this->currentPage;
         $args['mid_size'] = $this->posts->args['pagination']['mid_size'];
         $args['end_size'] = $this->posts->args['pagination']['end_size'];
         $args['prev_text'] = $this->posts->args['pagination']['prev_text'];

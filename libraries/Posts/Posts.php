@@ -127,7 +127,7 @@ final class Posts
         $this->postListDefaults();
         $this->titleTagDefaults();
         $this->relatedToDefaults();
-        $this->postsPerPageDefaults();
+        // $this->postsPerPageDefaults();
         $this->paginationDefaults();
         $this->layoutDefaults();
     }

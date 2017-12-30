@@ -121,6 +121,19 @@ final class Pagination
     }
 
     /**
+     * Are we using the builtin pagination?
+     *
+     * @since 0.1.0
+     * @access public
+     *
+     * @return bool
+     */
+    public function isBuiltIn(): bool
+    {
+        return ($this->key === 'paged');
+    }
+
+    /**
      * Set key
      *
      * @since 0.1.0
@@ -169,24 +182,6 @@ final class Pagination
         }
         
         return 1;
-    }
-
-    /**
-     * Are we using the builtin pagination?
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool
-     */
-    public function isBuiltIn(): bool
-    {
-        global $wp_rewrite;
-
-        return (
-            $this->key === $wp_rewrite->pagination_base
-                // && $wp_rewrite->using_permalinks()
-        );
     }
 
     /**

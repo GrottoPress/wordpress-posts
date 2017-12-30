@@ -175,17 +175,17 @@ final class Pagination
      * Are we using the builtin pagination?
      *
      * @since 0.1.0
-     * @access private
+     * @access public
      *
      * @return bool
      */
-    private function isBuiltIn(): bool
+    public function isBuiltIn(): bool
     {
         global $wp_rewrite;
 
         return (
             $this->key === $wp_rewrite->pagination_base
-                && $wp_rewrite->using_permalinks()
+                // && $wp_rewrite->using_permalinks()
         );
     }
 

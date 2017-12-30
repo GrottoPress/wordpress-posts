@@ -127,6 +127,7 @@ final class Posts
         $this->postListDefaults();
         $this->titleTagDefaults();
         $this->relatedToDefaults();
+        $this->postsPerPageDefaults();
         $this->paginationDefaults();
         $this->layoutDefaults();
     }
@@ -325,6 +326,23 @@ final class Posts
         }
         
         $this->args['title']['tag'] = 'h2';
+    }
+
+    /**
+     * Title tag defaults
+     *
+     * @since 0.1.0
+     * @access private
+     */
+    private function postsPerPageDefaults()
+    {
+        if (!$this->pagination->isBuiltIn()) {
+            return;
+        }
+
+        $this->args['wp_query']['posts_per_page'] = \get_option(
+            'posts_per_page'
+        );
     }
 
     /**

@@ -144,7 +144,7 @@ final class Pagination
         if (($key = $this->posts->args['pagination']['key'])) {
             $this->key = \sanitize_key($key);
         } elseif (($id = $this->posts->args['id'])) {
-            $this->key = \sanitize_key($id.'_pag');
+            $this->key = \sanitize_key($id.'-pag');
         } else {
             $this->key = 'pag';
         }

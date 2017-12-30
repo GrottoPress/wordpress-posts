@@ -73,6 +73,19 @@ final class Pagination
     }
 
     /**
+     * Get key
+     *
+     * @since 0.3.3
+     * @access private
+     *
+     * @return string
+     */
+    private function getKey(): string
+    {
+        return $this->key;
+    }
+
+    /**
      * Get current page
      *
      * @since 0.1.0

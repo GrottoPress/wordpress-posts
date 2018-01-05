@@ -1,6 +1,6 @@
 {
     "name": "@grottopress/wordpress-posts",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "Query and display posts in WordPress",
     "license": "MIT",
     "author": {

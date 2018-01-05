@@ -18,13 +18,13 @@
 }
 
 .post-wrap {
-    @include paragraph(map-get($gutter, small));
+    @include paragraph(map-get($gwpp-gutter, small));
     @include clearfix;
     
     .entry-title,
     .entry-summary,
     .entry-meta {
-        @include paragraph(map-get($gutter, tiny));
+        @include paragraph(map-get($gwpp-gutter, tiny));
     }
 
     .entry-title {
@@ -32,13 +32,13 @@
     }
 
     .entry-meta {
-        color: $font-color-grey;
+        color: $gwpp-font-lighter;
         font-size: 0.93em;
     }
 
     > header,
     > footer {
-        @include paragraph(map-get($gutter, small));
+        @include paragraph(map-get($gwpp-gutter, small));
     }
 
     > header {
@@ -58,7 +58,7 @@
         > .entry-summary,
         > footer > .entry-meta,
         > header > .entry-meta {
-            @include paragraph(map-get($gutter, small));
+            @include paragraph(map-get($gwpp-gutter, small));
         }
 
         > header > .entry-title {
@@ -67,7 +67,7 @@
     }
 }
 
-@media (min-width: map-get($breakpoints, medium)) {
+@media (min-width: map-get($gwpp-breakpoint, medium)) {
     .big {
         > .post-wrap > header > .entry-title {
             font-size: 1.71em;

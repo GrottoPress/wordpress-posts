@@ -13,10 +13,10 @@
 
 .posts-wrap {
     .pagination {
-        color: $font-color-grey;
+        color: $gwpp-font-lighter;
         font-size: 1em;
         font-weight: bold;
-        @include paragraph(map-get($gutter, small));
+        @include paragraph(map-get($gwpp-gutter, small));
     
         .page-numbers,
         a {

@@ -13,7 +13,7 @@
 
 .layout-grid.posts-wrap {
     @include grid((
-        gutter: map-get($gutter, normal),
+        gutter: map-get($gwpp-gutter, normal),
         columns: '.post-wrap',
     ));
 
@@ -28,7 +28,7 @@
     }
 }
 
-@media (min-width: map-get($breakpoints, medium)) {
+@media (min-width: map-get($gwpp-breakpoint, medium)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
             width: 50%;
@@ -36,7 +36,7 @@
 	}
 }
 
-@media (min-width: map-get($breakpoints, wide)) {
+@media (min-width: map-get($gwpp-breakpoint, wide)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
             width: 33.33%;

@@ -15,7 +15,7 @@
         }
     ],
     "dependencies": {
-        "@grottopress/scss": "^0.1.8"
+        "@grottopress/scss": "^0.1.11"
     },
     "devDependencies": {
         "gulp": "^3.9.1",
@@ -23,7 +23,7 @@
         "gulp-rename": "^1.2.2",
         "gulp-rtlcss": "^1.0.0",
         "gulp-sass": "^3.1.0",
-        "gulp-sourcemaps": "^2.6.2"
+        "gulp-sourcemaps": "^2.6.3"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

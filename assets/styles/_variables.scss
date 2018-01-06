@@ -9,8 +9,8 @@
 
 @import '../../dist/vendor/@grottopress/scss/src/variables';
 
-$gwpp-breakpoint: (medium: 800px, wide: 960px);
-$gwpp-gutter: (tiny: 5px, small: 10px, normal: 20px);
-$gwpp-separator: 1px solid #ddd;
+$gwpp-breakpoint: (medium: 800px, wide: 960px) !default;
+$gwpp-gutter: (tiny: 5px, small: 10px, normal: 20px) !default;
+$gwpp-separator: 1px solid #ddd !default;
 
-$gwpp-font-lighter: #999;
+$gwpp-font-lighter: #999 !default;

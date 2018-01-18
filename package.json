@@ -1,6 +1,6 @@
 {
     "name": "@grottopress/wordpress-posts",
-    "version": "0.3.6",
+    "version": "0.4.0",
     "description": "Query and display posts in WordPress",
     "license": "MIT",
     "author": {
@@ -14,14 +14,12 @@
             "url": "https://twitter.com/akadusei"
         }
     ],
-    "dependencies": {
-        "@grottopress/scss": "^0.1.11"
-    },
+    "dependencies": {},
     "devDependencies": {
         "gulp": "^3.9.1",
         "gulp-clean-css": "^3.9.2",
         "gulp-rename": "^1.2.2",
-        "gulp-rtlcss": "^1.0.0",
+        "gulp-rtlcss": "^1.1.0",
         "gulp-sass": "^3.1.0",
         "gulp-sourcemaps": "^2.6.3"
     },

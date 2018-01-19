@@ -25,7 +25,7 @@ const sass_dest = './dist/styles'
 /**
  * Compile scss, rtl and minify css
  */
-gulp.task('compile_sass', () =>
+gulp.task('compile-sass', () =>
     gulp.src(sass_files)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -46,13 +46,13 @@ gulp.task('compile_sass', () =>
  * Watch files for changes
  */
 gulp.task('watch', () =>
-    gulp.watch(sass_files, ['compile_sass'])
+    gulp.watch(sass_files, ['compile-sass'])
 )
 
 /**
  * Default task
  */
 gulp.task('default', [
-    'compile_sass',
+    'compile-sass',
     'watch'
 ])

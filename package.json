@@ -14,7 +14,9 @@
             "url": "https://twitter.com/akadusei"
         }
     ],
-    "dependencies": {},
+    "dependencies": {
+        "@grottopress/scss": "^0.1.11"
+    },
     "devDependencies": {
         "gulp": "^3.9.1",
         "gulp-clean-css": "^3.9.2",

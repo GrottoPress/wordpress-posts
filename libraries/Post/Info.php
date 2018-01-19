@@ -9,7 +9,7 @@
  * @see https://github.com/bradvin/social-share-urls
  *
  * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kus Adusei
+ * @author N Atta Kusi Adusei
  */
 
 declare (strict_types = 1);

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Move production assets to './dist/vendor/'
+# Move production assets to './assets/vendor/'
 
 TO='./assets/vendor'
 FROM=('@grottopress/scss')
@@ -16,7 +16,7 @@ migrate()
             src="./vendor/${dir}"
         else
             [[ -d "${dest}" ]] && rm -rf ${dest}
-            
+
             continue
         fi
 
@@ -26,19 +26,23 @@ migrate()
     done
 }
 
-removeEmtpyDest()
+removeUninstalledPackages()
 {
     dirs=(${TO}/*)
 
     for dir in ${dirs[@]}; do
-        [[ ! "$(ls -A ${dir})" ]] && rm -rf ${dir}
+        dest="${dir##*\/}"
+
+        [[ -d "./node_modules/${dest}" || -d "./vendor/${dest}" ]] && continue
+
+        rm -rf ${dir}
     done
 }
 
 run()
 {
     migrate
-    removeEmtpyDest
+    removeUninstalledPackages
 }
 
 run

@@ -1,16 +1,46 @@
 #!/bin/bash
 #
-# Move production assets from 'node_modules/' to 'dist/vendor/'
+# Move production assets to './dist/vendor/'
 
 TO='./assets/vendor'
 FROM=('@grottopress/scss')
 
-for dir in ${FROM[@]}; do
-    dest="${TO}/${dir}"
+migrate()
+{
+    for dir in ${FROM[@]}; do
+        dest="${TO}/${dir}"
+        
+        if [[ -d "./node_modules/${dir}" ]]; then
+            src="./node_modules/${dir}"
+        elif [[ -d "./vendor/${dir}" ]]; then
+            src="./vendor/${dir}"
+        else
+            [[ -d "${dest}" ]] && rm -rf ${dest}
+            
+            continue
+        fi
 
-    [[ ! -d "${dest}" ]] && mkdir -p "${dest}"
+        [[ ! -d "${dest}" ]] && mkdir -p "${dest}"
 
-    rsync -azPx --delete-after "./node_modules/${dir}/" "${dest}/"
-done
+        rsync -azPx --delete-after "${src}/" "${dest}/"
+    done
+}
+
+removeEmtpyDest()
+{
+    dirs=(${TO}/*)
+
+    for dir in ${dirs[@]}; do
+        [[ ! "$(ls -A ${dir})" ]] && rm -rf ${dir}
+    done
+}
+
+run()
+{
+    migrate
+    removeEmtpyDest
+}
+
+run
 
 exit 0

@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Move production assets from 'node_modules/' to 'dist/vendor/'
+
+TO='./assets/vendor'
+FROM=('@grottopress/scss')
+
+for dir in ${FROM[@]}; do
+    dest="${TO}/${dir}"
+
+    [[ ! -d "${dest}" ]] && mkdir -p "${dest}"
+
+    rsync -azPx --delete-after "./node_modules/${dir}/" "${dest}/"
+done
+
+exit 0

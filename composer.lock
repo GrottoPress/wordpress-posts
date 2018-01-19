@@ -4,67 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a487dd09c35a8dd622b0e4fc9569fa3",
+    "content-hash": "a987f7735d29b29b9b34a25f54506df3",
     "packages": [
-        {
-            "name": "fxp/composer-asset-plugin",
-            "version": "v1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fxpio/composer-asset-plugin.git",
-                "reference": "61352d99940d2b2392a5d2db83b8c0ef5faf222a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/61352d99940d2b2392a5d2db83b8c0ef5faf222a",
-                "reference": "61352d99940d2b2392a5d2db83b8c0ef5faf222a",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "composer/composer": "^1.4.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Fxp\\Composer\\AssetPlugin\\FxpAssetPlugin",
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Fxp\\Composer\\AssetPlugin\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Pluchino",
-                    "email": "francois.pluchino@gmail.com"
-                }
-            ],
-            "description": "NPM/Bower Dependency Manager for Composer",
-            "homepage": "https://github.com/fxpio/composer-asset-plugin",
-            "keywords": [
-                "asset",
-                "bower",
-                "composer",
-                "dependency manager",
-                "nodejs",
-                "npm",
-                "package"
-            ],
-            "time": "2017-10-20T06:53:56+00:00"
-        },
         {
             "name": "grottopress/getter",
             "version": "0.2.1",
@@ -214,54 +155,6 @@
                 "php mobile detect"
             ],
             "time": "2017-12-18T10:38:51+00:00"
-        },
-        {
-            "name": "npm-asset/grottopress--scss",
-            "version": "0.1.11",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.1.11.tgz",
-                "reference": null,
-                "shasum": "9f62fa9d718f981584e561330e20fb72ebf58bcd"
-            },
-            "type": "npm-asset-library",
-            "extra": {
-                "npm-asset-bugs": {
-                    "url": "https://github.com/GrottoPress/scss/issues"
-                },
-                "npm-asset-directories": [],
-                "npm-asset-repository": {
-                    "type": "git",
-                    "url": "git+https://github.com/GrottoPress/scss.git"
-                },
-                "npm-asset-scripts": {
-                    "test": "echo \"Error: no test specified\" && exit 1"
-                },
-                "npm-asset-publish-config": {
-                    "access": "public"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "GrottoPress.com",
-                    "email": "info@grottopress.com",
-                    "url": "https://www.grottopress.com"
-                },
-                {
-                    "name": "N Atta Kusi Adusei",
-                    "url": "https://twitter.com/akadusei"
-                }
-            ],
-            "description": "Sass utilities: Mixins, variables and functions.",
-            "homepage": "https://github.com/GrottoPress/scss#README",
-            "keywords": [
-                "sass",
-                "scss"
-            ],
-            "time": "2018-01-05T14:52:27+00:00"
         }
     ],
     "packages-dev": [

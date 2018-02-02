@@ -683,7 +683,7 @@ class Info
      *
      * @return string Viber link
      */
-    private function viber_link(): string
+    private function render_viber_link(): string
     {
         if (!$this->mobile_detector->isSmart()) {
             return '';

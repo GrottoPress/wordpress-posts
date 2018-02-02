@@ -173,11 +173,11 @@ class Info
      * Post Author Link.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string
      */
-    protected function render_author_name(): string
+    private function render_author_name(): string
     {
         if (\is_wp_error($author = $this->post->author())) {
             return '';
@@ -190,11 +190,11 @@ class Info
      * Comments Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Comments count link.
      */
-    protected function render_comments_link(): string
+    private function render_comments_link(): string
     {
         if (\is_wp_error($comments = $this->post->comments())) {
             return '';
@@ -207,11 +207,11 @@ class Info
      * Post Updated Date.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Post updated date.
      */
-    protected function render_updated_date(): string
+    private function render_updated_date(): string
     {
         return '<time class="updated entry-date" itemprop="dateModified" datetime="'
             .\esc_attr(\get_the_modified_time('Y-m-d\TH:i:sO', '', $this->post->wp)).'">'
@@ -223,11 +223,11 @@ class Info
      * Post Updated Time.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Post updated time
      */
-    protected function render_updated_time(): string
+    private function render_updated_time(): string
     {
         return '<time class="updated entry-date" itemprop="dateModified" datetime="'
             .\esc_attr(\get_the_modified_time(
@@ -246,11 +246,11 @@ class Info
      * Post Published Date.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Post published date.
      */
-    protected function render_published_date(): string
+    private function render_published_date(): string
     {
         return '<time class="published entry-date" itemprop="datePublished" datetime="'.
            \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->wp)).'">'.
@@ -262,11 +262,11 @@ class Info
      * Post Published Time.
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Post published time
      */
-    protected function render_published_time(): string
+    private function render_published_time(): string
     {
         return '<time class="published entry-date" itemprop="datePublished" datetime="'.
            \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->wp)).'">'.
@@ -278,11 +278,11 @@ class Info
      * Categories
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Category links.
      */
-    protected function render_category_list(): string
+    private function render_category_list(): string
     {
         if (!\has_category('', $this->post->wp)) {
             return '';
@@ -299,11 +299,11 @@ class Info
      * Tags
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Tag links.
      */
-    protected function render_tag_list(): string
+    private function render_tag_list(): string
     {
         if (!\has_tag('', $this->post->wp)) {
             return '';
@@ -322,11 +322,11 @@ class Info
      * Edit Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Edit link.
      */
-    protected function render_edit_link(): string
+    private function render_edit_link(): string
     {
         if (!\current_user_can(
             $this->post->type()->cap->edit_post,
@@ -344,11 +344,11 @@ class Info
      * Delete Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Delete link.
      */
-    protected function render_delete_link(): string
+    private function render_delete_link(): string
     {
         if (!\current_user_can(
             $this->post->type()->cap->delete_post,
@@ -370,11 +370,11 @@ class Info
      * Post Type
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Post type.
      */
-    protected function render_post_type(): string
+    private function render_post_type(): string
     {
         return '<span class="post-type">'.
             $this->post->type()->labels->singular_name.'</span>';
@@ -384,11 +384,11 @@ class Info
      * Tweet Buttom
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Tweet button
      */
-    protected function render_tweet_button(): string
+    private function render_tweet_button(): string
     {
         return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'.
             \wp_get_shortlink($this->post->wp->ID).'" data-text="'.
@@ -402,11 +402,11 @@ class Info
      * PlusOne Buttom
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string PlusOne button.
      */
-    protected function render_plusone_button(): string
+    private function render_plusone_button(): string
     {
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
         
@@ -418,11 +418,11 @@ class Info
      * Google+ Share Buttom
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Google+ share button
      */
-    protected function render_googleshare_button(): string
+    private function render_googleshare_button(): string
     {
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
         
@@ -434,11 +434,11 @@ class Info
      * ShareThis Buttom
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string ShareThis button
      */
-    protected function render_sharethis_button(): string
+    private function render_sharethis_button(): string
     {
         \wp_enqueue_script(
             'sharethis',
@@ -456,11 +456,11 @@ class Info
      * Facebook Share Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Facebook share link.
      */
-    protected function render_share_link(): string
+    private function render_share_link(): string
     {
         return '<a class="facebook-link social-link share-link" rel="external nofollow noopener" href="https://www.facebook.com/sharer/sharer.php?u='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -472,11 +472,11 @@ class Info
      * Tweet Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Tweet link
      */
-    protected function render_tweet_link(): string
+    private function render_tweet_link(): string
     {
         $username = \sanitize_title(\apply_filters(
             'grotto_wp_post_twitter_username',
@@ -496,11 +496,11 @@ class Info
      * Google+ Share Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Google+ share link
      */
-    protected function render_googleplus_link(): string
+    private function render_googleplus_link(): string
     {
         return '<a class="googleplus-link social-link share-link" rel="external nofollow noopener" href="https://plus.google.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -512,11 +512,11 @@ class Info
      * Pinterest Pin Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Pinterest pin link
      */
-    protected function render_pin_link(): string
+    private function render_pin_link(): string
     {
         return '<a class="pinterest-link social-link share-link" rel="external nofollow noopener" href="https://pinterest.com/pin/create/bookmarklet/?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -530,11 +530,11 @@ class Info
      * LinkedIn Share Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string LinkedIn share link
      */
-    protected function render_linkedin_link(): string
+    private function render_linkedin_link(): string
     {
         return '<a class="linkedin-link social-link share-link" rel="external nofollow noopener" href="https://www.linkedin.com/shareArticle?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -547,11 +547,11 @@ class Info
      * Buffer Add Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Buffer share link
      */
-    protected function render_buffer_link(): string
+    private function render_buffer_link(): string
     {
         return '<a class="buffer-link social-link share-link" rel="external nofollow noopener" href="https://buffer.com/add?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -564,11 +564,11 @@ class Info
      * Digg Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Digg link
      */
-    protected function render_digg_link(): string
+    private function render_digg_link(): string
     {
         return '<a class="digg-link social-link share-link" rel="external nofollow noopener" href="https://digg.com/submit?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -581,11 +581,11 @@ class Info
      * Tumblr Share Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Tumblr share link
      */
-    protected function render_tumblr_link(): string
+    private function render_tumblr_link(): string
     {
         return '<a class="tumblr-link social-link share-link" rel="external nofollow noopener" href="https://www.tumblr.com/widgets/share/tool?canonicalUrl='.
         \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -599,11 +599,11 @@ class Info
      * Reddit Share Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Reddit link
      */
-    protected function render_reddit_link(): string
+    private function render_reddit_link(): string
     {
         return '<a class="reddit-link social-link share-link" rel="external nofollow noopener" href="https://reddit.com/submit?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -616,11 +616,11 @@ class Info
      * Delicious Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Delicious link
      */
-    // protected function render_delicious_link(): string
+    // private function render_delicious_link(): string
     //{
     //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->wp)).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fa fa-delicious" aria-hidden="true"></i> '.\esc_html__('Delicious').'</a>';
     // }
@@ -629,11 +629,11 @@ class Info
      * Blogger Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Blogger link
      */
-    protected function render_blogger_link(): string
+    private function render_blogger_link(): string
     {
         return '<a class="blogger-link social-link share-link" rel="external nofollow noopener" href="https://www.blogger.com/blog-this.g?u='.
         \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -647,11 +647,11 @@ class Info
      * Pocket Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Pocket link
      */
-    protected function render_pocket_link(): string
+    private function render_pocket_link(): string
     {
         return '<a class="pocket-link social-link share-link" rel="external nofollow noopener" href="https://getpocket.com/save?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -663,11 +663,11 @@ class Info
      * Skype Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Skype link
      */
-    protected function render_skype_link(): string
+    private function render_skype_link(): string
     {
         return '<a class="skype-link social-link share-link" rel="external nofollow noopener" href="https://web.skype.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -679,11 +679,11 @@ class Info
      * Viber Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Viber link
      */
-    protected function viber_link(): string
+    private function viber_link(): string
     {
         if (!$this->mobile_detector->isSmart()) {
             return '';
@@ -699,11 +699,11 @@ class Info
      * WhatsApp Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string WhatsApp link
      */
-    protected function render_whatsapp_link(): string
+    private function render_whatsapp_link(): string
     {
         if (!$this->mobile_detector->isSmart()) {
             return '';
@@ -719,11 +719,11 @@ class Info
      * Telegram Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Telegram link
      */
-    protected function render_telegram_link(): string
+    private function render_telegram_link(): string
     {
         if (!$this->mobile_detector->isSmart()) {
             return '';
@@ -740,11 +740,11 @@ class Info
      * VK Link
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string VK link
      */
-    protected function render_vk_link(): string
+    private function render_vk_link(): string
     {
         return '<a class="vk-link social-link share-link" rel="external nofollow noopener" href="https://vk.com/share.php?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
@@ -758,11 +758,11 @@ class Info
      * @var string $format Show actual time or time difference?
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Time since post was updated.
      */
-    protected function updatedAgo(string $format): string
+    private function updatedAgo(string $format): string
     {
         return '<time class="updated entry-date" itemprop="dateModified" datetime="'.
             \esc_attr(\get_the_modified_time(
@@ -781,11 +781,11 @@ class Info
      * @var string $format Show actual time or time difference?
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Time since post was updated.
      */
-    protected function publishedAgo(string $format): string
+    private function publishedAgo(string $format): string
     {
         return '<time class="published entry-date" itemprop="dateModified" datetime="'.
             \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->wp)).'">'.

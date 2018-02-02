@@ -21,7 +21,7 @@ use WP_Error;
  *
  * @since 0.1.0
  */
-final class Author
+class Author
 {
     /**
      * Post
@@ -99,11 +99,11 @@ final class Author
      * Get post author url
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return string
      */
-    private function url(): string
+    protected function url(): string
     {
         if ('#' ==
             ($user_url = \get_author_posts_url($this->post->wp->post_author))
@@ -118,11 +118,11 @@ final class Author
      * Post Author Display Name
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return string Post author display name.
      */
-    private function displayName(): string
+    protected function displayName(): string
     {
         return \get_the_author_meta(
             'display_name',

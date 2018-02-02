@@ -22,19 +22,19 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class Posts
+class Posts
 {
     use Getter;
-    
+
     /**
      * Arguments
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var array $args Arguments passed via constructor.
      */
-    private $args;
+    protected $args;
 
     /**
      * Loop
@@ -55,7 +55,7 @@ final class Posts
      * @var Pagination $pagination Pagination.
      */
     private $pagination;
-    
+
     /**
      * Constructor
      *
@@ -67,7 +67,7 @@ final class Posts
     public function __construct(array $args = [])
     {
         $this->setArgs($args);
-        
+
         $this->pagination = new Pagination($this);
         $this->loop = new Loop($this);
     }
@@ -76,11 +76,11 @@ final class Posts
      * Get args
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return array Args.
      */
-    private function getArgs(): array
+    protected function getArgs(): array
     {
         return $this->args;
     }

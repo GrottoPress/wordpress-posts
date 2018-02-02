@@ -22,7 +22,7 @@ use WP_Query;
  *
  * @since 0.1.0
  */
-final class Pagination
+class Pagination
 {
     use Getter;
 
@@ -40,21 +40,21 @@ final class Pagination
      * Key
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $key Query arg whose value would be used for pagination.
      */
-    private $key;
+    protected $key;
 
     /**
      * Current Page
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var int $currentPage Current page number.
      */
-    private $currentPage;
+    protected $currentPage;
 
     /**
      * Constructor
@@ -76,11 +76,11 @@ final class Pagination
      * Get key
      *
      * @since 0.3.3
-     * @access private
+     * @access protected
      *
      * @return string
      */
-    private function getKey(): string
+    protected function getKey(): string
     {
         return $this->key;
     }
@@ -89,11 +89,11 @@ final class Pagination
      * Get current page
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return int current page number.
      */
-    private function getCurrentPage(): int
+    protected function getCurrentPage(): int
     {
         return $this->currentPage;
     }

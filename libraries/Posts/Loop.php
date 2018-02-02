@@ -22,7 +22,7 @@ use WP_Query;
  *
  * @since 0.1.0
  */
-final class Loop
+class Loop
 {
     /**
      * Posts

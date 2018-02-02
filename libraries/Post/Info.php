@@ -24,7 +24,7 @@ use GrottoPress\Mobile\Detector;
  *
  * @since 0.1.0
  */
-final class Info
+class Info
 {
     /**
      * Post
@@ -40,41 +40,41 @@ final class Info
      * Types of information to retrieve
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var array|string $types Info types.
      */
-    private $types;
+    protected $types;
 
     /**
      * Separator
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $separator Separator.
      */
-    private $separator;
+    protected $separator;
 
     /**
      * Before
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $before HTML to place before list.
      */
-    private $before;
+    protected $before;
 
     /**
      * After
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $after HTML to place after list.
      */
-    private $after;
+    protected $after;
 
     /**
      * Mobile Detector
@@ -683,7 +683,7 @@ final class Info
      *
      * @return string Viber link
      */
-    private function viber_link(): string
+    private function render_viber_link(): string
     {
         if (!$this->mobile_detector->isSmart()) {
             return '';
@@ -753,45 +753,6 @@ final class Info
     }
 
     /**
-     * Set Args
-     *
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access private
-     */
-    private function setArgs(array $args)
-    {
-        if (!($vars = \get_object_vars($this))) {
-            return;
-        }
-
-        unset($vars['post']);
-        unset($vars['mobile_detector']);
-
-        foreach ($vars as $key => $value) {
-            $this->$key = $args[$key] ?? '';
-        }
-    }
-
-    /**
-     * Sanitize attributes
-     *
-     * @since 0.1.0
-     * @access private
-     */
-    private function sanitizeAttributes()
-    {
-        $this->separator = $this->separator ? \esc_attr(
-            $this->separator
-        ) : '|';
-        $this->types = !empty($this->types[0]) ? \array_map(
-            'sanitize_key',
-            $this->types
-        ) : [];
-    }
-
-    /**
      * Time since post was updated.
      *
      * @var string $format Show actual time or time difference?
@@ -836,11 +797,11 @@ final class Info
      * Get term list
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return string Terms
      */
-    private function termList(string $taxonomy): string
+    protected function termList(string $taxonomy): string
     {
         $taxonomy = \sanitize_key($taxonomy);
         
@@ -866,5 +827,44 @@ final class Info
             ', ',
             '</span>'
         );
+    }
+
+    /**
+     * Set Args
+     *
+     * @param array $args
+     *
+     * @since 0.1.0
+     * @access private
+     */
+    private function setArgs(array $args)
+    {
+        if (!($vars = \get_object_vars($this))) {
+            return;
+        }
+
+        unset($vars['post']);
+        unset($vars['mobile_detector']);
+
+        foreach ($vars as $key => $value) {
+            $this->$key = $args[$key] ?? '';
+        }
+    }
+
+    /**
+     * Sanitize attributes
+     *
+     * @since 0.1.0
+     * @access private
+     */
+    private function sanitizeAttributes()
+    {
+        $this->separator = $this->separator ? \esc_attr(
+            $this->separator
+        ) : '|';
+        $this->types = !empty($this->types[0]) ? \array_map(
+            'sanitize_key',
+            $this->types
+        ) : [];
     }
 }

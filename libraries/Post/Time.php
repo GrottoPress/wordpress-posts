@@ -19,7 +19,7 @@
  *
  * @since 0.1.0
  */
-final class Time
+class Time
 {
     /**
      * Post
@@ -37,11 +37,11 @@ final class Time
      * 'published' or 'updated'
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @var string $context Post ID
      */
-    private $context;
+    protected $context;
 
     /**
      * Post Timestamp

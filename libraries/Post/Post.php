@@ -23,7 +23,7 @@ use GrottoPress\Getter\Getter;
  *
  * @since 0.1.0
  */
-final class Post
+class Post
 {
     use Getter;
     
@@ -31,11 +31,11 @@ final class Post
      * WordPress Post
      *
      * @since  0.1.0
-     * @access private
+     * @access protected
      *
      * var WP_Post $wp WordPress post.
      */
-    private $wp;
+    protected $wp;
 
     /**
      * Constructor
@@ -54,11 +54,11 @@ final class Post
      * Get WordPress post
      *
      * @since 0.1.0
-     * @access private
+     * @access protected
      *
      * @return WP_Post
      */
-    private function getWP(): WP_Post
+    protected function getWP(): WP_Post
     {
         return $this->wp;
     }

@@ -311,7 +311,7 @@ final class Post
     }
 
     /**
-     * Get non-hierarchical taxonomies for a given post
+     * Get taxonomies for a given post
      *
      * @param integer $post_id Post ID.
      * @param string $context Hierarchical or not.

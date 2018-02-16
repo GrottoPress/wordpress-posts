@@ -29,14 +29,24 @@ class Author
      * @since 0.1.0
      * @access private
      *
-     * @var Post $post Post.
+     * @var Post
      */
     private $post;
 
     /**
+     * Is author supported by post type?
+     *
+     * @since 0.5.2
+     * @access protected
+     *
+     * @var bool
+     */
+    protected $supported;
+
+    /**
      * Constructor
      *
-     * @param Post $post Post.
+     * @param Post $post
      *
      * @since 0.1.0
      * @access public
@@ -44,13 +54,24 @@ class Author
     public function __construct(Post $post)
     {
         $this->post = $post;
-        
-        if (!\post_type_supports($this->post->wp->post_type, 'author')) {
-            return new WP_Error(
-                'author_not_supported',
-                \esc_html__('Author support not registered for post type.')
-            );
-        }
+
+        $this->supported = \post_type_supports(
+            $this->post->wp->post_type,
+            'author'
+        );
+    }
+
+    /**
+     * Get supported
+     *
+     * @since 0.5.2
+     * @access protected
+     *
+     * @return bool
+     */
+    protected function getSupported(): bool
+    {
+        return $this->supported;
     }
 
     /**
@@ -70,13 +91,13 @@ class Author
     public function name(string $before = '', string $after = ''): string
     {
         $link = '';
-        
+
         if ($before) {
             $link .= '<span class="before-author-link">'.
                 \esc_attr($before).
             '</span> ';
         }
-        
+
         if ($url = $this->url()) {
             $link .= '<span class="author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
                 <a rel="author nofollow" class="url fn n" itemprop="url" href="'.\esc_attr($url).'">
@@ -87,14 +108,14 @@ class Author
                 <span itemprop="name">'.$this->displayName().'</span>
             </span>';
         }
-        
+
         if ($after) {
             $link .= '<span class="after-author-link">'.\esc_attr($after).'</span> ';
         }
-        
+
         return $link;
     }
-    
+
     /**
      * Get post author url
      *

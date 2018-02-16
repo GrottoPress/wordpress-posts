@@ -15,6 +15,7 @@
  namespace GrottoPress\WordPress\Post;
 
  use WP_Error;
+ use GrottoPress\Getter\Getter;
 
 /**
  * Post Comments
@@ -23,6 +24,8 @@
  */
 class Comments
 {
+    use Getter;
+
     /**
      * Post
      *
@@ -44,6 +47,16 @@ class Comments
     private $count;
 
     /**
+     * Is comments supported by post type?
+     *
+     * @since 0.5.2
+     * @access protected
+     *
+     * @var bool
+     */
+    protected $supported;
+
+    /**
      * Constructor
      *
      * @param Post $post Post.
@@ -54,18 +67,25 @@ class Comments
     public function __construct(Post $post)
     {
         $this->post = $post;
-        
-        if (!\post_type_supports(
+
+        $this->count = \get_comments_number($this->post->wp);
+        $this->supported = \post_type_supports(
             $this->post->wp->post_type,
             'comments'
-        )) {
-            return new WP_Error(
-                'comments_not_supported',
-                \esc_html__('Comment support not registered for post type.')
-            );
-        }
-        
-        $this->count = \get_comments_number($this->post->wp);
+        );
+    }
+
+    /**
+     * Get supported
+     *
+     * @since 0.5.2
+     * @access protected
+     *
+     * @return bool
+     */
+    protected function getSupported(): bool
+    {
+        return $this->supported;
     }
 
     /**
@@ -109,14 +129,14 @@ class Comments
             if ($this->count < 1) {
                 return $this->noCommentsText();
             }
-            
+
             if ($this->count > 1) {
                 return $this->moreCommentsText();
             }
-            
+
             return $this->oneCommentText();
         }
-        
+
         return $this->commentsClosedText();
     }
 

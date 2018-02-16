@@ -168,7 +168,7 @@ class Info
             $meta
         ).$this->after;
     }
-    
+
     /**
      * Post Author Link.
      *
@@ -179,13 +179,13 @@ class Info
      */
     private function render_author_name(): string
     {
-        if (\is_wp_error($author = $this->post->author())) {
+        if (!($author = $this->post->author())->supported) {
             return '';
         }
-        
+
         return $author->name();
     }
-    
+
     /**
      * Comments Link
      *
@@ -196,13 +196,13 @@ class Info
      */
     private function render_comments_link(): string
     {
-        if (\is_wp_error($comments = $this->post->comments())) {
+        if (!($comments = $this->post->comments())->supported) {
             return '';
         }
-        
+
         return $comments->link();
     }
-    
+
     /**
      * Post Updated Date.
      *

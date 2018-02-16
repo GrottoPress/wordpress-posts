@@ -144,7 +144,7 @@ class Posts
         
         if (\in_array(\sanitize_key($this->args['image']['align']), $allowed)) {
             $class = \sanitize_title(
-                'img-align-'.$this->args['image']['align']
+                "img-align-{$this->args['image']['align']}"
             );
 
             $this->args['class'] = \str_ireplace(
@@ -152,7 +152,8 @@ class Posts
                 '',
                 $this->args['class']
             );
-            $this->args['class'] .= ' '.$class;
+
+            $this->args['class'] .= " {$class}";
         }
     }
 
@@ -178,9 +179,15 @@ class Posts
         }
 
         foreach ($taxonomies as $slug => $terms) {
+            $term_ids = [];
+
+            foreach ($terms as $term) {
+                $term_ids[] = (int)$term->term_id;
+            }
+
             $this->args['wp_query']['tax_query'][] = [
                 'taxonomy' => $slug,
-                'terms' => $terms,
+                'terms' => $term_ids,
                 'operator' => 'IN',
                 'field' => 'term_id',
             ];
@@ -201,10 +208,10 @@ class Posts
             return;
         }
 
-        $class = \sanitize_title('layout-'.$this->args['layout']);
+        $class = \sanitize_title("layout-{$this->args['layout']}");
 
         $this->args['class'] = \str_ireplace($class, '', $this->args['class']);
-        $this->args['class'] .= ' '.$class;
+        $this->args['class'] .= " {$class}";
     }
     
     /**

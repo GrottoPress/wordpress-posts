@@ -116,7 +116,7 @@ class Pagination
         )) {
             return $out;
         }
-        
+
         if ($query->max_num_pages < 2) {
             return $out;
         }
@@ -124,12 +124,12 @@ class Pagination
         if (!($links = \paginate_links($this->args($query)))) {
             return $out;
         }
-        
+
         $out .= '<nav class="pagination '.$position.
         '" itemprop="pagination">';
             $out .= $links;
         $out .= '</nav><!-- .pagination -->';
-        
+
         return $out;
     }
 
@@ -157,7 +157,7 @@ class Pagination
         if (($key = $this->posts->args['pagination']['key'])) {
             $this->key = \sanitize_key($key);
         } elseif (($id = $this->posts->args['id'])) {
-            $this->key = \sanitize_key($id.'-pag');
+            $this->key = \sanitize_key("{$id}-pag");
         } else {
             $this->key = 'pag';
         }
@@ -176,8 +176,8 @@ class Pagination
         } elseif (!empty($_GET[$this->key])) {
             $this->currentPage = \absint($_GET[$this->key]);
         }
-        
-        $this->currentPage = $this->currentPage ? $this->currentPage : 1;
+
+        $this->currentPage = $this->currentPage ?: 1;
     }
 
     /**
@@ -193,7 +193,7 @@ class Pagination
         if (($page = \get_query_var('paged'))) {
             return \absint($page);
         }
-        
+
         return 1;
     }
 
@@ -217,14 +217,14 @@ class Pagination
         $args['next_text'] = $this->posts->args['pagination']['next_text'];
 
         if (!$this->isBuiltIn()) {
-            $args['format'] = '?'.$this->key.'=%#%';
+            $args['format'] = "?{$this->key}=%#%";
         }
 
         $args['prev_next'] = ($this->posts->args['pagination']['prev_text']
             && $this->posts->args['pagination']['next_text']);
 
         $args['add_fragment'] = ($this->posts->args['id']
-            ? '#'.$this->posts->args['id'] : '');
+            ? "#{$this->posts->args['id']}" : '');
 
         return $args;
     }

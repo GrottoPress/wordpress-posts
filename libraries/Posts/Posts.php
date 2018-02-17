@@ -179,15 +179,9 @@ class Posts
         }
 
         foreach ($taxonomies as $slug => $terms) {
-            $term_ids = [];
-
-            foreach ($terms as $term) {
-                $term_ids[] = (int)$term->term_id;
-            }
-
             $this->args['wp_query']['tax_query'][] = [
                 'taxonomy' => $slug,
-                'terms' => $term_ids,
+                'terms' => \array_keys($terms),
                 'operator' => 'IN',
                 'field' => 'term_id',
             ];

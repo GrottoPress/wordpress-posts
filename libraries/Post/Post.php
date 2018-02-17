@@ -341,7 +341,7 @@ class Post
             return $tax;
         }
 
-        foreach ($objects as $slug => $tax) {
+        foreach ($objects as $slug => $object) {
             if ('hierarchical' === $context
                 && !\is_taxonomy_hierarchical($slug)
             ) {
@@ -361,7 +361,7 @@ class Post
             }
 
             foreach ($terms as $term) {
-                $tax[$slug][] = $term;
+                $tax[$slug][(int)$term->term_id] = $term;
             }
         }
 

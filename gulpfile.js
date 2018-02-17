@@ -17,42 +17,42 @@ const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
 
 /**
- * File paths
+ * Define paths
  */
-const sass_files = ['./assets/styles/**/*.scss']
-const sass_dest = './dist/styles'
+const styles_src = ['./assets/styles/**/*.scss']
+const styles_dest = './dist/styles'
 
 /**
- * Compile scss, rtl and minify css
+ * Compile scss, rtl, minify css
  */
-gulp.task('compile-sass', () =>
-    gulp.src(sass_files)
+gulp.task('styles', () =>
+    gulp.src(styles_src)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     // .pipe(cleanCSS({format: 'beautify'}))
-    // .pipe(gulp.dest(sass_dest))
+    // .pipe(gulp.dest(styles_dest))
     .pipe(cleanCSS())
     .pipe(rename({'suffix' : '.min'}))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(sass_dest))
+    .pipe(gulp.dest(styles_dest))
     .pipe(rtlcss())
     .pipe(rename((path) =>
         path.basename = path.basename.replace('.min', '-rtl.min')
     ))
-    .pipe(gulp.dest(sass_dest))
+    .pipe(gulp.dest(styles_dest))
 )
 
 /**
  * Watch files for changes
  */
 gulp.task('watch', () =>
-    gulp.watch(sass_files, ['compile-sass'])
+    gulp.watch(styles_src, ['styles'])
 )
 
 /**
  * Default task
  */
 gulp.task('default', [
-    'compile-sass',
+    'styles',
     'watch'
 ])

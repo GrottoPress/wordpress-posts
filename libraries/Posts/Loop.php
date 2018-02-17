@@ -33,7 +33,7 @@ class Loop
      * @var Posts $posts Posts.
      */
     private $posts;
-    
+
     /**
      * Constructor
      *
@@ -58,11 +58,11 @@ class Loop
     public function run(): string
     {
         $out = '';
-        
+
         if (0 === $this->posts->args['wp_query']['posts_per_page']) {
             return $out;
         }
-        
+
         $query = new WP_Query($this->posts->args['wp_query']);
 
         /**
@@ -73,22 +73,22 @@ class Loop
          * @since 0.1.0
          */
         \do_action('grotto_wp_posts_loop_before', $query, $this->posts->args);
-        
+
         if ($query->have_posts()) {
             $count = 0;
-            
+
             $out .= $this->openWrapTag();
             $out .= $this->posts->pagination->render('top', $query);
-            
+
             while ($query->have_posts()) {
                 $query->the_post();
                 $count++;
-                
+
                 $out .= $this->filter('before', \get_the_ID(), $count);
                 $out .= $this->loopBody(\get_the_ID(), $count);
                 $out .= $this->filter('after', \get_the_ID(), $count);
             }
-            
+
             $out .= $this->posts->pagination->render('bottom', $query);
             $out .= $this->closeWrapTag();
         }
@@ -107,9 +107,9 @@ class Loop
             $query,
             $this->posts->args
         );
-        
+
         \wp_reset_postdata();
-        
+
         return $out;
     }
 
@@ -130,19 +130,19 @@ class Loop
         }
 
         $out .= '<'.$wrap_tag.'';
-        
+
         $out .=' class="posts-wrap'.($this->posts->args['class']
             ? ' '.\esc_attr($this->posts->args['class']) : '').'"';
-        
+
         if ($this->posts->args['id']) {
             $out .= ' id="'.\sanitize_title($this->posts->args['id']).'"';
         }
-        
+
         $out .= '>';
-        
+
         return $out;
     }
-    
+
     /**
      * Posts markup: end
      *
@@ -159,7 +159,7 @@ class Loop
 
         return '</'.$wrap_tag.'><!-- .posts-wrap -->';
     }
-    
+
     /**
      * Apply filters before/after post
      *
@@ -187,7 +187,7 @@ class Loop
             $this->posts->args
         );
     }
-    
+
     /**
      * Body of single post
      *
@@ -205,9 +205,9 @@ class Loop
     private function loopBody(int $post_id, int $count): string
     {
         $post = $this->posts->post($post_id);
-        
+
         return
-        
+
         $this->openPostTag($post, $count).
         $this->thumb('side', $post, $count).
         $this->openHeader($post, $count).
@@ -257,27 +257,27 @@ class Loop
     private function title(Post $post, int $count): string
     {
         $out = '';
-        
+
         if (0 === ($title_words = $this->posts->args['title']['length'])) {
             return $out;
         }
 
-        if (!($title = \get_the_title($post->wp))) {
+        if (!($title = \get_the_title($post->get()))) {
             return $out;
         }
-        
+
         $out .= '<'.($title_tag = \sanitize_key(
             $this->posts->args['title']['tag']
         )).' class="entry-title" itemprop="name headline">';
-        
+
         $anchor_title = ($title_words > 0)
             ? ' title="'.\esc_attr(\wp_strip_all_tags($title, true)).'" ' : '';
-        
+
         if (($title_link = $this->posts->args['title']['link'])) {
-            $out .= '<a itemprop="url" href="'.\get_permalink($post->wp).
+            $out .= '<a itemprop="url" href="'.\get_permalink($post->get()).
                 '" '. $anchor_title.' rel="bookmark">';
         }
-        
+
         if ($title_words < 0) {
             $out .= \sanitize_text_field($title);
         } else {
@@ -287,16 +287,16 @@ class Loop
                 '<span class="ellipsis">...</span>'
             );
         }
-        
+
         if ($title_link) {
             $out .= '</a>';
         }
-        
+
         $out .= '</'.$title_tag.'>';
-        
+
         return $out;
     }
-    
+
     /**
      * Loop body: Excerpt
      *
@@ -308,7 +308,7 @@ class Loop
     private function excerpt(Post $post, int $count): string
     {
         $out = '';
-        
+
         if ($this->posts->isContent()) {
             return $out;
         }
@@ -326,10 +326,10 @@ class Loop
             ' class="entry-summary" itemprop="description">';
         $out .= $excerpt;
         $out .= '</div><!-- .entry-summary -->';
-        
+
         return $out;
     }
-    
+
     /**
      * Loop body: Content
      *
@@ -341,7 +341,7 @@ class Loop
     private function content(Post $post, int $count): string
     {
         $out = '';
-        
+
         if (!$this->posts->isContent()) {
             return $out;
         }
@@ -355,14 +355,14 @@ class Loop
         if (!$content) {
             return $out;
         }
-        
+
         $out .= '<div class="entry-content" itemprop="articleBody">';
         $out .= $content;
         $out .= '</div><!-- .entry-content -->';
-        
+
         return $out;
     }
-    
+
     /**
      * Loop body: opening tag
      *
@@ -374,18 +374,18 @@ class Loop
     private function openPostTag(Post $post, int $count): string
     {
         $out = '';
-        
+
         if ($this->posts->isList()) {
             $out .= '<li>';
         }
-        
-        $out .= '<article data-post-id="'.\absint($post->wp->ID).
+
+        $out .= '<article data-post-id="'.\absint($post->get()->ID).
             '" class="'.\esc_attr($this->postClass($post, $count)).
             '" itemscope itemtype="http://schema.org/Article">';
-        
+
         return $out;
     }
-    
+
     /**
      * Loop body: closing tags
      *
@@ -397,14 +397,14 @@ class Loop
     private function closePostTag(Post $post, int $count): string
     {
         $out = '</article>';
-        
+
         if ($this->posts->isList()) {
             $out .= '</li>';
         }
-        
+
         return $out;
     }
-    
+
     /**
      * Loop body: open <header>
      *
@@ -421,13 +421,13 @@ class Loop
         ) {
             return '';
         }
-        
+
         return '<header'.(
             'top' === $this->posts->args['title']['position']
             ? '' : $this->textOffset($post)
         ).'>';
     }
-    
+
     /**
      * Loop body: close </header>
      *
@@ -444,7 +444,7 @@ class Loop
         ) {
             return '';
         }
-        
+
         return '</header>';
     }
 
@@ -461,10 +461,10 @@ class Loop
         if (!$this->postInfo('excerpt', 'after', $post, $count)) {
             return '';
         }
-        
+
         return '<footer'.$this->textOffset($post).'>';
     }
-    
+
     /**
      * Loop body: close </footer>
      *
@@ -478,10 +478,10 @@ class Loop
         if (!$this->postInfo('excerpt', 'after', $post, $count)) {
             return '';
         }
-        
+
         return '</footer>';
     }
-    
+
     /**
      * Loop body: Thumb
      *
@@ -527,24 +527,24 @@ class Loop
         if (($offset = \absint($this->posts->args['text_offset'])) < 1) {
             return '';
         }
-        
+
         if (!$this->posts->args['image']['size'] || !$post->hasThumbnail()) {
             return '';
         }
-        
+
         $text_offset = ' style="';
-        
+
         if ('right' === $this->posts->args['image']['align']) {
             $text_offset .= 'margin-right:'.$offset.'px;';
         } elseif ('left' === $this->posts->args['image']['align']) {
             $text_offset .= 'margin-left:'.$offset.'px;';
         }
-        
+
         $text_offset .= '" ';
-        
+
         return $text_offset;
     }
-    
+
     /**
      * Post classes
      *
@@ -560,13 +560,13 @@ class Loop
         } else {
             $odd_even_class = 'odd';
         }
-        
-        $class = \get_post_class(['post-wrap', 'post-count-'.$count, $odd_even_class], $post->wp->ID);
-        
+
+        $class = \get_post_class(['post-wrap', "post-count-{$count}", $odd_even_class], $post->get()->ID);
+
         $class[] = ($this->posts->args['image']['size']
             && !$post->hasThumbnail())
             ? 'no-post-thumb' : '';
-        
+
         return \join(' ', $class);
     }
 }

@@ -14,8 +14,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Post;
 
-use WP_Error;
-
 /**
  * Post Author
  *
@@ -29,14 +27,14 @@ class Author
      * @since 0.1.0
      * @access private
      *
-     * @var Post $post Post.
+     * @var Post
      */
     private $post;
 
     /**
      * Constructor
      *
-     * @param Post $post Post.
+     * @param Post $post
      *
      * @since 0.1.0
      * @access public
@@ -44,13 +42,19 @@ class Author
     public function __construct(Post $post)
     {
         $this->post = $post;
-        
-        if (!\post_type_supports($this->post->wp->post_type, 'author')) {
-            return new WP_Error(
-                'author_not_supported',
-                \esc_html__('Author support not registered for post type.')
-            );
-        }
+    }
+
+    /**
+     * Is comments supported?
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return bool
+     */
+    public function supported(): bool
+    {
+        return $this->post->typeSupports('author');
     }
 
     /**
@@ -70,63 +74,62 @@ class Author
     public function name(string $before = '', string $after = ''): string
     {
         $link = '';
-        
+
         if ($before) {
             $link .= '<span class="before-author-link">'.
                 \esc_attr($before).
             '</span> ';
         }
-        
-        if ($url = $this->url()) {
+
+        if ($url = $this->postsUrl()) {
             $link .= '<span class="author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
                 <a rel="author nofollow" class="url fn n" itemprop="url" href="'.\esc_attr($url).'">
-                <span itemprop="name">'.$this->displayName().'</span></a>
+                <span itemprop="name">'.$this->meta('display_name').'</span></a>
             </span>';
         } else {
             $link .= '<span class="author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">'.$this->displayName().'</span>
+                <span itemprop="name">'.$this->meta('display_name').'</span>
             </span>';
         }
-        
+
         if ($after) {
             $link .= '<span class="after-author-link">'.\esc_attr($after).'</span> ';
         }
-        
+
         return $link;
     }
-    
+
     /**
      * Get post author url
      *
+     * @since 0.6.0 Renamed from `url()` to `postsUrl()`
      * @since 0.1.0
-     * @access protected
+     *
+     * @access public
      *
      * @return string
      */
-    protected function url(): string
+    public function postsUrl(): string
     {
-        if ('#' ==
-            ($user_url = \get_author_posts_url($this->post->wp->post_author))
-        ) {
+        if ('#' === (
+            $url = \get_author_posts_url($this->post->get()->post_author)
+        )) {
             return '';
         }
 
-        return $user_url;
+        return $url;
     }
 
     /**
-     * Post Author Display Name
+     * Get author meta
      *
-     * @since 0.1.0
-     * @access protected
+     * @since 0.6.0
+     * @access public
      *
-     * @return string Post author display name.
+     * @return mixed The author meta.
      */
-    protected function displayName(): string
+    public function meta(string $meta)
     {
-        return \get_the_author_meta(
-            'display_name',
-            $this->post->wp->post_author
-        );
+        return \get_the_author_meta($meta, $this->post->get()->post_author);
     }
 }

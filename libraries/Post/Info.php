@@ -84,8 +84,8 @@ class Info
      *
      * @var Detector
      */
-    private $mobile_detector;
-    
+    private $mobileDetector;
+
     /**
      * Constructor
      *
@@ -98,13 +98,13 @@ class Info
     public function __construct(Post $post, array $args)
     {
         $this->post = $post;
-        
-        $this->mobile_detector = new Detector();
-        
+
+        $this->mobileDetector = new Detector();
+
         $this->setArgs($args);
         $this->sanitizeAttributes();
     }
-    
+
     /**
      * Posts entry meta.
      *
@@ -123,7 +123,7 @@ class Info
         }
 
         $meta = [];
-        
+
         foreach ($this->types as $type) {
             if (0 === \stripos($type, 'avatar__')) {
                 if (($avatar = $this->post->thumbnail($type))) {
@@ -141,14 +141,14 @@ class Info
                     '',
                     $type
                 ));
-            } elseif (\is_callable([$this, ($call = 'render_'.$type)])
+            } elseif (\is_callable([$this, ($call = "render_{$type}")])
                 && ($return = $this->$call())
             ) {
                 $meta[] = $return;
             } elseif (($filter = \apply_filters(
                 $type,
                 '',
-                $this->post->wp->ID,
+                $this->post->get()->ID,
                 $this->separator
             ))) {
                 $meta[] = $filter;
@@ -162,13 +162,13 @@ class Info
         if (!$meta) {
             return '';
         }
-        
+
         return $this->before.\join(
             ' <span class="meta-sep">'.$this->separator.'</span> ',
             $meta
         ).$this->after;
     }
-    
+
     /**
      * Post Author Link.
      *
@@ -179,13 +179,13 @@ class Info
      */
     private function render_author_name(): string
     {
-        if (\is_wp_error($author = $this->post->author())) {
+        if (!($author = $this->post->author())->supported()) {
             return '';
         }
-        
+
         return $author->name();
     }
-    
+
     /**
      * Comments Link
      *
@@ -196,13 +196,13 @@ class Info
      */
     private function render_comments_link(): string
     {
-        if (\is_wp_error($comments = $this->post->comments())) {
+        if (!($comments = $this->post->comments())->supported()) {
             return '';
         }
-        
+
         return $comments->link();
     }
-    
+
     /**
      * Post Updated Date.
      *
@@ -214,8 +214,8 @@ class Info
     private function render_updated_date(): string
     {
         return '<time class="updated entry-date" itemprop="dateModified" datetime="'
-            .\esc_attr(\get_the_modified_time('Y-m-d\TH:i:sO', '', $this->post->wp)).'">'
-            .\get_the_modified_time(\get_option('date_format'), '', $this->post->wp)
+            .\esc_attr(\get_the_modified_time('Y-m-d\TH:i:sO', '', $this->post->get())).'">'
+            .\get_the_modified_time(\get_option('date_format'), '', $this->post->get())
         .'</time>';
     }
     
@@ -233,11 +233,11 @@ class Info
             .\esc_attr(\get_the_modified_time(
                 'Y-m-d\TH:i:sO',
                 '',
-                $this->post->wp
+                $this->post->get()
             )).'">'.\get_the_modified_time(
                 \get_option('time_format'),
                 '',
-                $this->post->wp
+                $this->post->get()
             ).
         '</time>';
     }
@@ -253,8 +253,8 @@ class Info
     private function render_published_date(): string
     {
         return '<time class="published entry-date" itemprop="datePublished" datetime="'.
-           \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->wp)).'">'.
-           \get_the_date(\get_option('date_format'), $this->post->wp).
+           \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->get())).'">'.
+           \get_the_date(\get_option('date_format'), $this->post->get()).
         '</time>';
     }
     
@@ -269,8 +269,8 @@ class Info
     private function render_published_time(): string
     {
         return '<time class="published entry-date" itemprop="datePublished" datetime="'.
-           \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->wp)).'">'.
-           \get_the_time(\get_option('time_format'), $this->post->wp).
+           \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->get())).'">'.
+           \get_the_time(\get_option('time_format'), $this->post->get()).
         '</time>';
     }
 
@@ -284,14 +284,14 @@ class Info
      */
     private function render_category_list(): string
     {
-        if (!\has_category('', $this->post->wp)) {
+        if (!\has_category('', $this->post->get())) {
             return '';
         }
         
         return '<span class="category-links"><span class="meta-title">'.
             \esc_html__('Categories:').
         '</span> <span itemprop="articleSection">'.
-            \get_the_category_list(', ', '', $this->post->wp->ID).
+            \get_the_category_list(', ', '', $this->post->get()->ID).
         '</span></span>';
     }
 
@@ -305,7 +305,7 @@ class Info
      */
     private function render_tag_list(): string
     {
-        if (!\has_tag('', $this->post->wp)) {
+        if (!\has_tag('', $this->post->get())) {
             return '';
         }
         
@@ -314,7 +314,7 @@ class Info
                 \esc_html__('Tags: ').'</span> <span itemprop="keywords">',
             ', ',
             '</span></span>',
-            $this->post->wp->ID
+            $this->post->get()->ID
         );
     }
 
@@ -330,13 +330,13 @@ class Info
     {
         if (!\current_user_can(
             $this->post->type()->cap->edit_post,
-            $this->post->wp->ID
+            $this->post->get()->ID
         )) {
             return '';
         }
         
         return '<a class="edit-post-link" href="'.
-            \get_edit_post_link($this->post->wp->ID).
+            \get_edit_post_link($this->post->get()->ID).
             '"  itemprop="url">'.\esc_html__('Edit').'</a>';
     }
     
@@ -352,7 +352,7 @@ class Info
     {
         if (!\current_user_can(
             $this->post->type()->cap->delete_post,
-            $this->post->wp->ID
+            $this->post->get()->ID
         )) {
             return '';
         }
@@ -360,9 +360,9 @@ class Info
         return '<a class="delete-post-link" onclick="return confirm(\''.
             \sprintf(
                 \esc_html__('Delete %s?'),
-                \esc_attr(\get_the_title($this->post->wp))
+                \esc_attr(\get_the_title($this->post->get()))
             ).
-            '\')" href="'.\esc_attr(\get_delete_post_link($this->post->wp->ID)).
+            '\')" href="'.\esc_attr(\get_delete_post_link($this->post->get()->ID)).
             '"  itemprop="url">'.\esc_html__('Delete').'</a>';
     }
     
@@ -391,8 +391,8 @@ class Info
     private function render_tweet_button(): string
     {
         return '<a href="https://twitter.com/share" class="twitter-share-button" data-url="'.
-            \wp_get_shortlink($this->post->wp->ID).'" data-text="'.
-            \esc_attr(\sanitize_text_field(\get_the_title($this->post->wp))).
+            \wp_get_shortlink($this->post->get()->ID).'" data-text="'.
+            \esc_attr(\sanitize_text_field(\get_the_title($this->post->get()))).
             '" data-via="" data-count="horizontal">Tweet</a>'.
 
             '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
@@ -411,7 +411,7 @@ class Info
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
         
         return '<div class="plusone" data-size="medium" data-href="'.
-            \wp_get_shortlink($this->post->wp->ID).'"></div>';
+            \wp_get_shortlink($this->post->get()->ID).'"></div>';
     }
 
     /**
@@ -427,7 +427,7 @@ class Info
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
         
         return '<div class="g-plus" data-action="share" data-size="medium" data-href="'.
-            \wp_get_shortlink($this->post->wp->ID).'"></div>';
+            \wp_get_shortlink($this->post->get()->ID).'"></div>';
     }
     
     /**
@@ -446,8 +446,8 @@ class Info
         );
 
         return '<span class="st_sharethis_hcount" st_url="'.
-            \wp_get_shortlink($this->post->wp->ID).'" st_title="'.
-            \esc_attr(\sanitize_text_field(\get_the_title($this->post->wp))).
+            \wp_get_shortlink($this->post->get()->ID).'" st_title="'.
+            \esc_attr(\sanitize_text_field(\get_the_title($this->post->get()))).
             '" st_summary="'.\esc_attr($this->post->excerpt()).
             '" st_via=""></span>';
     }
@@ -463,7 +463,7 @@ class Info
     private function render_share_link(): string
     {
         return '<a class="facebook-link social-link share-link" rel="external nofollow noopener" href="https://www.facebook.com/sharer/sharer.php?u='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&display=popup" target="_blank" itemprop="url"><i class="fa fa-facebook-official" aria-hidden="true"></i> '.
             \esc_html__('Share').'</a>';
     }
@@ -486,8 +486,8 @@ class Info
         $via = $username ? '&via='.$username : '';
         
         return '<a class="tweet-link social-link share-link" rel="external nofollow noopener" href="https://twitter.com/intent/tweet'.
-            '?text='.\urlencode_deep(\get_the_title($this->post->wp)).
-            '&url='.\urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            '?text='.\urlencode_deep(\get_the_title($this->post->get())).
+            '&url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             $via.'" target="_blank" itemprop="url"><i class="fa fa-twitter" aria-hidden="true"></i> '.
             \esc_html__('Tweet').'</a>';
     }
@@ -503,7 +503,7 @@ class Info
     private function render_googleplus_link(): string
     {
         return '<a class="googleplus-link social-link share-link" rel="external nofollow noopener" href="https://plus.google.com/share?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fa fa-google-plus-official" aria-hidden="true"></i> '.
             \esc_html__('Google+').'</a>';
     }
@@ -519,9 +519,9 @@ class Info
     private function render_pin_link(): string
     {
         return '<a class="pinterest-link social-link share-link" rel="external nofollow noopener" href="https://pinterest.com/pin/create/bookmarklet/?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-            '&media='.\urlencode_deep(\wp_get_attachment_url(\get_post_thumbnail_id($this->post->wp))).
-            '&description='.\urlencode_deep(\get_the_title($this->post->wp)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+            '&media='.\urlencode_deep(\wp_get_attachment_url(\get_post_thumbnail_id($this->post->get()))).
+            '&description='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fa fa-pinterest" aria-hidden="true"></i> '.
             \esc_html__('Pin').'</a>';
     }
@@ -537,8 +537,8 @@ class Info
     private function render_linkedin_link(): string
     {
         return '<a class="linkedin-link social-link share-link" rel="external nofollow noopener" href="https://www.linkedin.com/shareArticle?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-            '&title='.\urlencode_deep(\get_the_title($this->post->wp)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+            '&title='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fa fa-linkedin" aria-hidden="true"></i> '.
             \esc_html__('LinkedIn').'</a>';
     }
@@ -554,8 +554,8 @@ class Info
     private function render_buffer_link(): string
     {
         return '<a class="buffer-link social-link share-link" rel="external nofollow noopener" href="https://buffer.com/add?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-            '&text='.\urlencode_deep(\get_the_title($this->post->wp)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+            '&text='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fa fa-share-alt" aria-hidden="true"></i> '.
             \esc_html__('Buffer').'</a>';
     }
@@ -571,8 +571,8 @@ class Info
     private function render_digg_link(): string
     {
         return '<a class="digg-link social-link share-link" rel="external nofollow noopener" href="https://digg.com/submit?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-            '&title='.\urlencode_deep(\get_the_title($this->post->wp)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+            '&title='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fa fa-digg" aria-hidden="true"></i> '.
             \esc_html__('Digg').'</a>';
     }
@@ -588,9 +588,9 @@ class Info
     private function render_tumblr_link(): string
     {
         return '<a class="tumblr-link social-link share-link" rel="external nofollow noopener" href="https://www.tumblr.com/widgets/share/tool?canonicalUrl='.
-        \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-        '&title='.\urlencode_deep(\get_the_title($this->post->wp)).
-        '&caption='.\urlencode_deep(\get_the_excerpt($this->post->wp)).
+        \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+        '&title='.\urlencode_deep(\get_the_title($this->post->get())).
+        '&caption='.\urlencode_deep(\get_the_excerpt($this->post->get())).
         '" target="_blank" itemprop="url"><i class="fa fa-tumblr" aria-hidden="true"></i> '.
         \esc_html__('Tumblr').'</a>';
     }
@@ -606,8 +606,8 @@ class Info
     private function render_reddit_link(): string
     {
         return '<a class="reddit-link social-link share-link" rel="external nofollow noopener" href="https://reddit.com/submit?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-            '&title='.\urlencode_deep(\get_the_title($this->post->wp)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+            '&title='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fa fa-reddit" aria-hidden="true"></i> '.
             \esc_html__('Reddit').'</a>';
     }
@@ -622,7 +622,7 @@ class Info
      */
     // private function render_delicious_link(): string
     //{
-    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->wp)).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fa fa-delicious" aria-hidden="true"></i> '.\esc_html__('Delicious').'</a>';
+    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fa fa-delicious" aria-hidden="true"></i> '.\esc_html__('Delicious').'</a>';
     // }
 
     /**
@@ -636,9 +636,9 @@ class Info
     private function render_blogger_link(): string
     {
         return '<a class="blogger-link social-link share-link" rel="external nofollow noopener" href="https://www.blogger.com/blog-this.g?u='.
-        \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-        '&n='.\urlencode_deep(\get_the_title($this->post->wp)).
-        '&t='.\urlencode_deep(\get_the_excerpt($this->post->wp)).
+        \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+        '&n='.\urlencode_deep(\get_the_title($this->post->get())).
+        '&t='.\urlencode_deep(\get_the_excerpt($this->post->get())).
         '" target="_blank" itemprop="url"><i class="fa fa-share-alt" aria-hidden="true"></i> '.
         \esc_html__('Blogger').'</a>';
     }
@@ -654,7 +654,7 @@ class Info
     private function render_pocket_link(): string
     {
         return '<a class="pocket-link social-link share-link" rel="external nofollow noopener" href="https://getpocket.com/save?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fa fa-get-pocket" aria-hidden="true"></i> '.
             \esc_html__('Pocket').'</a>';
     }
@@ -670,7 +670,7 @@ class Info
     private function render_skype_link(): string
     {
         return '<a class="skype-link social-link share-link" rel="external nofollow noopener" href="https://web.skype.com/share?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fa fa-skype" aria-hidden="true"></i> '.
             \esc_html__('Skype').'</a>';
     }
@@ -685,12 +685,12 @@ class Info
      */
     private function render_viber_link(): string
     {
-        if (!$this->mobile_detector->isSmart()) {
+        if (!$this->mobileDetector->isSmart()) {
             return '';
         }
 
         return '<a class="viber-link social-link share-link" rel="external nofollow" href="viber://forward?text='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" itemprop="url"><i class="fa fa-share-alt" aria-hidden="true"></i> '.
             \esc_html__('Viber').'</a>';
     }
@@ -705,12 +705,12 @@ class Info
      */
     private function render_whatsapp_link(): string
     {
-        if (!$this->mobile_detector->isSmart()) {
+        if (!$this->mobileDetector->isSmart()) {
             return '';
         }
 
         return '<a class="whatsapp-link social-link share-link" rel="external nofollow" href="whatsapp://send?text='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" itemprop="url"><i class="fa fa-whatsapp" aria-hidden="true"></i> '.
             \esc_html__('WhatsApp').'</a>';
     }
@@ -725,13 +725,13 @@ class Info
      */
     private function render_telegram_link(): string
     {
-        if (!$this->mobile_detector->isSmart()) {
+        if (!$this->mobileDetector->isSmart()) {
             return '';
         }
 
         return '<a class="telegram-link social-link share-link" rel="external nofollow" href="tg://msg_url?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
-            '&text='.\urlencode_deep(\get_the_title($this->post->wp)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
+            '&text='.\urlencode_deep(\get_the_title($this->post->get())).
             '" itemprop="url"><i class="fa fa-telegram" aria-hidden="true"></i> '.
             \esc_html__('Telegram').'</a>';
     }
@@ -747,7 +747,7 @@ class Info
     private function render_vk_link(): string
     {
         return '<a class="vk-link social-link share-link" rel="external nofollow noopener" href="https://vk.com/share.php?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->wp->ID)).
+            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fa fa-vk" aria-hidden="true"></i> '.
             \esc_html__('VK').'</a>';
     }
@@ -768,7 +768,7 @@ class Info
             \esc_attr(\get_the_modified_time(
                 'Y-m-d\TH:i:sO',
                 '',
-                $this->post->wp
+                $this->post->get()
             )).
             '">'.$this->post->time('updated')->render($format)
         .'</time>
@@ -788,39 +788,39 @@ class Info
     private function publishedAgo(string $format): string
     {
         return '<time class="published entry-date" itemprop="dateModified" datetime="'.
-            \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->wp)).'">'.
+            \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->get())).'">'.
             $this->post->time('published')->render($format).
         '</time>';
     }
-    
+
     /**
      * Get term list
      *
      * @since 0.1.0
-     * @access protected
+     * @access private
      *
      * @return string Terms
      */
-    protected function termList(string $taxonomy): string
+    private function termList(string $taxonomy): string
     {
         $taxonomy = \sanitize_key($taxonomy);
-        
+
         if (!\taxonomy_exists($taxonomy)) {
             return '';
         }
-        
-        $terms = \get_the_terms($this->post->wp, $taxonomy);
-        
+
+        $terms = \get_the_terms($this->post->get(), $taxonomy);
+
         if (!$terms || \is_wp_error($terms)) {
             return '';
         }
-        
+
         $tax_name = \count($terms) > 1
             ? \get_taxonomy($taxonomy)->labels->name
             : \get_taxonomy($taxonomy)->labels->singular_name;
-        
+
         return \get_the_term_list(
-            $this->post->wp->ID,
+            $this->post->get()->ID,
             $taxonomy,
             '<span class="term-links"><span class="meta-title">'.
                 $tax_name.':</span> ',
@@ -844,7 +844,7 @@ class Info
         }
 
         unset($vars['post']);
-        unset($vars['mobile_detector']);
+        unset($vars['mobileDetector']);
 
         foreach ($vars as $key => $value) {
             $this->$key = $args[$key] ?? '';

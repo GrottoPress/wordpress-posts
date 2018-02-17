@@ -10,11 +10,9 @@
  * @author N Atta Kusi Adusei
  */
 
- declare (strict_types = 1);
- 
- namespace GrottoPress\WordPress\Post;
+declare (strict_types = 1);
 
- use WP_Error;
+namespace GrottoPress\WordPress\Post;
 
 /**
  * Post Comments
@@ -34,16 +32,6 @@ class Comments
     private $post;
 
     /**
-     * Comments count
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var string $count Comments count.
-     */
-    private $count;
-
-    /**
      * Constructor
      *
      * @param Post $post Post.
@@ -54,18 +42,32 @@ class Comments
     public function __construct(Post $post)
     {
         $this->post = $post;
-        
-        if (!\post_type_supports(
-            $this->post->wp->post_type,
-            'comments'
-        )) {
-            return new WP_Error(
-                'comments_not_supported',
-                \esc_html__('Comment support not registered for post type.')
-            );
-        }
-        
-        $this->count = \get_comments_number($this->post->wp);
+    }
+
+    /**
+     * Comments count
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return int
+     */
+    public function count(): int
+    {
+        return (int)\get_comments_number($this->post->get());
+    }
+
+    /**
+     * Is comments supported?
+     *
+     * @since 0.6.0
+     * @access public
+     *
+     * @return bool
+     */
+    public function supported(): bool
+    {
+        return $this->post->typeSupports('comments');
     }
 
     /**
@@ -81,15 +83,15 @@ class Comments
      */
     public function link(): string
     {
-        if (\post_password_required($this->post->wp)
-            || !\comments_open($this->post->wp)
+        if (\post_password_required($this->post->get())
+            || !\comments_open($this->post->get())
         ) {
             return $this->text();
         }
 
-        return '<a class="comments-link post-'.$this->post->wp->ID.
+        return '<a class="comments-link post-'.$this->post->get()->ID.
             '-comments-link" itemprop="discussionUrl" href="'.
-            \esc_attr(\get_comments_link($this->post->wp)).'">'.
+            \esc_attr(\get_comments_link($this->post->get())).'">'.
             $this->text().'</a>';
     }
 
@@ -105,18 +107,18 @@ class Comments
      */
     public function text(): string
     {
-        if (\comments_open($this->post->wp) || $this->count > 0) {
-            if ($this->count < 1) {
+        if (\comments_open($this->post->get()) || $this->count() > 0) {
+            if ($this->count() < 1) {
                 return $this->noCommentsText();
             }
-            
-            if ($this->count > 1) {
+
+            if ($this->count() > 1) {
                 return $this->moreCommentsText();
             }
-            
+
             return $this->oneCommentText();
         }
-        
+
         return $this->commentsClosedText();
     }
 
@@ -133,7 +135,7 @@ class Comments
         return \apply_filters(
             'grotto_wp_post_no_comments_text',
             \esc_html__('Leave a comment'),
-            $this->count
+            $this->count()
         );
     }
 
@@ -153,7 +155,7 @@ class Comments
                 \esc_html__('%s comment'),
                 '<span class="comments-number" itemprop="commentCount">1</span>'
             ),
-            $this->count
+            $this->count()
         );
     }
 
@@ -174,7 +176,7 @@ class Comments
                 '<span class="comments-number" itemprop="commentCount">'.\number_format_i18n($this->count).
                     '</span>'
             ),
-            $this->count
+            $this->count()
         );
     }
 
@@ -191,7 +193,7 @@ class Comments
         return \apply_filters(
             'grotto_wp_post_more_comments_text',
             \esc_html__('Comments closed'),
-            $this->count
+            $this->count()
         );
     }
 }

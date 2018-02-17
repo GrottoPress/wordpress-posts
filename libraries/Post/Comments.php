@@ -54,7 +54,7 @@ class Comments
      */
     public function count(): int
     {
-        return \get_comments_number($this->post->get());
+        return (int)\get_comments_number($this->post->get());
     }
 
     /**

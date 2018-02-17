@@ -16,7 +16,6 @@ namespace GrottoPress\WordPress\Post;
 
 use WP_Post;
 use WP_Post_Type;
-use GrottoPress\Getter\Getter;
 
 /**
  * WordPress Post
@@ -25,8 +24,6 @@ use GrottoPress\Getter\Getter;
  */
 class Post
 {
-    use Getter;
-
     /**
      * Post ID
      *

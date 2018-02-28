@@ -74,7 +74,7 @@ $default_args = [
         'size' => '',
         'align' => '', // 'left', 'right' or 'none'
         'margin' => '',
-        'link' => 1,
+        'link' => true,
     ],
     'excerpt' => [
         'length' => 0, // Number of words. Use -1 for full excerpt, -2 for full content
@@ -91,7 +91,7 @@ $default_args = [
         'tag' => 'h2',
         'position' => '', // Relative to image: 'top' or 'side'
         'length' => -1, // Number of words. Use -1 for full length
-        'link' => 1,
+        'link' => true,
         'before' => [
             'types' => [], // Info to display before title
             'separator' => '|',

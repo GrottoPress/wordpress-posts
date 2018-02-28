@@ -14,7 +14,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
 
-use GrottoPress\Getter\Getter;
+use GrottoPress\Getter\GetterTrait;
 use WP_Query;
 
 /**
@@ -24,7 +24,7 @@ use WP_Query;
  */
 class Pagination
 {
-    use Getter;
+    use GetterTrait;
 
     /**
      * Posts

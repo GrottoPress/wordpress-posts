@@ -15,7 +15,7 @@ declare (strict_types = 1);
 namespace GrottoPress\WordPress\Posts;
 
 use GrottoPress\WordPress\Post\Post;
-use GrottoPress\Getter\Getter;
+use GrottoPress\Getter\GetterTrait;
 
 /**
  * WordPress Posts
@@ -24,7 +24,7 @@ use GrottoPress\Getter\Getter;
  */
 class Posts
 {
-    use Getter;
+    use GetterTrait;
 
     /**
      * Arguments

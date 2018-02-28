@@ -173,7 +173,7 @@ class Comments
             'grotto_wp_post_more_comments_text',
             \sprintf(
                 \esc_html__('%s comments'),
-                '<span class="comments-number" itemprop="commentCount">'.\number_format_i18n($this->count).
+                '<span class="comments-number" itemprop="commentCount">'.\number_format_i18n($this->count()).
                     '</span>'
             ),
             $this->count()

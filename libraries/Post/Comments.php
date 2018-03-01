@@ -1,86 +1,30 @@
 <?php
-
-/**
- * Post Comments
- *
- * @package GrottoPress\WordPress\Post
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Post;
 
-/**
- * Post Comments
- *
- * @since 0.1.0
- */
 class Comments
 {
     /**
-     * Post
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Post $post Post.
+     * @var Post
      */
     private $post;
 
-    /**
-     * Constructor
-     *
-     * @param Post $post Post.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Post $post)
     {
         $this->post = $post;
     }
 
-    /**
-     * Comments count
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return int
-     */
     public function count(): int
     {
         return (int)\get_comments_number($this->post->get());
     }
 
-    /**
-     * Is comments supported?
-     *
-     * @since 0.6.0
-     * @access public
-     *
-     * @return bool
-     */
     public function supported(): bool
     {
         return $this->post->typeSupports('comments');
     }
 
-    /**
-     * Comments link
-     *
-     * Link the author name to author page if URL is set,
-     * or just return the author's name if no URL is provided.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Author, linked to author page.
-     */
     public function link(): string
     {
         if (\post_password_required($this->post->get())
@@ -95,17 +39,7 @@ class Comments
             $this->text().'</a>';
     }
 
-    /**
-     * Comments text
-     *
-     * Retrieves comments message based on comment count.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Comments text.
-     */
-    public function text(): string
+    private function text(): string
     {
         if (\comments_open($this->post->get()) || $this->count() > 0) {
             if ($this->count() < 1) {
@@ -122,14 +56,6 @@ class Comments
         return $this->commentsClosedText();
     }
 
-    /**
-     * No Comments text
-     *
-     * @sinc 0.1.0
-     * @access private
-     *
-     * @return string No comments text.
-     */
     private function noCommentsText(): string
     {
         return \apply_filters(
@@ -139,14 +65,6 @@ class Comments
         );
     }
 
-    /**
-     * 1 Comment text
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string One comment text.
-     */
     private function oneCommentText(): string
     {
         return \apply_filters(
@@ -159,14 +77,6 @@ class Comments
         );
     }
 
-    /**
-     * More Comments text
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Comments text to display for posts with more than 1 comment
-     */
     private function moreCommentsText(): string
     {
         return \apply_filters(
@@ -180,14 +90,6 @@ class Comments
         );
     }
 
-    /**
-     * Comments Closed text
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Comments text to display for posts with comments closed.
-     */
     private function commentsClosedText(): string
     {
         return \apply_filters(

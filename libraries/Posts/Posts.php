@@ -1,15 +1,4 @@
 <?php
-
-/**
- * WordPress Posts
- *
- * @package GrottoPress\WordPress\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
@@ -17,53 +6,25 @@ namespace GrottoPress\WordPress\Posts;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Getter\GetterTrait;
 
-/**
- * WordPress Posts
- *
- * @since 0.1.0
- */
 class Posts
 {
     use GetterTrait;
 
     /**
-     * Arguments
-     *
-     * @since 0.1.0
-     * @access protected
-     *
      * @var array $args Arguments passed via constructor.
      */
     protected $args;
 
     /**
-     * Loop
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Loop $loop Loop.
+     * @var Loop
      */
     private $loop;
 
     /**
-     * Pagination
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Pagination $pagination Pagination.
+     * @var Pagination
      */
     private $pagination;
 
-    /**
-     * Constructor
-     *
-     * @param array $args Arguments.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(array $args = [])
     {
         $this->setArgs($args);
@@ -72,38 +33,16 @@ class Posts
         $this->loop = new Loop($this);
     }
 
-    /**
-     * Get args
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return array Args.
-     */
     protected function getArgs(): array
     {
         return $this->args;
     }
 
-    /**
-     * Get pagination
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return Pagination
-     */
     private function getPagination(): Pagination
     {
         return $this->pagination;
     }
 
-    /**
-     * Do the query
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function render(): string
     {
         $this->defineDefaults();
@@ -115,12 +54,6 @@ class Posts
         return $this->loop->run();
     }
 
-    /**
-     * Define default attributes
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function defineDefaults()
     {
         $this->contentDefaults();
@@ -132,12 +65,6 @@ class Posts
         $this->layoutDefaults();
     }
 
-    /**
-     * Apply image float
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function applyImageAlign()
     {
         $allowed = ['left', 'right', 'none'];
@@ -157,12 +84,6 @@ class Posts
         }
     }
 
-    /**
-     * Apply related to
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function applyRelatedTo()
     {
         if (($related_to = \absint($this->args['related_to'])) < 1) {
@@ -190,12 +111,6 @@ class Posts
         $this->args['wp_query']['tax_query']['relation'] = 'OR';
     }
 
-    /**
-     * Apply layout
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function applyLayout()
     {
         if (!$this->args['layout']) {
@@ -208,12 +123,6 @@ class Posts
         $this->args['class'] .= " {$class}";
     }
     
-    /**
-     * Content defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function contentDefaults()
     {
         if (!$this->isContent()) {
@@ -236,12 +145,6 @@ class Posts
         $this->args['layout'] = 'stack';
     }
     
-    /**
-     * Post list defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function postListDefaults()
     {
         if (!$this->isList()) {
@@ -268,12 +171,6 @@ class Posts
         }
     }
 
-    /**
-     * Related posts defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function relatedToDefaults()
     {
         if (\absint($this->args['related_to']) < 1) {
@@ -312,12 +209,6 @@ class Posts
         $this->args['wp_query']['tax_query'] = [];
     }
     
-    /**
-     * Title tag defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function titleTagDefaults()
     {
         $allowed = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
@@ -329,12 +220,6 @@ class Posts
         $this->args['title']['tag'] = 'h2';
     }
 
-    /**
-     * Title tag defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function postsPerPageDefaults()
     {
         if (!$this->pagination->isBuiltIn()) {
@@ -346,12 +231,6 @@ class Posts
         );
     }
 
-    /**
-     * Pagination defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function paginationDefaults()
     {
         if (!\in_array(
@@ -381,12 +260,6 @@ class Posts
            );
     }
 
-    /**
-     * Layout defaults
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function layoutDefaults()
     {
         $allowed = ['stack', 'grid'];
@@ -400,11 +273,6 @@ class Posts
 
     /**
      * Are we displaying a list of posts? (ie `ul`)
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool
      */
     public function isList(): bool
     {
@@ -412,48 +280,24 @@ class Posts
     }
 
     /**
-     * Is content
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool Whether or not we are showing full post content
+     * Are we showing full post content?
      */
     public function isContent(): bool
     {
         return ($this->args['excerpt']['length'] < -1);
     }
 
-    /**
-     * Arguments
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array
-     */
     private function setArgs(array $args)
     {
         /**
          * @filter grotto_wp_posts_args
-         *
-         * @var string $args Args.
-         *
-         * @since 0.1.0
+         * @var string $args
          */
         $args = \apply_filters('grotto_wp_posts_args', $args);
 
         $this->args = \array_replace_recursive($this->defaultArgs(), $args);
     }
 
-    /**
-     * Default arguments
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array Default args.
-     */
     private function defaultArgs(): array
     {
         return [
@@ -510,12 +354,6 @@ class Posts
         ];
     }
 
-    /**
-     * Sanitize 'class' arg
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function sanitizeClassAttr()
     {
         $this->args['class'] = \str_replace(',', ' ', $this->args['class']);
@@ -527,16 +365,6 @@ class Posts
         $this->args['class'] = \sanitize_text_field($this->args['class']);
     }
 
-    /**
-     * Get post
-     *
-     * @param int $id Post ID.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return Post
-     */
     public function post(int $id = 0): Post
     {
         return new Post($id);

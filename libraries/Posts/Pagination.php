@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Posts Pagination
- *
- * @package GrottoPress\WordPress\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
@@ -17,53 +6,25 @@ namespace GrottoPress\WordPress\Posts;
 use GrottoPress\Getter\GetterTrait;
 use WP_Query;
 
-/**
- * Posts Pagination
- *
- * @since 0.1.0
- */
 class Pagination
 {
     use GetterTrait;
 
     /**
-     * Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Posts $posts Posts.
+     * @var Posts
      */
     private $posts;
 
     /**
-     * Key
-     *
-     * @since 0.1.0
-     * @access protected
-     *
      * @var string $key Query arg whose value would be used for pagination.
      */
     protected $key;
 
     /**
-     * Current Page
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var int $currentPage Current page number.
+     * @var int
      */
     protected $currentPage;
 
-    /**
-     * Constructor
-     *
-     * @param Posts $posts WordPress posts.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Posts $posts)
     {
         $this->posts = $posts;
@@ -72,40 +33,16 @@ class Pagination
         $this->setCurrentPage();
     }
 
-    /**
-     * Get key
-     *
-     * @since 0.3.3
-     * @access protected
-     *
-     * @return string
-     */
     protected function getKey(): string
     {
         return $this->key;
     }
 
-    /**
-     * Get current page
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @return int current page number.
-     */
     protected function getCurrentPage(): int
     {
         return $this->currentPage;
     }
 
-    /**
-     * Render pagination
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Pagination links.
-     */
     public function render(string $position, WP_Query $query): string
     {
         $out = '';
@@ -133,25 +70,11 @@ class Pagination
         return $out;
     }
 
-    /**
-     * Are we using the builtin pagination?
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return bool
-     */
     public function isBuiltIn(): bool
     {
         return ($this->key === 'paged');
     }
 
-    /**
-     * Set key
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setKey()
     {
         if (($key = $this->posts->args['pagination']['key'])) {
@@ -163,12 +86,6 @@ class Pagination
         }
     }
 
-    /**
-     * Set current page number
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setCurrentPage()
     {
         if ($this->isBuiltIn()) {
@@ -182,11 +99,6 @@ class Pagination
 
     /**
      * Get builtin current page number
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return int Current page number.
      */
     private function currentPageBuiltin(): int
     {
@@ -197,14 +109,6 @@ class Pagination
         return 1;
     }
 
-    /**
-     * Pagination args
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return array
-     */
     private function args(WP_Query $query): array
     {
         $args = [];

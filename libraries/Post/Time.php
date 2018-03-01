@@ -1,66 +1,27 @@
 <?php
-
-/**
- * Post Time
- *
- * @package GrottoPress\WordPress\Post
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Post;
 
-/**
- * Post Time
- *
- * @since 0.1.0
- */
 class Time
 {
     /**
-     * Post
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Post $post
+     * @var Post
      */
     private $post;
     
     /**
-     * Context
-     *
-     * 'published' or 'updated'
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var string $context Post ID
+     * @var string $context 'published' or 'updated'
      */
     protected $context;
 
     /**
-     * Post Timestamp
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var string $timestamp
+     * @var string
      */
     private $timestamp;
     
     /**
-     * Constructor
-     *
-     * @param Post $post
      * @param string $context 'published' or 'updated'
-     *
-     * @since 0.1.0
-     * @access public
      */
     public function __construct(Post $post, string $context = '')
     {
@@ -73,7 +34,7 @@ class Time
             ? \strtotime($this->post->get()()->post_modified)
             : \strtotime($this->post->get()()->post_date));
     }
-    
+
     /**
      * Period since publishing or updating a post.
      *
@@ -84,11 +45,6 @@ class Time
      *              (eg: 2 mins ago), or 'mixed'.
      * @param string $before Text string to prepend to time.
      * @param string $after Text string to append to time.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Period since post was published or updated.
      */
     public function render(
         string $format = 'actual',
@@ -120,15 +76,7 @@ class Time
     }
     
     /**
-     * Period since publishing or updating a post.
-     *
-     * Get (in string form, ready for output) the period since a given post
-     * was either updated or published.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Period since post was published or updated
+     * Called if $format === 'actual'
      */
     private function render_actual(): string
     {
@@ -157,15 +105,7 @@ class Time
     }
     
     /**
-     * Period since publishing or updating a post.
-     *
-     * Get (in string form, ready for output) the period since a given post
-     * was either updated or published.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Period since post was published or updated.
+     * Called if $format === 'difference'
      */
     private function render_difference(): string
     {
@@ -206,15 +146,7 @@ class Time
     }
     
     /**
-     * Period since publishing or updating a post.
-     *
-     * Get (in string form, ready for output) the period since a given post
-     * was either updated or published.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Period since post was published or updated.
+     * Called if $format === 'mixed'
      */
     private function render_mixed(): string
     {
@@ -256,14 +188,6 @@ class Time
 
     /**
      * Period (in seconds) since publishing or updating a post.
-     *
-     * Get the number of seconds since a given post
-     * was either updated or published.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return integer The number of seconds since post was published/updated.
      */
     private function secondsSince(): int
     {
@@ -272,14 +196,6 @@ class Time
     
     /**
      * Period (in minutes) since publishing or updating a post.
-     *
-     * Get the number of minutes since a given post
-     * was either updated or published.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return integer The number of minutes since post was published/updated.
      */
     private function minutesSince(): int
     {
@@ -288,14 +204,6 @@ class Time
     
     /**
      * Period (in hours) since publishing or updating a post.
-     *
-     * Get the number of hours since a given post
-     * was either updated or published.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return integer The number of hours since post was published/updated.
      */
     private function hoursSince(): int
     {
@@ -304,11 +212,6 @@ class Time
     
     /**
      * Period (in days) since publishing or updating a post.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return int The number of days since post was published/updated.
      */
     private function daysSince(): int
     {
@@ -317,11 +220,6 @@ class Time
 
     /**
      * Period (in weeks) since publishing or updating a post.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return int The number of weeks since post was published/updated.
      */
     private function weeksSince(): int
     {
@@ -330,11 +228,6 @@ class Time
 
     /**
      * Period (in months) since publishing or updating a post.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return int The number of months since post was published/updated.
      */
     private function monthsSince(): int
     {
@@ -343,11 +236,6 @@ class Time
 
     /**
      * Period (in years) since publishing or updating a post.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return int The number of years since post was published/updated.
      */
     private function yearsSince(): int
     {

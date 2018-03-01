@@ -1,17 +1,4 @@
 <?php
-
-/**
- * Post Info
- *
- * @package GrottoPress\WordPress\Post
- * @since 0.1.0
- *
- * @see https://github.com/bradvin/social-share-urls
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Post;
@@ -19,82 +6,38 @@ namespace GrottoPress\WordPress\Post;
 use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Mobile\Detector;
 
-/**
- * Post Info
- *
- * @since 0.1.0
- */
 class Info
 {
     /**
-     * Post
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Post $post Post.
+     * @var Post
      */
     private $post;
 
     /**
-     * Types of information to retrieve
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var array|string $types Info types.
+     * @var array
      */
     protected $types;
 
     /**
-     * Separator
-     *
-     * @since 0.1.0
-     * @access protected
-     *
-     * @var string $separator Separator.
+     * @var string
      */
     protected $separator;
 
     /**
-     * Before
-     *
-     * @since 0.1.0
-     * @access protected
-     *
      * @var string $before HTML to place before list.
      */
     protected $before;
 
     /**
-     * After
-     *
-     * @since 0.1.0
-     * @access protected
-     *
      * @var string $after HTML to place after list.
      */
     protected $after;
 
     /**
-     * Mobile Detector
-     *
-     * @since 0.1.0
-     * @access private
-     *
      * @var Detector
      */
     private $mobileDetector;
 
-    /**
-     * Constructor
-     *
-     * @param Post $post Post.
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Post $post, array $args)
     {
         $this->post = $post;
@@ -106,15 +49,7 @@ class Info
     }
 
     /**
-     * Posts entry meta.
-     *
-     * Use this to get meta info about post concatenated with
-     * a separator.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string A series of post details separated by $this->separator.
+     * Get post info, concatenated with a separator.
      */
     public function list(): string
     {
@@ -170,12 +105,7 @@ class Info
     }
 
     /**
-     * Post Author Link.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
+     * Called if $type === 'author_name'
      */
     private function render_author_name(): string
     {
@@ -187,12 +117,7 @@ class Info
     }
 
     /**
-     * Comments Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Comments count link.
+     * Called if $type === 'comments_link'
      */
     private function render_comments_link(): string
     {
@@ -204,12 +129,7 @@ class Info
     }
 
     /**
-     * Post Updated Date.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Post updated date.
+     * Called if $type === 'updated_date'
      */
     private function render_updated_date(): string
     {
@@ -220,12 +140,7 @@ class Info
     }
     
     /**
-     * Post Updated Time.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Post updated time
+     * Called if $type === 'updated_time'
      */
     private function render_updated_time(): string
     {
@@ -243,12 +158,7 @@ class Info
     }
     
     /**
-     * Post Published Date.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Post published date.
+     * Called if $type === 'published_date'
      */
     private function render_published_date(): string
     {
@@ -259,12 +169,7 @@ class Info
     }
     
     /**
-     * Post Published Time.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Post published time
+     * Called if $type === 'published_time'
      */
     private function render_published_time(): string
     {
@@ -275,12 +180,7 @@ class Info
     }
 
     /**
-     * Categories
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Category links.
+     * Called if $type === 'category_list'
      */
     private function render_category_list(): string
     {
@@ -296,12 +196,7 @@ class Info
     }
 
     /**
-     * Tags
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Tag links.
+     * Called if $type === 'tag_list'
      */
     private function render_tag_list(): string
     {
@@ -319,12 +214,7 @@ class Info
     }
 
     /**
-     * Edit Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Edit link.
+     * Called if $type === 'edit_link'
      */
     private function render_edit_link(): string
     {
@@ -341,12 +231,7 @@ class Info
     }
     
     /**
-     * Delete Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Delete link.
+     * Called if $type === 'delete_link'
      */
     private function render_delete_link(): string
     {
@@ -367,12 +252,7 @@ class Info
     }
     
     /**
-     * Post Type
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Post type.
+     * Called if $type === 'post_type'
      */
     private function render_post_type(): string
     {
@@ -381,12 +261,7 @@ class Info
     }
     
     /**
-     * Tweet Buttom
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Tweet button
+     * Called if $type === 'tweet_button'
      */
     private function render_tweet_button(): string
     {
@@ -399,12 +274,7 @@ class Info
     }
     
     /**
-     * PlusOne Buttom
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string PlusOne button.
+     * Called if $type === 'plusone_button'
      */
     private function render_plusone_button(): string
     {
@@ -415,12 +285,7 @@ class Info
     }
 
     /**
-     * Google+ Share Buttom
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Google+ share button
+     * Called if $type === 'googleshare_button'
      */
     private function render_googleshare_button(): string
     {
@@ -431,12 +296,7 @@ class Info
     }
     
     /**
-     * ShareThis Buttom
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string ShareThis button
+     * Called if $type === 'sharethis_button'
      */
     private function render_sharethis_button(): string
     {
@@ -453,12 +313,7 @@ class Info
     }
     
     /**
-     * Facebook Share Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Facebook share link.
+     * Called if $type === 'share_link'
      */
     private function render_share_link(): string
     {
@@ -469,12 +324,7 @@ class Info
     }
 
     /**
-     * Tweet Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Tweet link
+     * Called if $type === 'tweet_link'
      */
     private function render_tweet_link(): string
     {
@@ -493,12 +343,7 @@ class Info
     }
 
     /**
-     * Google+ Share Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Google+ share link
+     * Called if $type === 'googleplus_link'
      */
     private function render_googleplus_link(): string
     {
@@ -509,12 +354,7 @@ class Info
     }
 
     /**
-     * Pinterest Pin Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Pinterest pin link
+     * Called if $type === 'pin_link'
      */
     private function render_pin_link(): string
     {
@@ -527,12 +367,7 @@ class Info
     }
 
     /**
-     * LinkedIn Share Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string LinkedIn share link
+     * Called if $type === 'linkedin_link'
      */
     private function render_linkedin_link(): string
     {
@@ -544,12 +379,7 @@ class Info
     }
 
     /**
-     * Buffer Add Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Buffer share link
+     * Called if $type === 'buffer_link'
      */
     private function render_buffer_link(): string
     {
@@ -561,12 +391,7 @@ class Info
     }
 
     /**
-     * Digg Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Digg link
+     * Called if $type === 'digg_link'
      */
     private function render_digg_link(): string
     {
@@ -578,12 +403,7 @@ class Info
     }
 
     /**
-     * Tumblr Share Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Tumblr share link
+     * Called if $type === 'tumblr_link'
      */
     private function render_tumblr_link(): string
     {
@@ -596,12 +416,7 @@ class Info
     }
 
     /**
-     * Reddit Share Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Reddit link
+     * Called if $type === 'reddit_link'
      */
     private function render_reddit_link(): string
     {
@@ -613,12 +428,7 @@ class Info
     }
 
     /**
-     * Delicious Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Delicious link
+     * Called if $type === 'delicious_link'
      */
     // private function render_delicious_link(): string
     //{
@@ -626,12 +436,7 @@ class Info
     // }
 
     /**
-     * Blogger Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Blogger link
+     * Called if $type === 'blogger_link'
      */
     private function render_blogger_link(): string
     {
@@ -644,12 +449,7 @@ class Info
     }
 
     /**
-     * Pocket Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Pocket link
+     * Called if $type === 'pocket_link'
      */
     private function render_pocket_link(): string
     {
@@ -660,12 +460,7 @@ class Info
     }
 
     /**
-     * Skype Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Skype link
+     * Called if $type === 'skype_link'
      */
     private function render_skype_link(): string
     {
@@ -676,12 +471,7 @@ class Info
     }
 
     /**
-     * Viber Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Viber link
+     * Called if $type === 'viber_link'
      */
     private function render_viber_link(): string
     {
@@ -696,12 +486,7 @@ class Info
     }
 
     /**
-     * WhatsApp Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string WhatsApp link
+     * Called if $type === 'whatsapp_link'
      */
     private function render_whatsapp_link(): string
     {
@@ -716,12 +501,7 @@ class Info
     }
 
     /**
-     * Telegram Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Telegram link
+     * Called if $type === 'telegram_link'
      */
     private function render_telegram_link(): string
     {
@@ -737,12 +517,7 @@ class Info
     }
 
     /**
-     * VK Link
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string VK link
+     * Called if $type === 'vk_link'
      */
     private function render_vk_link(): string
     {
@@ -755,12 +530,7 @@ class Info
     /**
      * Time since post was updated.
      *
-     * @var string $format Show actual time or time difference?
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Time since post was updated.
+     * @param string $format Show actual time or time difference?
      */
     private function updatedAgo(string $format): string
     {
@@ -779,11 +549,6 @@ class Info
      * Time since post was published.
      *
      * @var string $format Show actual time or time difference?
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Time since post was updated.
      */
     private function publishedAgo(string $format): string
     {
@@ -793,14 +558,6 @@ class Info
         '</time>';
     }
 
-    /**
-     * Get term list
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string Terms
-     */
     private function termList(string $taxonomy): string
     {
         $taxonomy = \sanitize_key($taxonomy);
@@ -829,14 +586,6 @@ class Info
         );
     }
 
-    /**
-     * Set Args
-     *
-     * @param array $args
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function setArgs(array $args)
     {
         if (!($vars = \get_object_vars($this))) {
@@ -851,12 +600,6 @@ class Info
         }
     }
 
-    /**
-     * Sanitize attributes
-     *
-     * @since 0.1.0
-     * @access private
-     */
     private function sanitizeAttributes()
     {
         $this->separator = $this->separator ? \esc_attr(

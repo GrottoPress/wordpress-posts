@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Posts Loop
- *
- * @package GrottoPress\WordPress\Posts
- * @since 0.1.0
- *
- * @author GrottoPress <info@grottopress.com>
- * @author N Atta Kusi Adusei
- */
-
 declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
@@ -17,44 +6,18 @@ namespace GrottoPress\WordPress\Posts;
 use GrottoPress\WordPress\Post\Post;
 use WP_Query;
 
-/**
- * Posts Loop
- *
- * @since 0.1.0
- */
 class Loop
 {
     /**
-     * Posts
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @var Posts $posts Posts.
+     * @var Posts
      */
     private $posts;
 
-    /**
-     * Constructor
-     *
-     * @param Posts $posts WordPress posts.
-     *
-     * @since 0.1.0
-     * @access public
-     */
     public function __construct(Posts $posts)
     {
         $this->posts = $posts;
     }
 
-    /**
-     * Do the loop
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @return string Posts HTML.
-     */
     public function run(): string
     {
         $out = '';
@@ -67,10 +30,7 @@ class Loop
 
         /**
          * @action grotto_query_posts_loop_before
-         *
-         * @var WP_Query $query WordPress query.
-          *
-         * @since 0.1.0
+         * @var WP_Query $query
          */
         \do_action('grotto_wp_posts_loop_before', $query, $this->posts->args);
 
@@ -96,10 +56,8 @@ class Loop
         /**
          * @filter grotto_query_posts_loop
          *
-         * @var string $out Loop output.
-         * @var WP_Query $query WordPress query.
-         *
-         * @since 0.1.0
+         * @var string $out
+         * @var WP_Query $query
          */
         $out = \apply_filters(
             'grotto_wp_posts_loop',
@@ -113,14 +71,6 @@ class Loop
         return $out;
     }
 
-    /**
-     * Posts markup: start
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
-     */
     private function openWrapTag(): string
     {
         $out = '';
@@ -143,14 +93,6 @@ class Loop
         return $out;
     }
 
-    /**
-     * Posts markup: end
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
-     */
     private function closeWrapTag(): string
     {
         if (!($wrap_tag = \sanitize_key($this->posts->args['tag']))) {
@@ -166,13 +108,7 @@ class Loop
      * @filter grotto_wp_posts_post_{$context}
      *
      * @param string $context 'before' or 'after' post.
-     * @param int $post_id Post ID.
      * @param int $count Current post number/count.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function filter(
         string $context,
@@ -189,18 +125,8 @@ class Loop
     }
 
     /**
-     * Body of single post
-     *
-     * Contains the logic to display a single post
-     * within the while have_posts loop
-     *
-     * @param int $post_id Post ID.
-     * @param int $count Current post number/count.
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
+     * Contains the logic to display a posts within the
+     * `while (have_posts())` loop
      */
     private function loopBody(int $post_id, int $count): string
     {
@@ -225,17 +151,12 @@ class Loop
     }
 
     /**
-     * Loop body: before title
+     * Loop body: Post info
      *
      * @param string $context 'title' or 'excerpt'
      * @param string $position 'before' or 'after'
      * @param Post $post
      * @param int $count
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function postInfo(
         string $context,
@@ -248,11 +169,6 @@ class Loop
 
     /**
      * Loop body: Title
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function title(Post $post, int $count): string
     {
@@ -299,11 +215,6 @@ class Loop
 
     /**
      * Loop body: Excerpt
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function excerpt(Post $post, int $count): string
     {
@@ -332,11 +243,6 @@ class Loop
 
     /**
      * Loop body: Content
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function content(Post $post, int $count): string
     {
@@ -365,11 +271,6 @@ class Loop
 
     /**
      * Loop body: opening tag
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function openPostTag(Post $post, int $count): string
     {
@@ -387,12 +288,7 @@ class Loop
     }
 
     /**
-     * Loop body: closing tags
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
+     * Loop body: closing tag
      */
     private function closePostTag(Post $post, int $count): string
     {
@@ -407,11 +303,6 @@ class Loop
 
     /**
      * Loop body: open <header>
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function openHeader(Post $post, int $count): string
     {
@@ -430,11 +321,6 @@ class Loop
 
     /**
      * Loop body: close </header>
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function closeHeader(Post $post, int $count): string
     {
@@ -450,11 +336,6 @@ class Loop
 
     /**
      * Loop body: open <footer>
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function openFooter(Post $post, int $count): string
     {
@@ -467,11 +348,6 @@ class Loop
 
     /**
      * Loop body: close </footer>
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function closeFooter(Post $post, int $count): string
     {
@@ -484,11 +360,6 @@ class Loop
 
     /**
      * Loop body: Thumb
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
      */
     private function thumb(string $title_pos, Post $post, int $count): string
     {
@@ -514,14 +385,6 @@ class Loop
         );
     }
 
-    /**
-     * Apply text margins
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
-     */
     private function textOffset(Post $post): string
     {
         if (($offset = \absint($this->posts->args['text_offset'])) < 1) {
@@ -545,14 +408,6 @@ class Loop
         return $text_offset;
     }
 
-    /**
-     * Post classes
-     *
-     * @since 0.1.0
-     * @access private
-     *
-     * @return string
-     */
     private function postClass(Post $post, int $count): string
     {
         if (($count % 2) === 0) {

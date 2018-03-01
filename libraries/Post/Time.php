@@ -89,21 +89,23 @@ class Time
                     \esc_html__('Today %s'),
                     \date(\get_option('time_format'), $this->timestamp)
                 );
-            } else {
-                return \sprintf(
-                    \esc_html__('Yesterday %s'),
-                    \date(\get_option('time_format'), $this->timestamp)
-                );
             }
-        } elseif ($this->daysSince() < 7) {
+
+            return \sprintf(
+                \esc_html__('Yesterday %s'),
+                \date(\get_option('time_format'), $this->timestamp)
+            );
+        }
+
+        if ($this->daysSince() < 7) {
             return \date('l', $this->timestamp).' '.
                 \date(\get_option('time_format'), $this->timestamp);
-        } else {
-            return date(\get_option('date_format'), $this->timestamp).
-                ' ('.\date(\get_option('time_format'), $this->timestamp).')';
         }
+
+        return date(\get_option('date_format'), $this->timestamp).
+            ' ('.\date(\get_option('time_format'), $this->timestamp).')';
     }
-    
+
     /**
      * Called if $format === 'difference'
      */
@@ -111,40 +113,50 @@ class Time
     {
         if (($period = $this->secondsSince()) < 60) {
             return \esc_html__('Few seconds ago');
-        } elseif (($period = $this->minutesSince()) < 60) {
+        }
+
+        if (($period = $this->minutesSince()) < 60) {
             return \sprintf(
                 \esc_html(\_n('1 minute ago', '%s minutes ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->hoursSince()) < 24) {
+        }
+
+        if (($period = $this->hoursSince()) < 24) {
             return \sprintf(
                 \esc_html(\_n('1 hour ago', '%s hours ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->daysSince()) < 7) {
+        }
+
+        if (($period = $this->daysSince()) < 7) {
             return \sprintf(
                 \esc_html(\_n('1 day ago', '%s days ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->weeksSince()) < 4) {
+        }
+
+        if (($period = $this->weeksSince()) < 4) {
             return \sprintf(
                 \esc_html(\_n('1 week ago', '%s weeks ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->monthsSince()) < 12) {
+        }
+
+        if (($period = $this->monthsSince()) < 12) {
             return \sprintf(
                 \esc_html(\_n('1 month ago', '%s months ago', $period)),
                 \number_format_i18n($period)
             );
-        } else {
-            $period = $this->yearsSince();
-            return sprintf(
-                \esc_html(\_n('1 year ago', '%s years ago', $period)),
-                \number_format_i18n($period)
-            );
         }
+
+        $period = $this->yearsSince();
+        return sprintf(
+            \esc_html(\_n('1 year ago', '%s years ago', $period)),
+            \number_format_i18n($period)
+        );
     }
-    
+
     /**
      * Called if $format === 'mixed'
      */
@@ -152,38 +164,50 @@ class Time
     {
         if (($period = $this->secondsSince()) < 60) {
             return \esc_html__('Few seconds ago');
-        } elseif (($period = $this->minutesSince()) < 60) {
+        }
+
+        if (($period = $this->minutesSince()) < 60) {
             return \sprintf(
                 \esc_html(\_n('1 minute ago', '%s minutes ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->hoursSince()) < 24) {
+        }
+
+        if (($period = $this->hoursSince()) < 24) {
             return \sprintf(
                 \esc_html(\_n('1 hour ago', '%s hours ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->daysSince()) < 7) {
+        }
+
+        if (($period = $this->daysSince()) < 7) {
             return \sprintf(
                 \esc_html(\_n('1 day ago', '%s days ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->weeksSince()) < 4) {
+        }
+
+        if (($period = $this->weeksSince()) < 4) {
             return \sprintf(
                 \esc_html(\_n('1 week ago', '%s weeks ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->monthsSince()) < 4) {
+        }
+
+        if (($period = $this->monthsSince()) < 4) {
             return \sprintf(
                 \esc_html(\_n('1 month ago', '%s months ago', $period)),
                 \number_format_i18n($period)
             );
-        } elseif (($period = $this->monthsSince()) < 12) {
-            return \date(\get_option('date_format'), $this->timestamp).
-                ' ('.\date(\get_option('time_format'), $this->timestamp).')';
-        } else {
+        }
+
+        if (($period = $this->monthsSince()) < 12) {
             return \date(\get_option('date_format'), $this->timestamp).
                 ' ('.\date(\get_option('time_format'), $this->timestamp).')';
         }
+
+        return \date(\get_option('date_format'), $this->timestamp).
+            ' ('.\date(\get_option('time_format'), $this->timestamp).')';
     }
 
     /**

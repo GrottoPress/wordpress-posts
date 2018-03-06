@@ -365,7 +365,7 @@ class Posts
         $this->args['class'] = \sanitize_text_field($this->args['class']);
     }
 
-    public function post(int $id = 0): Post
+    private function post(int $id = 0): Post
     {
         return new Post($id);
     }

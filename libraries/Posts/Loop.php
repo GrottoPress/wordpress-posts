@@ -130,7 +130,7 @@ class Loop
      */
     private function loopBody(int $post_id, int $count): string
     {
-        $post = $this->posts->post($post_id);
+        $post = $this->post($post_id);
 
         return
 
@@ -423,5 +423,10 @@ class Loop
             ? 'no-post-thumb' : '';
 
         return \join(' ', $class);
+    }
+
+    private function post(int $id = 0): Post
+    {
+        return new Post($id);
     }
 }

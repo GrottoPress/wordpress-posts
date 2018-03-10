@@ -14,38 +14,44 @@ Sass utilities: Mixins, variables and functions.
 
 Import into your project, thus:
 
-    @import '/path/to/node_modules/@grottopress/scss/src/variables';
-    @import '/path/to/node_modules/@grottopress/scss/src/functions';
-    @import '/path/to/node_modules/@grottopress/scss/src/mixins';
+```scss
+@import '/path/to/node_modules/@grottopress/scss/src/variables';
+@import '/path/to/node_modules/@grottopress/scss/src/functions';
+@import '/path/to/node_modules/@grottopress/scss/src/mixins';
+```
 
 ### Variables
 
-    #comments {
-        ...
-        font-family: $arial;
-        ...
-    }
+```scss
+#comments {
+    ...
+    font-family: $arial;
+    ...
+}
 
-    #header {
-        ...
-        font-family: $helvetica;
-        ...
-    }
+#header {
+    ...
+    font-family: $helvetica;
+    ...
+}
+```
 
 ### Mixins
 
-    .modal {
-        @include size(400px);
-        @include border-radius(5px);
-        @include position(absolute, 20% null null 20%);
-        ...
-    }
+```scss
+.modal {
+    @include size(400px);
+    @include border-radius(5px);
+    @include position(absolute, 20% null null 20%);
+    ...
+}
 
-    .grid {
-        @include paragraph;
-        @include grid((
-            width: 25%,
-            use: 'float',
-        ));
-        ...
-    }
+.grid {
+    @include paragraph;
+    @include grid((
+        width: 25%,
+        columns: '.colums',
+    ));
+    ...
+}
+```

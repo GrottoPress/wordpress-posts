@@ -28,7 +28,8 @@
         "grottopress/getter": "^0.3"
     },
     "require-dev": {
-        "lucatume/wp-browser": "^1.21"
+        "codeception/codeception": "^2.4",
+        "lucatume/function-mocker": "^1.3"
     },
     "scripts": {
         "post-update-cmd": [

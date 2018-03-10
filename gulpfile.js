@@ -21,6 +21,7 @@ const sourcemaps = require('gulp-sourcemaps')
  */
 const styles_src = ['./assets/styles/**/*.scss']
 const styles_dest = './dist/styles'
+const vendor_assets = './assets/vendor'
 
 /**
  * Compile scss, rtl, minify css
@@ -41,6 +42,14 @@ gulp.task('styles', () =>
     ))
     .pipe(gulp.dest(styles_dest))
 )
+
+/**
+ * Build vendor assets
+ */
+gulp.task('vendor', () => {
+    gulp.src(['./node_modules/@grottopress/scss/**'])
+    .pipe(gulp.dest(`${vendor_assets}/@grottopress/scss`))
+})
 
 /**
  * Watch files for changes

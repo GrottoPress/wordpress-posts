@@ -138,7 +138,7 @@ class Info
             .\get_the_modified_time(\get_option('date_format'), '', $this->post->get())
         .'</time>';
     }
-    
+
     /**
      * Called if $type === 'updated_time'
      */
@@ -156,7 +156,7 @@ class Info
             ).
         '</time>';
     }
-    
+
     /**
      * Called if $type === 'published_date'
      */
@@ -167,7 +167,7 @@ class Info
            \get_the_date(\get_option('date_format'), $this->post->get()).
         '</time>';
     }
-    
+
     /**
      * Called if $type === 'published_time'
      */
@@ -187,7 +187,7 @@ class Info
         if (!\has_category('', $this->post->get())) {
             return '';
         }
-        
+
         return '<span class="category-links"><span class="meta-title">'.
             \esc_html__('Categories:').
         '</span> <span itemprop="articleSection">'.
@@ -203,7 +203,7 @@ class Info
         if (!\has_tag('', $this->post->get())) {
             return '';
         }
-        
+
         return \get_the_tag_list(
             '<span class="tag-links"><span class="meta-title">'.
                 \esc_html__('Tags: ').'</span> <span itemprop="keywords">',
@@ -224,12 +224,12 @@ class Info
         )) {
             return '';
         }
-        
+
         return '<a class="edit-post-link" href="'.
             \get_edit_post_link($this->post->get()->ID).
             '"  itemprop="url">'.\esc_html__('Edit').'</a>';
     }
-    
+
     /**
      * Called if $type === 'delete_link'
      */
@@ -241,7 +241,7 @@ class Info
         )) {
             return '';
         }
-        
+
         return '<a class="delete-post-link" onclick="return confirm(\''.
             \sprintf(
                 \esc_html__('Delete %s?'),
@@ -250,7 +250,7 @@ class Info
             '\')" href="'.\esc_attr(\get_delete_post_link($this->post->get()->ID)).
             '"  itemprop="url">'.\esc_html__('Delete').'</a>';
     }
-    
+
     /**
      * Called if $type === 'post_type'
      */
@@ -259,7 +259,7 @@ class Info
         return '<span class="post-type">'.
             $this->post->type()->labels->singular_name.'</span>';
     }
-    
+
     /**
      * Called if $type === 'tweet_button'
      */
@@ -272,14 +272,14 @@ class Info
 
             '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
     }
-    
+
     /**
      * Called if $type === 'plusone_button'
      */
     private function render_plusone_button(): string
     {
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
-        
+
         return '<div class="plusone" data-size="medium" data-href="'.
             \wp_get_shortlink($this->post->get()->ID).'"></div>';
     }
@@ -290,11 +290,11 @@ class Info
     private function render_googleshare_button(): string
     {
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
-        
+
         return '<div class="g-plus" data-action="share" data-size="medium" data-href="'.
             \wp_get_shortlink($this->post->get()->ID).'"></div>';
     }
-    
+
     /**
      * Called if $type === 'sharethis_button'
      */
@@ -311,7 +311,7 @@ class Info
             '" st_summary="'.\esc_attr($this->post->excerpt()).
             '" st_via=""></span>';
     }
-    
+
     /**
      * Called if $type === 'share_link'
      */
@@ -334,7 +334,7 @@ class Info
         ));
 
         $via = $username ? '&via='.$username : '';
-        
+
         return '<a class="tweet-link social-link share-link" rel="external nofollow noopener" href="https://twitter.com/intent/tweet'.
             '?text='.\urlencode_deep(\get_the_title($this->post->get())).
             '&url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).

@@ -11,7 +11,7 @@
 .post-wrap {
     @include paragraph(map-get($gwpp-gutter, small));
     @include clearfix;
-    
+
     .entry-title,
     .entry-summary,
     .entry-meta {

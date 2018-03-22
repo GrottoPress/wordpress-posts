@@ -1,59 +1,61 @@
 {
-    "name": "grottopress/wordpress-posts",
-    "description": "Query and display posts in WordPress",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "GrottoPress.com",
-            "email": "info@grottopress.com",
-            "homepage": "https://www.grottopress.com"
-        },
-        {
-          "name": "N Atta Kusi Adusei",
-          "homepage": "https://twitter.com/akadusei",
-          "role": "Developer"
-        }
-    ],
-    "keywords": [
-        "wordpress"
-    ],
-    "support": {
-        "issues": "https://github.com/GrottoPress/wordpress-posts/issues",
-        "wiki": "https://github.com/GrottoPress/wordpress-posts/wiki",
-        "source": "https://github.com/GrottoPress/wordpress-posts/"
+  "name": "grottopress/wordpress-posts",
+  "description": "Query and display posts in WordPress",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "GrottoPress.com",
+      "email": "info@grottopress.com",
+      "homepage": "https://www.grottopress.com"
     },
-    "require": {
-        "php": ">=7.0",
-        "grottopress/mobile-detector": "^0.1",
-        "grottopress/getter": "^0.3"
-    },
-    "require-dev": {
-        "codeception/codeception": "^2.4",
-        "lucatume/function-mocker": "^1.3"
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "npm update",
-            "npm run build"
-        ],
-        "post-install-cmd": [
-            "npm install",
-            "chmod +x ./bin/*",
-            "npm run build"
-        ],
-        "test": [
-            "./vendor/bin/codecept run unit"
-        ],
-        "release": [
-            "./bin/release"
-        ]
-    },
-    "autoload": {
-        "psr-4": {
-            "GrottoPress\\WordPress\\": "libraries/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": { "GrottoPress\\WordPress\\": "tests/" }
+    {
+      "name": "N Atta Kusi Adusei",
+      "homepage": "https://twitter.com/akadusei",
+      "role": "Developer"
     }
+  ],
+  "keywords": [
+    "wordpress"
+  ],
+  "support": {
+    "issues": "https://github.com/GrottoPress/wordpress-posts/issues",
+    "wiki": "https://github.com/GrottoPress/wordpress-posts/wiki",
+    "source": "https://github.com/GrottoPress/wordpress-posts/"
+  },
+  "require": {
+    "php": ">=7.0",
+    "grottopress/mobile-detector": "^0.1",
+    "grottopress/getter": "^0.3"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.4",
+    "lucatume/function-mocker": "^1.3"
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "npm update",
+      "npm run build"
+    ],
+    "post-install-cmd": [
+      "npm install",
+      "chmod +x ./bin/*",
+      "npm run build"
+    ],
+    "test": [
+      "./vendor/bin/codecept run unit"
+    ],
+    "release": [
+      "./bin/release"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "GrottoPress\\WordPress\\": "libraries/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "GrottoPress\\WordPress\\": "tests/unit/libraries/"
+    }
+  }
 }

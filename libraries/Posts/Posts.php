@@ -50,7 +50,7 @@ class Posts
         $this->applyRelatedTo();
         $this->applyLayout();
         $this->sanitizeClassAttr();
-        
+
         return $this->loop->run();
     }
 
@@ -68,7 +68,7 @@ class Posts
     private function applyImageAlign()
     {
         $allowed = ['left', 'right', 'none'];
-        
+
         if (\in_array(\sanitize_key($this->args['image']['align']), $allowed)) {
             $class = \sanitize_title(
                 "img-align-{$this->args['image']['align']}"
@@ -122,13 +122,13 @@ class Posts
         $this->args['class'] = \str_ireplace($class, '', $this->args['class']);
         $this->args['class'] .= " {$class}";
     }
-    
+
     private function contentDefaults()
     {
         if (!$this->isContent()) {
             return;
         }
-        
+
         $this->args['class'] = \str_ireplace(
             ['big', 'small', 'show-content'],
             [],
@@ -136,21 +136,21 @@ class Posts
         );
 
         $this->args['class'] .= ' big show-content';
-        
+
         $this->args['image']['size'] = '';
         $this->args['image']['align'] = '';
-        
+
         $this->args['text_offset'] = 0;
         $this->args['title']['position'] = 'top';
         $this->args['layout'] = 'stack';
     }
-    
+
     private function postListDefaults()
     {
         if (!$this->isList()) {
             return;
         }
-        
+
         $this->args['class'] = \str_ireplace(
             ['big', 'small', 'show-content'],
             [],
@@ -158,14 +158,14 @@ class Posts
         );
 
         $this->args['class'] .= ' small';
-        
+
         $this->args['image']['size'] = '';
         $this->args['image']['align'] = '';
-        
+
         $this->args['text_offset'] = '';
         $this->args['before_title']['info'] = [];
         $this->args['layout'] = 'stack';
-        
+
         if ($this->isContent()) {
             $this->args['excerpt']['length'] = 0;
         }
@@ -208,15 +208,15 @@ class Posts
 
         $this->args['wp_query']['tax_query'] = [];
     }
-    
+
     private function titleTagDefaults()
     {
         $allowed = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-        
+
         if (\in_array(\sanitize_key($this->args['title']['tag']), $allowed)) {
             return;
         }
-        
+
         $this->args['title']['tag'] = 'h2';
     }
 
@@ -249,7 +249,7 @@ class Posts
         if (!isset($this->args['wp_query']['posts_per_page'])) {
             $this->args['wp_query']['posts_per_page'] = 1;
         }
-        
+
         /**
          * Pagination WON'T work with offset if we simply use the $offset
          */
@@ -263,11 +263,11 @@ class Posts
     private function layoutDefaults()
     {
         $allowed = ['stack', 'grid'];
-        
+
         if (\in_array(\sanitize_key($this->args['layout']), $allowed)) {
             return;
         }
-        
+
         $this->args['layout'] = 'stack';
     }
 
@@ -365,7 +365,7 @@ class Posts
         $this->args['class'] = \sanitize_text_field($this->args['class']);
     }
 
-    public function post(int $id = 0): Post
+    private function post(int $id = 0): Post
     {
         return new Post($id);
     }

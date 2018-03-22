@@ -56,7 +56,7 @@ class Post
         return \post_type_supports($this->get()->post_type, $feature);
     }
 
-    public function hasThumbnail()
+    public function hasThumbnail(): bool
     {
         return \has_post_thumbnail($this->get());
     }

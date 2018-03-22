@@ -138,7 +138,7 @@ class Info
             .\get_the_modified_time(\get_option('date_format'), '', $this->post->get())
         .'</time>';
     }
-    
+
     /**
      * Called if $type === 'updated_time'
      */
@@ -156,7 +156,7 @@ class Info
             ).
         '</time>';
     }
-    
+
     /**
      * Called if $type === 'published_date'
      */
@@ -167,7 +167,7 @@ class Info
            \get_the_date(\get_option('date_format'), $this->post->get()).
         '</time>';
     }
-    
+
     /**
      * Called if $type === 'published_time'
      */
@@ -187,7 +187,7 @@ class Info
         if (!\has_category('', $this->post->get())) {
             return '';
         }
-        
+
         return '<span class="category-links"><span class="meta-title">'.
             \esc_html__('Categories:').
         '</span> <span itemprop="articleSection">'.
@@ -203,7 +203,7 @@ class Info
         if (!\has_tag('', $this->post->get())) {
             return '';
         }
-        
+
         return \get_the_tag_list(
             '<span class="tag-links"><span class="meta-title">'.
                 \esc_html__('Tags: ').'</span> <span itemprop="keywords">',
@@ -224,12 +224,12 @@ class Info
         )) {
             return '';
         }
-        
+
         return '<a class="edit-post-link" href="'.
             \get_edit_post_link($this->post->get()->ID).
             '"  itemprop="url">'.\esc_html__('Edit').'</a>';
     }
-    
+
     /**
      * Called if $type === 'delete_link'
      */
@@ -241,7 +241,7 @@ class Info
         )) {
             return '';
         }
-        
+
         return '<a class="delete-post-link" onclick="return confirm(\''.
             \sprintf(
                 \esc_html__('Delete %s?'),
@@ -250,7 +250,7 @@ class Info
             '\')" href="'.\esc_attr(\get_delete_post_link($this->post->get()->ID)).
             '"  itemprop="url">'.\esc_html__('Delete').'</a>';
     }
-    
+
     /**
      * Called if $type === 'post_type'
      */
@@ -259,7 +259,7 @@ class Info
         return '<span class="post-type">'.
             $this->post->type()->labels->singular_name.'</span>';
     }
-    
+
     /**
      * Called if $type === 'tweet_button'
      */
@@ -272,14 +272,14 @@ class Info
 
             '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
     }
-    
+
     /**
      * Called if $type === 'plusone_button'
      */
     private function render_plusone_button(): string
     {
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
-        
+
         return '<div class="plusone" data-size="medium" data-href="'.
             \wp_get_shortlink($this->post->get()->ID).'"></div>';
     }
@@ -290,11 +290,11 @@ class Info
     private function render_googleshare_button(): string
     {
         \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
-        
+
         return '<div class="g-plus" data-action="share" data-size="medium" data-href="'.
             \wp_get_shortlink($this->post->get()->ID).'"></div>';
     }
-    
+
     /**
      * Called if $type === 'sharethis_button'
      */
@@ -311,7 +311,7 @@ class Info
             '" st_summary="'.\esc_attr($this->post->excerpt()).
             '" st_via=""></span>';
     }
-    
+
     /**
      * Called if $type === 'share_link'
      */
@@ -319,7 +319,7 @@ class Info
     {
         return '<a class="facebook-link social-link share-link" rel="external nofollow noopener" href="https://www.facebook.com/sharer/sharer.php?u='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '&display=popup" target="_blank" itemprop="url"><i class="fa fa-facebook-official" aria-hidden="true"></i> '.
+            '&display=popup" target="_blank" itemprop="url"><i class="fab fa-facebook fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Share').'</a>';
     }
 
@@ -334,11 +334,11 @@ class Info
         ));
 
         $via = $username ? '&via='.$username : '';
-        
+
         return '<a class="tweet-link social-link share-link" rel="external nofollow noopener" href="https://twitter.com/intent/tweet'.
             '?text='.\urlencode_deep(\get_the_title($this->post->get())).
             '&url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            $via.'" target="_blank" itemprop="url"><i class="fa fa-twitter" aria-hidden="true"></i> '.
+            $via.'" target="_blank" itemprop="url"><i class="fab fa-twitter fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Tweet').'</a>';
     }
 
@@ -349,7 +349,7 @@ class Info
     {
         return '<a class="googleplus-link social-link share-link" rel="external nofollow noopener" href="https://plus.google.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fa fa-google-plus-official" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-google-plus fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Google+').'</a>';
     }
 
@@ -362,7 +362,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&media='.\urlencode_deep(\wp_get_attachment_url(\get_post_thumbnail_id($this->post->get()))).
             '&description='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fa fa-pinterest" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-pinterest fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Pin').'</a>';
     }
 
@@ -374,7 +374,7 @@ class Info
         return '<a class="linkedin-link social-link share-link" rel="external nofollow noopener" href="https://www.linkedin.com/shareArticle?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fa fa-linkedin" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-linkedin fa-sm" aria-hidden="true"></i> '.
             \esc_html__('LinkedIn').'</a>';
     }
 
@@ -386,7 +386,7 @@ class Info
         return '<a class="buffer-link social-link share-link" rel="external nofollow noopener" href="https://buffer.com/add?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fa fa-share-alt" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fas fa-share fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Buffer').'</a>';
     }
 
@@ -398,7 +398,7 @@ class Info
         return '<a class="digg-link social-link share-link" rel="external nofollow noopener" href="https://digg.com/submit?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fa fa-digg" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-digg fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Digg').'</a>';
     }
 
@@ -411,7 +411,7 @@ class Info
         \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
         '&title='.\urlencode_deep(\get_the_title($this->post->get())).
         '&caption='.\urlencode_deep(\get_the_excerpt($this->post->get())).
-        '" target="_blank" itemprop="url"><i class="fa fa-tumblr" aria-hidden="true"></i> '.
+        '" target="_blank" itemprop="url"><i class="fab fa-tumblr fa-sm" aria-hidden="true"></i> '.
         \esc_html__('Tumblr').'</a>';
     }
 
@@ -423,16 +423,18 @@ class Info
         return '<a class="reddit-link social-link share-link" rel="external nofollow noopener" href="https://reddit.com/submit?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fa fa-reddit" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-reddit fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Reddit').'</a>';
     }
 
     /**
      * Called if $type === 'delicious_link'
+     *
+     * Disabled cuz URL does not seem to work.
      */
     // private function render_delicious_link(): string
-    //{
-    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fa fa-delicious" aria-hidden="true"></i> '.\esc_html__('Delicious').'</a>';
+    // {
+    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fab fa-delicious fa-sm" aria-hidden="true"></i> '.\esc_html__('Delicious').'</a>';
     // }
 
     /**
@@ -444,7 +446,7 @@ class Info
         \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
         '&n='.\urlencode_deep(\get_the_title($this->post->get())).
         '&t='.\urlencode_deep(\get_the_excerpt($this->post->get())).
-        '" target="_blank" itemprop="url"><i class="fa fa-share-alt" aria-hidden="true"></i> '.
+        '" target="_blank" itemprop="url"><i class="fab fa-blogger fa-sm" aria-hidden="true"></i> '.
         \esc_html__('Blogger').'</a>';
     }
 
@@ -455,7 +457,7 @@ class Info
     {
         return '<a class="pocket-link social-link share-link" rel="external nofollow noopener" href="https://getpocket.com/save?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fa fa-get-pocket" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-get-pocket fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Pocket').'</a>';
     }
 
@@ -466,7 +468,7 @@ class Info
     {
         return '<a class="skype-link social-link share-link" rel="external nofollow noopener" href="https://web.skype.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fa fa-skype" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-skype fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Skype').'</a>';
     }
 
@@ -481,7 +483,7 @@ class Info
 
         return '<a class="viber-link social-link share-link" rel="external nofollow" href="viber://forward?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" itemprop="url"><i class="fa fa-share-alt" aria-hidden="true"></i> '.
+            '" itemprop="url"><i class="fab fa-viber fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Viber').'</a>';
     }
 
@@ -496,7 +498,7 @@ class Info
 
         return '<a class="whatsapp-link social-link share-link" rel="external nofollow" href="whatsapp://send?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" itemprop="url"><i class="fa fa-whatsapp" aria-hidden="true"></i> '.
+            '" itemprop="url"><i class="fab fa-whatsapp fa-sm" aria-hidden="true"></i> '.
             \esc_html__('WhatsApp').'</a>';
     }
 
@@ -512,7 +514,7 @@ class Info
         return '<a class="telegram-link social-link share-link" rel="external nofollow" href="tg://msg_url?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" itemprop="url"><i class="fa fa-telegram" aria-hidden="true"></i> '.
+            '" itemprop="url"><i class="fab fa-telegram fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Telegram').'</a>';
     }
 
@@ -523,7 +525,7 @@ class Info
     {
         return '<a class="vk-link social-link share-link" rel="external nofollow noopener" href="https://vk.com/share.php?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fa fa-vk" aria-hidden="true"></i> '.
+            '" target="_blank" itemprop="url"><i class="fab fa-vk fa-sm" aria-hidden="true"></i> '.
             \esc_html__('VK').'</a>';
     }
 

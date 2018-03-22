@@ -1,22 +1,22 @@
 # WordPress Posts
 
-## Description
-
-A library to query and display posts in WordPress.
+Query and display posts in WordPress.
 
 ## Usage
 
 Install via composer:
 
-`composer require grottopress/wordpress-posts`
+```bash
+composer require grottopress/wordpress-posts
+```
 
 You may use the styles defined in `dist/styles` in your theme (or plugin):
 
 ```php
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style(
+\add_action('wp_enqueue_scripts', function () {
+    \wp_enqueue_style(
         'wordpress-posts',
-        get_template_directory_uri().'/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
+        \get_template_directory_uri().'/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
     );
 });
 ```
@@ -25,6 +25,7 @@ Use thus:
 
 ```php
 <?php
+declare (strict_types = 1);
 
 use GrottoPress\WordPress\Posts\Posts;
 
@@ -56,14 +57,16 @@ $posts = new Posts([
     ]
 ]);
 
-// display posts
+// Display posts
 echo $posts->render();
 ```
+
+## Arguments
 
 Full list of arguments, with their defaults, are as follows:
 
 ```php
-$default_args = [
+$args = [
     'id' => '', // Unique ID
     'class' => 'small', // Wrapper HTML classes
     'tag' => 'div', // Wrapper HTML tag. Use 'ul' for list posts.
@@ -118,3 +121,48 @@ $default_args = [
     ]
 ]
 ```
+
+## Posts info
+
+The following are possible values you may supply to `$args['title']['before']['types']`, `$args['title']['after']['types']` and `$args['excerpt']['after']['types']`:
+
+- `avatar__<size>` eg: `avatar__40`
+- `updated_ago`, `updated_ago__actual`, `updated_ago__difference`
+- `published_ago`, `published_ago__actual`, `published_ago__difference`
+- `author_name`
+- `comments_link`
+- `updated_date`
+- `updated_time`
+- `published_date`
+- `published_time`
+- `category_list` or `category`
+- `tag_list` or `post_tag`
+- `edit_link`
+- `delete_link`
+- `tweet_button`
+- `plusone_button`
+- `googleshare_button`
+- `sharethis_button`
+- `share_link`
+- `tweet_link`
+- `googleplus_link`
+- `pin_link`
+- `linkedin_link`
+- `buffer_link`
+- `digg_link`
+- `tumblr_link`
+- `reddit_link`
+- `blogger_link`
+- `pocket_link`
+- `skype_link`
+- `viber_link`
+- `whatsapp_link`
+- `telegram_link`
+- `vk_link`
+- The name of a filter hook. A function should then be defined and added to that filter. Function args: `string $output, int $post_id, string $separator`.
+- A post meta key. This would display a single meta value for that key.
+- A taxonomy name. This would display a list of all terms of that taxonomy the post was assigned to.
+
+## Social media icons
+
+If you would like to show icons for social links, you need to install [font awesome v5](https://fontawesome.com/).

@@ -9,7 +9,7 @@ class Time
      * @var Post
      */
     private $post;
-    
+
     /**
      * @var string $context 'published' or 'updated'
      */
@@ -19,7 +19,7 @@ class Time
      * @var string
      */
     private $timestamp;
-    
+
     /**
      * @param string $context 'published' or 'updated'
      */
@@ -31,8 +31,8 @@ class Time
             ? \sanitize_key($context) : 'published';
 
         $this->timestamp = ('updated' === $this->context
-            ? \strtotime($this->post->get()()->post_modified)
-            : \strtotime($this->post->get()()->post_date));
+            ? \strtotime($this->post->get()->post_modified)
+            : \strtotime($this->post->get()->post_date));
     }
 
     /**
@@ -74,7 +74,7 @@ class Time
 
         return $time_ago;
     }
-    
+
     /**
      * Called if $format === 'actual'
      */
@@ -217,7 +217,7 @@ class Time
     {
         return \current_time('timestamp') - $this->timestamp;
     }
-    
+
     /**
      * Period (in minutes) since publishing or updating a post.
      */
@@ -225,7 +225,7 @@ class Time
     {
         return \absint($this->secondsSince() / MINUTE_IN_SECONDS);
     }
-    
+
     /**
      * Period (in hours) since publishing or updating a post.
      */
@@ -233,7 +233,7 @@ class Time
     {
         return \absint($this->secondsSince() / HOUR_IN_SECONDS);
     }
-    
+
     /**
      * Period (in days) since publishing or updating a post.
      */

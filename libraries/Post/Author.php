@@ -52,7 +52,7 @@ class Author
         return $link;
     }
 
-    public function postsUrl(): string
+    public function postsURL(): string
     {
         if ('#' === (
             $url = \get_author_posts_url($this->post->get()->post_author)
@@ -63,8 +63,8 @@ class Author
         return $url;
     }
 
-    public function meta(string $meta)
+    public function meta(string $key)
     {
-        return \get_the_author_meta($meta, $this->post->get()->post_author);
+        return \get_the_author_meta($key, $this->post->get()->post_author);
     }
 }

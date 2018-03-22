@@ -31,8 +31,8 @@ class Time
             ? \sanitize_key($context) : 'published';
 
         $this->timestamp = ('updated' === $this->context
-            ? \strtotime($this->post->get()()->post_modified)
-            : \strtotime($this->post->get()()->post_date));
+            ? \strtotime($this->post->get()->post_modified)
+            : \strtotime($this->post->get()->post_date));
     }
 
     /**

@@ -38,11 +38,10 @@ class Info
      */
     private $mobileDetector;
 
-    public function __construct(Post $post, array $args)
+    public function __construct(Post $post, Detector $detector, array $args)
     {
         $this->post = $post;
-
-        $this->mobileDetector = new Detector();
+        $this->mobileDetector = $detector;
 
         $this->setArgs($args);
         $this->sanitizeAttributes();

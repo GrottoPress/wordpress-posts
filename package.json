@@ -22,7 +22,7 @@
 		"gulp-clean-css": "^3.9.3",
 		"gulp-rename": "^1.2.2",
 		"gulp-rtlcss": "^1.2.0",
-		"gulp-sass": "^3.2.0",
+		"gulp-sass": "^3.2.1",
 		"gulp-sourcemaps": "^2.6.4"
 	},
 	"scripts": {

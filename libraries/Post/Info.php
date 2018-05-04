@@ -60,7 +60,7 @@ class Info
 
         foreach ($this->types as $type) {
             if (0 === \stripos($type, 'avatar__')) {
-                if (($avatar = $this->post->thumbnail($type))) {
+                if ($avatar = $this->post->thumbnail($type)) {
                     $meta[] = $avatar;
                 }
             } elseif (0 === \stripos($type, 'updated_ago')) {
@@ -79,16 +79,16 @@ class Info
                 && ($return = $this->$call())
             ) {
                 $meta[] = $return;
-            } elseif (($filter = \apply_filters(
+            } elseif ($filter = \apply_filters(
                 $type,
                 '',
                 $this->post->get()->ID,
                 $this->separator
-            ))) {
+            )) {
                 $meta[] = $filter;
-            } elseif (($post_meta = $this->post->meta($type, true))) {
+            } elseif ($post_meta = $this->post->meta($type, true)) {
                 $meta[] = $post_meta;
-            } elseif (($terms = $this->termList($type))) {
+            } elseif ($terms = $this->termList($type)) {
                 $meta[] = $terms;
             }
         }

@@ -189,7 +189,7 @@ class Loop
         $anchor_title = ($title_words > 0)
             ? ' title="'.\esc_attr(\wp_strip_all_tags($title, true)).'" ' : '';
 
-        if (($title_link = $this->posts->args['title']['link'])) {
+        if ($title_link = $this->posts->args['title']['link']) {
             $out .= '<a itemprop="url" href="'.\get_permalink($post->get()).
                 '" '. $anchor_title.' rel="bookmark">';
         }

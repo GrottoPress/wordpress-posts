@@ -77,9 +77,9 @@ class Pagination
 
     private function setKey()
     {
-        if (($key = $this->posts->args['pagination']['key'])) {
+        if ($key = $this->posts->args['pagination']['key']) {
             $this->key = \sanitize_key($key);
-        } elseif (($id = $this->posts->args['id'])) {
+        } elseif ($id = $this->posts->args['id']) {
             $this->key = \sanitize_key("{$id}-pag");
         } else {
             $this->key = 'pag';
@@ -102,7 +102,7 @@ class Pagination
      */
     private function currentPageBuiltin(): int
     {
-        if (($page = \get_query_var('paged'))) {
+        if ($page = \get_query_var('paged')) {
             return \absint($page);
         }
 

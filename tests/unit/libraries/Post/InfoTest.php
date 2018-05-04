@@ -42,6 +42,9 @@ class InfoTest extends AbstractTestCase
 
         $info = new Info(Stub::makeEmpty(Post::class, [
             'thumbnail' => 'avatar',
+            'author' => Stub::makeEmpty(Author::class, [
+                'supported' => true,
+            ]),
             'get' => $get,
         ]), Stub::makeEmpty(Detector::class), [
             'types' => ['avatar__40', 'filter_hook', 'published_date'],

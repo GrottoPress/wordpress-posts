@@ -60,7 +60,9 @@ class Info
 
         foreach ($this->types as $type) {
             if (0 === \stripos($type, 'avatar__')) {
-                if ($avatar = $this->post->thumbnail($type)) {
+                if ($this->post->author()->supported() &&
+                    ($avatar = $this->post->thumbnail($type))
+                ) {
                     $meta[] = $avatar;
                 }
             } elseif (0 === \stripos($type, 'updated_ago')) {

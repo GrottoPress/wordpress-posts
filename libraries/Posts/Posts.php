@@ -278,7 +278,7 @@ class Posts
             return;
         }
 
-        $this->args['layout'] = 'stack';
+        $this->args['layout'] = '';
     }
 
     /**
@@ -322,7 +322,7 @@ class Posts
             'id' => '',
             'class' => 'small',
             'tag' => 'div',
-            'layout' => 'stack',
+            'layout' => '',
             'text_offset' => 0,
             'related_to' => 0,
             'image' => [

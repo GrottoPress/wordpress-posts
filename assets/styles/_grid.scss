@@ -3,6 +3,7 @@
  */
 
 .layout-grid.posts-wrap {
+    @include box-sizing(border-box);
     @include grid((
         gutter: map-get($gwpp-gutter, normal),
         columns: '.post-wrap',

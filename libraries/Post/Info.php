@@ -599,7 +599,7 @@ class Info
         unset($vars['mobileDetector']);
 
         foreach ($vars as $key => $value) {
-            $this->$key = $args[$key] ?? '';
+            $this->$key = $args[$key] ?? null;
         }
     }
 
@@ -608,9 +608,13 @@ class Info
         $this->separator = $this->separator ? \esc_attr(
             $this->separator
         ) : '|';
+
         $this->types = !empty($this->types[0]) ? \array_map(
             'sanitize_key',
             $this->types
         ) : [];
+
+        $this->before = \is_string($this->before) ? $this->before : '';
+        $this->after = \is_string($this->after) ? $this->after : '';
     }
 }

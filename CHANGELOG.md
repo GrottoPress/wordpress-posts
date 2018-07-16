@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Set `border-box` for grid posts to `box-sizing`
 
+### Fixed
+- Ensure posts wrap class has only one `image-align-*` and `layout-*`
+
 ## 0.9.1 - 2018-05-04
 
 ### Changed

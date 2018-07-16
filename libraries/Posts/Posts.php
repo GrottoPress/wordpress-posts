@@ -75,7 +75,9 @@ class Posts
             );
 
             $this->args['class'] = \str_ireplace(
-                $class,
+                \array_map(function (string $align): string {
+                    return "img-align-{$align}";
+                }, $allowed),
                 '',
                 $this->args['class']
             );
@@ -119,7 +121,14 @@ class Posts
 
         $class = \sanitize_title("layout-{$this->args['layout']}");
 
-        $this->args['class'] = \str_ireplace($class, '', $this->args['class']);
+        $this->args['class'] = \str_ireplace(
+            \array_map(function (string $layout): string {
+                return "layout-{$layout}";
+            }, $this->allowedLayouts()),
+            '',
+            $this->args['class']
+        );
+
         $this->args['class'] .= " {$class}";
     }
 
@@ -262,13 +271,22 @@ class Posts
 
     private function layoutDefaults()
     {
-        $allowed = ['stack', 'grid'];
-
-        if (\in_array(\sanitize_key($this->args['layout']), $allowed)) {
+        if (\in_array(
+            \sanitize_key($this->args['layout']),
+            $this->allowedLayouts()
+        )) {
             return;
         }
 
         $this->args['layout'] = 'stack';
+    }
+
+    /**
+     * @return string[int]
+     */
+    private function allowedLayouts(): array
+    {
+        return ['stack', 'grid'];
     }
 
     /**
@@ -357,11 +375,13 @@ class Posts
     private function sanitizeClassAttr()
     {
         $this->args['class'] = \str_replace(',', ' ', $this->args['class']);
+
         $this->args['class'] = \preg_replace(
             '/\s\s+/',
             ' ',
             $this->args['class']
         );
+
         $this->args['class'] = \sanitize_text_field($this->args['class']);
     }
 

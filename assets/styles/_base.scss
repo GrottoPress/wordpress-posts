@@ -58,7 +58,7 @@
     }
 }
 
-@media (min-width: map-get($gwpp-breakpoint, medium)) {
+@media (min-width: map-get($gwpp-breakpoint, wide)) {
     .big {
         > .post-wrap > header > .entry-title {
             font-size: 1.71em;

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Use `<small>` tag for posts info wrapper
+- Reduce medium device breakpoint to **768px**
 
 ## 0.9.2 - 2018-07-16
 

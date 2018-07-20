@@ -338,8 +338,8 @@ class Posts
                 'after' => [
                     'types' => [],
                     'separator' => '|',
-                    'before' => '<aside class="entry-meta after-content">',
-                    'after' => '</aside>',
+                    'before' => '<small class="entry-meta after-content">',
+                    'after' => '</small>',
                 ],
             ],
             'title' => [
@@ -350,14 +350,14 @@ class Posts
                 'before' => [
                     'types' => [],
                     'separator' => '|',
-                    'before' => '<aside class="entry-meta before-title">',
-                    'after' => '</aside>',
+                    'before' => '<small class="entry-meta before-title">',
+                    'after' => '</small>',
                 ],
                 'after' => [
                     'types' => [],
                     'separator' => '|',
-                    'before' => '<aside class="entry-meta after-title">',
-                    'after' => '</aside>',
+                    'before' => '<small class="entry-meta after-title">',
+                    'after' => '</small>',
                 ],
             ],
             'pagination' => [

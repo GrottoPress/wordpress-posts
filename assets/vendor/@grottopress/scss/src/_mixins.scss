@@ -7,8 +7,13 @@
 /// @author [N Atta Kus Adusei](https://twitter.com/akadusei)
 ////
 
-/// Full screen
-@mixin full-screen {
+/// Full width
+///
+/// Used to force a full width background when
+/// parent element is not full width
+///
+/// You should set `overflow-x: hidden;` on `<html>` and `<body>`
+@mixin full-width {
     margin-right: -9999px;
     margin-left: -9999px;
     padding-right: 9999px;
@@ -40,7 +45,7 @@
 /// Clear fix
 @mixin clearfix {
     &::after {
-        content: "";
+        content: '';
         display: table;
         clear: both;
     }
@@ -48,7 +53,7 @@
 
 /// Box Sizing
 ///
-/// @param {number} $sizing
+/// @param {string} $sizing
 @mixin box-sizing($sizing) {
     -webkit-box-sizing: $sizing;
     -moz-box-sizing: $sizing;
@@ -136,23 +141,6 @@
     height: $height;
 }
 
-/// Screen reader text
-///
-/// Hide text from all except screen readers
-@mixin screen-reader {
-    @include position(absolute);
-    @include size(1px);
-    
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    word-wrap: normal !important;
-}
-
 /// Position
 ///
 /// @param {string} $position [relative]
@@ -179,51 +167,21 @@
     }
 }
 
-/// Grid
+/// Screen reader text
 ///
-/// To be used in the grids wrapper
-///
-/// @param {map} $args - 
-///   'width' {number} Width of each column
-///   'gutter' {number} Size of spaces between columns
-///   'columns' {string} Selector of immediate children to be used as columns.
-@mixin grid($args: ()) {
-    $defaults: (
-        width: 100%,
-        gutter: 20px,
-        columns: '*',
-    );
+/// Hide text from all except screen readers
+@mixin screen-reader {
+    @include position(absolute);
+    @include size(1px);
 
-    $args: map-merge($defaults, $args);
-
-    $width: map-get($args, width);
-    $gutter: map-get($args, gutter );
-    $columns: map-get($args , columns );
-
-    $half-gutter: ($gutter / 2);
-
-    @include inline-block-whitespace-fix;
-
-    margin: -#{$half-gutter};
-
-    &:first-child {
-        margin-top: -$half-gutter;
-    }
-
-    &:last-child {
-        margin-bottom: -$half-gutter;
-    }
-
-    > * {
-        padding: $half-gutter;
-    }
-
-    > #{$columns} {
-        @include inline-block;
-
-        margin: 0;
-        width: $width;
-    }
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    word-wrap: normal !important;
 }
 
 /// Opacity
@@ -232,8 +190,72 @@
 ///
 /// @since 0.1.8
 @mixin opacity($opacity) {
-    $ie: $opacity * 100;
-
-    -ms-filter: 'alpha(opacity=#{$ie})'; /* For IE8 and later */
+    -ms-filter: 'alpha(opacity=#{$opacity * 100})'; /* For IE8 and later */
     opacity: $opacity;
+}
+
+/// Flex box
+///
+/// @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+/// Flex
+///
+/// @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+/// Flex box order
+///
+/// @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+/// Grid
+///
+/// To be included in the grids wrapper
+///
+/// @param {map} $args -
+///   'columns' {number} Number of columns
+///   'gutter' {number} Size of horizontal space between columns in `%`
+@mixin grid($args: ()) {
+    $args: map-merge((columns: 2, gutter: 2%), $args);
+    $gutter: strip-units(map-get($args, gutter)) * 1%;
+    $columns: strip-units(map-get($args, columns));
+    $width: (99.9% - ($gutter * ($columns - 1))) / $columns;
+
+    @include box-sizing(border-box);
+    @include flexbox;
+
+    flex-wrap: wrap;
+
+    > * {
+        @include flex(0 0 $width);
+
+        margin: $gutter 0 0 $gutter;
+
+        &:nth-child(-n + #{$columns}) {
+            margin-top: 0;
+        }
+
+        &:nth-child(#{$columns}n + 1) {
+            margin-left: 0;
+        }
+    }
 }

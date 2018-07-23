@@ -1,28 +1,28 @@
 {
-  "_from": "@grottopress/scss@0.2.2",
-  "_id": "@grottopress/scss@0.2.2",
+  "_from": "@grottopress/scss@0.3.0",
+  "_id": "@grottopress/scss@0.3.0",
   "_inBundle": false,
-  "_integrity": "sha512-u1D3r1vVeuPQtFOni1ZUMd1j+cV83zGC/cAdmQn8u1Qe2PSQXRhGCTmyzX+7GH5hJQUt0OaFUahlDEPEHvAnrw==",
+  "_integrity": "sha512-wieQHMICs7TzYNUDHsIuS1OoiJSDetxzaScBlV/xI6o4lNHzy3kVMzpafmXs/RUua7pQsdr0u+4tT6tFg+biTQ==",
   "_location": "/@grottopress/scss",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "@grottopress/scss@0.2.2",
+    "raw": "@grottopress/scss@0.3.0",
     "name": "@grottopress/scss",
     "escapedName": "@grottopress%2fscss",
     "scope": "@grottopress",
-    "rawSpec": "0.2.2",
+    "rawSpec": "0.3.0",
     "saveSpec": null,
-    "fetchSpec": "0.2.2"
+    "fetchSpec": "0.3.0"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.2.2.tgz",
-  "_shasum": "f6d9796f74af6fc12256be088bcdc5e50ae1c074",
-  "_spec": "@grottopress/scss@0.2.2",
+  "_resolved": "https://registry.npmjs.org/@grottopress/scss/-/scss-0.3.0.tgz",
+  "_shasum": "643946ec467d0d1812230814737884da078e28e7",
+  "_spec": "@grottopress/scss@0.3.0",
   "_where": "/var/www/packages/wordpress-posts",
   "author": {
     "name": "GrottoPress.com",
@@ -60,5 +60,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.2.2"
+  "version": "0.3.0"
 }

@@ -3,9 +3,10 @@
  */
 
 .posts-wrap {
+    @include paragraph;
+
     font-size: 14px;
 	line-height: 160%;
-	@include paragraph;
 }
 
 .post-wrap {
@@ -23,6 +24,7 @@
     }
 
     .entry-meta {
+        display: block;
         color: $gwpp-font-lighter;
         font-size: 0.93em;
     }

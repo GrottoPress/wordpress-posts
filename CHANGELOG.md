@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.10.0 - 2018-07-23
+
+### Added
+- `.editorconfig`
+
+### Changed
+- Use `<small>` tag for posts info wrapper
+- Reduce medium device breakpoint to **768px**
+- Change breakpoints to `small: 600px`, `medium: 900px`.
+
 ## 0.9.2 - 2018-07-16
 
 ### Changed

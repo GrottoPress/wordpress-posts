@@ -86,8 +86,8 @@ $args = [
         'after' => [
             'types' => [], // Info to display after content/excerpt
             'separator' => '|',
-            'before' => '<aside class="entry-meta after-content">',
-            'after' => '</aside>',
+            'before' => '<small class="entry-meta after-content">',
+            'after' => '</small>',
         ],
     ],
     'title' => [
@@ -98,14 +98,14 @@ $args = [
         'before' => [
             'types' => [], // Info to display before title
             'separator' => '|',
-            'before' => '<aside class="entry-meta before-title">',
-            'after' => '</aside>',
+            'before' => '<small class="entry-meta before-title">',
+            'after' => '</small>',
         ],
         'after' => [
             'types' => [], // Info to display after title
             'separator' => '|',
-            'before' => '<aside class="entry-meta after-title">',
-            'after' => '</aside>',
+            'before' => '<small class="entry-meta after-title">',
+            'after' => '</small>',
         ],
     ],
     'pagination' => [

@@ -3,12 +3,6 @@
  */
 
 .layout-grid.posts-wrap {
-    @include box-sizing(border-box);
-    @include grid((
-        gutter: map-get($gwpp-gutter, normal),
-        columns: '.post-wrap',
-    ));
-
     > .post-wrap {
         &.big > header > .entry-title {
             font-size: 1.43em;
@@ -23,7 +17,7 @@
 @media (min-width: map-get($gwpp-breakpoint, medium)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
-            width: 50%;
+            @include grid((gutter: 2%, columns: 2));
         }
 	}
 }
@@ -31,7 +25,7 @@
 @media (min-width: map-get($gwpp-breakpoint, wide)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
-            width: 33.33%;
+            flex-basis: 31.9666%;
         }
 	}
 }

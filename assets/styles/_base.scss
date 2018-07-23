@@ -3,9 +3,10 @@
  */
 
 .posts-wrap {
+    @include paragraph;
+
     font-size: 14px;
 	line-height: 160%;
-	@include paragraph;
 }
 
 .post-wrap {

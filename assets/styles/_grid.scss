@@ -14,7 +14,7 @@
     }
 }
 
-@media (min-width: map-get($gwpp-breakpoint, medium)) {
+@media (min-width: map-get($gwpp-breakpoint, small)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
             @include grid((gutter: 2%, columns: 2));
@@ -22,10 +22,10 @@
 	}
 }
 
-@media (min-width: map-get($gwpp-breakpoint, wide)) {
+@media (min-width: map-get($gwpp-breakpoint, medium)) {
     .layout-grid.posts-wrap {
         > .post-wrap {
-            flex-basis: 31.9666%;
+            flex-basis: 23.475%;
         }
 	}
 }

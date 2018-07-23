@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Use `<small>` tag for posts info wrapper
 - Reduce medium device breakpoint to **768px**
-- Change breakpoints to `small: 600px` and `medium: 900px`
+- Change breakpoints to `small: 600px`, `medium: 900px`.
 
 ## 0.9.2 - 2018-07-16
 

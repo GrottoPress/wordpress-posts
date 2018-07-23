@@ -25,9 +25,3 @@
         @include grid((gutter: 2%, columns: 3));
 	}
 }
-
-@media (min-width: map-get($gwpp-breakpoint, large)) {
-    .layout-grid.posts-wrap {
-        @include grid((gutter: 1.5%, columns: 4));
-	}
-}

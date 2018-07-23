@@ -16,9 +16,7 @@
 
 @media (min-width: map-get($gwpp-breakpoint, small)) {
     .layout-grid.posts-wrap {
-        > .post-wrap {
-            @include grid((gutter: 2%, columns: 2));
-        }
+        @include grid((gutter: 2%, columns: 2));
 	}
 }
 

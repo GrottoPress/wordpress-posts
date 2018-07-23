@@ -248,7 +248,10 @@
     > * {
         @include flex(0 0 $width);
 
-        margin: $gutter 0 0 $gutter;
+        &,
+        &:nth-child(n) {
+            margin: $gutter 0 0 $gutter;
+        }
 
         &:nth-child(-n + #{$columns}) {
             margin-top: 0;

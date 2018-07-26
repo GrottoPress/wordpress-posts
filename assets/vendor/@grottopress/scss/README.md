@@ -39,14 +39,13 @@ Import into your project, thus:
 ```scss
 .modal {
     @include size(400px);
-    @include border-radius(5px);
     @include position(absolute, 20% null null 20%);
     // ...
 }
 
 .grid {
     @include paragraph;
-    @include grid((columns: 3, gutter: 2%));
+    @include grid((width: 25%, gutter: 20px));
     // ...
 }
 ```

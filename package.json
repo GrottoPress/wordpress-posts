@@ -3,7 +3,7 @@
 	"version": "0.10.0",
 	"description": "Query and display posts in WordPress",
 	"license": "MIT",
-  "private": true,
+	"private": true,
 	"author": {
 		"name": "GrottoPress.com",
 		"email": "info@grottopress.com",
@@ -16,12 +16,12 @@
 		}
 	],
 	"dependencies": {
-		"@grottopress/scss": "^0.3.1"
+		"@grottopress/scss": "^0.4.0"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.1",
 		"gulp-clean-css": "^3.9.4",
-		"gulp-rename": "^1.3.0",
+		"gulp-rename": "^1.4.0",
 		"gulp-rtlcss": "^1.2.0",
 		"gulp-sass": "^3.2.1",
 		"gulp-sourcemaps": "^2.6.4"

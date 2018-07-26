@@ -22,7 +22,6 @@
 
 /// Inline block
 @mixin inline-block {
-    display: -moz-inline-stack;
     display: inline-block;
     zoom: 1;
     *display: inline;
@@ -55,8 +54,6 @@
 ///
 /// @param {string} $sizing
 @mixin box-sizing($sizing) {
-    -webkit-box-sizing: $sizing;
-    -moz-box-sizing: $sizing;
     box-sizing: $sizing;
 
     *,
@@ -64,44 +61,8 @@
     *::after,
     &::before,
     &::after, {
-        -webkit-box-sizing: inherit;
-        -moz-box-sizing: inherit;
         box-sizing: inherit;
     }
-}
-
-/// Border Radius
-///
-/// @param {number} $radius
-@mixin border-radius($radius) {
-    -moz-border-radius: $radius;
-    -webkit-border-radius: $radius;
-    -ms-border-radius: $radius;
-    -o-border-radius: $radius;
-    border-radius: $radius;
-}
-
-/// Word Wrap
-///
-/// @param {string} $wrap
-@mixin word-wrap($wrap) {
-    -ms-word-wrap: $wrap;
-    word-wrap: $wrap;
-}
-
-/// Text Size Adjust
-///
-/// @param {string} $adjust
-@mixin text-size-adjust($adjust) {
-    -webkit-text-size-adjust: $adjust;
-}
-
-/// Float
-///
-/// @param {string} $direction
-@mixin float($direction) {
-    float: $direction;
-    display: inline;
 }
 
 /// Paragraph
@@ -184,81 +145,36 @@
     word-wrap: normal !important;
 }
 
-/// Opacity
-///
-/// @param {number} $opacity
-///
-/// @since 0.1.8
-@mixin opacity($opacity) {
-    -ms-filter: 'alpha(opacity=#{$opacity * 100})'; /* For IE8 and later */
-    opacity: $opacity;
-}
-
-/// Flex box
-///
-/// @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-@mixin flexbox {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-}
-
-/// Flex
-///
-/// @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-@mixin flex($values) {
-    -webkit-box-flex: $values;
-    -moz-box-flex: $values;
-    -webkit-flex: $values;
-    -ms-flex: $values;
-    flex: $values;
-}
-
-/// Flex box order
-///
-/// @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-@mixin order($val) {
-    -webkit-box-ordinal-group: $val;
-    -moz-box-ordinal-group: $val;
-    -ms-flex-order: $val;
-    -webkit-order: $val;
-    order: $val;
-}
-
 /// Grid
 ///
-/// To be included in the grids wrapper
+/// To be used in the grids wrapper
 ///
 /// @param {map} $args -
-///   'columns' {number} Number of columns
-///   'gutter' {number} Size of horizontal space between columns in `%`
+///   'width' {number} Width of each column
+///   'gutter' {number} Size of spaces between columns
 @mixin grid($args: ()) {
-    $args: map-merge((columns: 2, gutter: 2%), $args);
-    $gutter: strip-units(map-get($args, gutter)) * 1%;
-    $columns: strip-units(map-get($args, columns));
-    $width: (99.9% - ($gutter * ($columns - 1))) / $columns;
+    $args: map-merge((width: 100%, gutter: 20px), $args);
+    $width: map-get($args, width);
+    $gutter: map-get($args, gutter);
+    $half-gutter: ($gutter / 2);
 
     @include box-sizing(border-box);
-    @include flexbox;
 
+    display: flex;
     flex-wrap: wrap;
+    margin: -#{$half-gutter};
+
+    &:first-child {
+        margin-top: -#{$half-gutter};
+    }
+
+    &:last-child {
+        margin-bottom: -#{$half-gutter};
+    }
 
     > * {
-        @include flex(0 0 $width);
-
-        &,
-        &:nth-child(n) {
-            margin: $gutter 0 0 $gutter;
-        }
-
-        &:nth-child(-n + #{$columns}) {
-            margin-top: 0;
-        }
-
-        &:nth-child(#{$columns}n + 1) {
-            margin-left: 0;
-        }
+        width: $width;
+        margin: 0;
+        padding: $half-gutter;
     }
 }

@@ -3,6 +3,7 @@
 	"version": "0.10.0",
 	"description": "Query and display posts in WordPress",
 	"license": "MIT",
+  "private": true,
 	"author": {
 		"name": "GrottoPress.com",
 		"email": "info@grottopress.com",

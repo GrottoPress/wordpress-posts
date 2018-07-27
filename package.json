@@ -4,6 +4,7 @@
 	"description": "Query and display posts in WordPress",
 	"license": "MIT",
 	"private": true,
+	"homepage": "https://github.com/GrottoPress/wordpress-posts#readme",
 	"author": {
 		"name": "GrottoPress.com",
 		"email": "info@grottopress.com",
@@ -19,8 +20,11 @@
 		"@grottopress/scss": "^0.4.1"
 	},
 	"devDependencies": {
+		"css-mqpacker": "^7.0.0",
+		"cssnano": "^4.0.4",
+		"cssnano-preset-advanced": "^4.0.0",
 		"gulp": "^3.9.1",
-		"gulp-clean-css": "^3.9.4",
+		"gulp-postcss": "^7.0.1",
 		"gulp-rename": "^1.4.0",
 		"gulp-rtlcss": "^1.2.0",
 		"gulp-sass": "^3.2.1",
@@ -41,5 +45,23 @@
 	"bugs": {
 		"url": "https://github.com/GrottoPress/wordpress-posts/issues"
 	},
-	"homepage": "https://github.com/GrottoPress/wordpress-posts#readme"
+	"browserslist": [
+		"last 3 years",
+		"> 0.1%"
+	],
+	"cssnano": {
+		"preset": [
+			"advanced",
+			{
+				"autoprefixer": {
+					"add": true,
+					"remove": true
+				},
+				"zindex": false,
+				"reduceIdents": false,
+				"mergeIdents": false,
+				"discardUnused": false
+			}
+		]
+	}
 }

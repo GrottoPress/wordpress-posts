@@ -4,7 +4,7 @@
 
 .layout-grid.posts-wrap {
     > .post-wrap {
-        @include paragraph(map-get($gwpp-gutter, normal));
+        @include paragraph(map-get($gwpp-gutter, normal) * 0.8);
 
         &.big > header > .entry-title {
             font-size: 1.43em;
@@ -12,7 +12,7 @@
     }
 
     .pagination {
-        @include paragraph(map-get($gwpp-gutter, normal));
+        @include paragraph(map-get($gwpp-gutter, normal) * 0.8);
 
         text-align: center;
     }

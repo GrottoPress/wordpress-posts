@@ -30,6 +30,6 @@
 
 @media (min-width: map-get($gwpp-breakpoint, medium)) {
     .layout-grid.posts-wrap {
-        @include grid((width: 33.3333%, gutter: 20px, columns: '.post-wrap'));
+        width: 33.3333%;
 	}
 }

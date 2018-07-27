@@ -4,24 +4,32 @@
 
 .layout-grid.posts-wrap {
     > .post-wrap {
+        @include paragraph(map-get($gwpp-gutter, normal));
+
         &.big > header > .entry-title {
             font-size: 1.43em;
         }
     }
 
     .pagination {
-        @include paragraph;
+        @include paragraph(map-get($gwpp-gutter, normal));
+
+        text-align: center;
     }
 }
 
 @media (min-width: map-get($gwpp-breakpoint, small)) {
     .layout-grid.posts-wrap {
-        @include grid((gutter: 3%, columns: 2));
+        @include grid((width: 50%, gutter: 20px, columns: '.post-wrap'));
+
+        .pagination {
+            margin: 0;
+        }
 	}
 }
 
 @media (min-width: map-get($gwpp-breakpoint, medium)) {
     .layout-grid.posts-wrap {
-        @include grid((gutter: 2%, columns: 3));
+        @include grid((width: 33.3333%, gutter: 20px, columns: '.post-wrap'));
 	}
 }

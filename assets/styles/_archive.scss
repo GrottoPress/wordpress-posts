@@ -19,8 +19,8 @@
     }
 
     &.big > .post-wrap {
-        padding-bottom: 15px;
-        @include paragraph(15px);
+        padding-bottom: map-get($gwpp-gutter, normal) * 0.8;
+        @include paragraph(map-get($gwpp-gutter, normal) * 0.8);
     }
 
     &.show-content > .post-wrap {

@@ -17,7 +17,7 @@ gulp.task('styles', () =>
     gulp.src(styles_src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([cssnano(), mqpacker()]))
+        .pipe(postcss([cssnano(), mqpacker({sort: true})]))
         .pipe(rename({'suffix' : '.min'}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(styles_dest))

@@ -152,10 +152,12 @@
 /// @param {map} $args -
 ///   'width' {number} Width of each column
 ///   'gutter' {number} Size of spaces between columns
+///   'columns' {string} Selector of immediate children to be used as columns.
 @mixin grid($args: ()) {
-    $args: map-merge((width: 100%, gutter: 20px), $args);
+    $args: map-merge((width: 100%, gutter: 20px, columns: '*'), $args);
     $width: map-get($args, width);
     $gutter: map-get($args, gutter);
+    $columns: map-get($args, columns);
     $half-gutter: ($gutter / 2);
 
     @include box-sizing(border-box);
@@ -173,8 +175,13 @@
     }
 
     > * {
-        width: $width;
-        margin: 0;
+        flex: none;
         padding: $half-gutter;
+        width: 100%;
+    }
+
+    > #{$columns} {
+        margin: 0;
+        width: $width;
     }
 }

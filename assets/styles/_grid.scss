@@ -20,7 +20,11 @@
 
 @media (min-width: map-get($gwpp-breakpoint, small)) {
     .layout-grid.posts-wrap {
-        @include grid((width: 50%, gutter: 20px, columns: '.post-wrap'));
+        @include grid((
+            width: 50%,
+            gutter: (map-get($gwpp-gutter, normal) * 0.8),
+            columns: '.post-wrap',
+        ));
 
         .pagination {
             margin: 0;
@@ -30,6 +34,8 @@
 
 @media (min-width: map-get($gwpp-breakpoint, medium)) {
     .layout-grid.posts-wrap {
-        width: 33.3333%;
+        > .post-wrap {
+            width: 33.3333%;
+        }
 	}
 }

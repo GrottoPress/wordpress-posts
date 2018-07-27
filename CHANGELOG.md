@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Small breakpoint styles overriding medium breakpoint styles
 
+### Changed
+- Reduce grid posts gutter to `16px`
+
 ## 0.10.1 - 2018-07-27
 
 ### Added

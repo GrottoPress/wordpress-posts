@@ -24,22 +24,22 @@ class Post
      */
     public function time(string $context = ''): Post\Time
     {
-        return new Time($this, $context);
+        return new Post\Time($this, $context);
     }
 
     public function info(array $args): Post\Info
     {
-        return new Info($this, new Detector(), $args);
+        return new Post\Info($this, new Detector(), $args);
     }
 
     public function author(): Post\Author
     {
-        return new Author($this);
+        return new Post\Author($this);
     }
 
     public function comments(): Post\Comments
     {
-        return new Comments($this);
+        return new Post\Comments($this);
     }
 
     public function get(): WP_Post

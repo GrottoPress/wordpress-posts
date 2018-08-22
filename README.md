@@ -27,7 +27,7 @@ Use thus:
 <?php
 declare (strict_types = 1);
 
-use GrottoPress\WordPress\Posts\Posts;
+use GrottoPress\WordPress\Posts;
 
 // Instantiate Posts
 $posts = new Posts([

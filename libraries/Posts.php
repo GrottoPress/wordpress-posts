@@ -1,9 +1,8 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\WordPress\Posts;
+namespace GrottoPress\WordPress;
 
-use GrottoPress\WordPress\Post\Post;
 use GrottoPress\Getter\GetterTrait;
 
 class Posts
@@ -16,12 +15,12 @@ class Posts
     protected $args;
 
     /**
-     * @var Loop
+     * @var Posts\Loop
      */
     private $loop;
 
     /**
-     * @var Pagination
+     * @var Posts\Pagination
      */
     private $pagination;
 
@@ -29,8 +28,8 @@ class Posts
     {
         $this->setArgs($args);
 
-        $this->pagination = new Pagination($this);
-        $this->loop = new Loop($this);
+        $this->pagination = new Posts\Pagination($this);
+        $this->loop = new Posts\Loop($this);
     }
 
     protected function getArgs(): array
@@ -38,7 +37,7 @@ class Posts
         return $this->args;
     }
 
-    private function getPagination(): Pagination
+    private function getPagination(): Posts\Pagination
     {
         return $this->pagination;
     }

@@ -8,6 +8,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const postcss = require('gulp-postcss')
 const cssnano = require('cssnano')
 const mqpacker = require('css-mqpacker')
+const mqsort = require('sort-css-media-queries')
 
 const styles_src = ['./assets/styles/**/*.scss']
 const styles_dest = './dist/styles'
@@ -17,7 +18,7 @@ gulp.task('styles', () =>
     gulp.src(styles_src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([cssnano(), mqpacker({sort: true})]))
+        .pipe(postcss([mqpacker({sort: mqsort}), cssnano()]))
         .pipe(rename({'suffix' : '.min'}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(styles_dest))

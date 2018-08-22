@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
 
+use GrottoPress\WordPress\Posts;
 use GrottoPress\Getter\GetterTrait;
 use WP_Query;
 

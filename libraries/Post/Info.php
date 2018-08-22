@@ -3,7 +3,7 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Post;
 
-use GrottoPress\WordPress\Post\Post;
+use GrottoPress\WordPress\Post;
 use GrottoPress\Mobile\Detector;
 
 class Info

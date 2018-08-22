@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace GrottoPress\WordPress\Post;
+namespace GrottoPress\WordPress;
 
 use GrottoPress\Mobile\Detector;
 use WP_Post;
@@ -22,22 +22,22 @@ class Post
     /**
      * @param string $context 'published' or 'updated'
      */
-    public function time(string $context = ''): Time
+    public function time(string $context = ''): Post\Time
     {
         return new Time($this, $context);
     }
 
-    public function info(array $args): Info
+    public function info(array $args): Post\Info
     {
         return new Info($this, new Detector(), $args);
     }
 
-    public function author(): Author
+    public function author(): Post\Author
     {
         return new Author($this);
     }
 
-    public function comments(): Comments
+    public function comments(): Post\Comments
     {
         return new Comments($this);
     }

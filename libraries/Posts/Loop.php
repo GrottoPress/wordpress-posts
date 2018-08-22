@@ -3,7 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Posts;
 
-use GrottoPress\WordPress\Post\Post;
+use GrottoPress\WordPress\Posts;
+use GrottoPress\WordPress\Post;
 use WP_Query;
 
 class Loop
@@ -26,7 +27,7 @@ class Loop
             return $out;
         }
 
-        $query = new WP_Query($this->posts->args['wp_query']);
+        $query = $this->WPQuery($this->posts->args['wp_query']);
 
         /**
          * @action grotto_query_posts_loop_before
@@ -428,5 +429,13 @@ class Loop
     private function post(int $id = 0): Post
     {
         return new Post($id);
+    }
+
+    /**
+     * @param mixed[string]
+     */
+    private function WPQuery(array $args): WP_Query
+    {
+        return new WP_Query($args);
     }
 }

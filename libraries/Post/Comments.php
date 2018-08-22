@@ -3,6 +3,8 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress\Post;
 
+use GrottoPress\WordPress\Post;
+
 class Comments
 {
     /**

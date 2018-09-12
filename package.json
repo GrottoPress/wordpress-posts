@@ -1,6 +1,6 @@
 {
 	"name": "@grottopress/wordpress-posts",
-	"version": "0.11.1",
+	"version": "0.12.0",
 	"description": "Query and display posts in WordPress",
 	"license": "MIT",
 	"private": true,
@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"css-mqpacker": "^7.0.0",
-		"cssnano": "^4.0.5",
+		"cssnano": "^4.1.0",
 		"cssnano-preset-advanced": "^4.0.0",
 		"gulp": "^3.9.1",
 		"gulp-postcss": "^7.0.1",

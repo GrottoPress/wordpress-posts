@@ -50,12 +50,12 @@
   },
   "autoload": {
     "psr-4": {
-      "GrottoPress\\WordPress\\": "libraries/"
+      "GrottoPress\\WordPress\\": "lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "GrottoPress\\WordPress\\": "tests/unit/libraries/"
+      "GrottoPress\\WordPress\\": "tests/unit/lib/"
     }
   }
 }

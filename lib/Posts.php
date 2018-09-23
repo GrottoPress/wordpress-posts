@@ -333,7 +333,7 @@ class Posts
             'excerpt' => [
                 'length' => 0,
                 'paginate' => true,
-                'more_text' => \esc_html__('read more'),
+                'more_text' => \esc_html__('read more', 'grotto-wp-posts'),
                 'after' => [
                     'types' => [],
                     'separator' => '|',
@@ -364,8 +364,8 @@ class Posts
                 'key' => '',
                 'mid_size' => null,
                 'end_size' => null,
-                'prev_text' => \esc_html__('&larr; Previous'),
-                'next_text' => \esc_html__('Next &rarr;'),
+                'prev_text' => \esc_html__('&larr; Previous', 'grotto-wp-posts'),
+                'next_text' => \esc_html__('Next &rarr;', 'grotto-wp-posts'),
             ],
             'wp_query' => [],
         ];

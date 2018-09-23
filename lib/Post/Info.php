@@ -190,7 +190,7 @@ class Info
         }
 
         return '<span class="category-links"><span class="meta-title">'.
-            \esc_html__('Categories:').
+            \esc_html__('Categories:', 'grotto-wp-posts').
         '</span> <span itemprop="articleSection">'.
             \get_the_category_list(', ', '', $this->post->get()->ID).
         '</span></span>';
@@ -207,7 +207,7 @@ class Info
 
         return \get_the_tag_list(
             '<span class="tag-links"><span class="meta-title">'.
-                \esc_html__('Tags: ').'</span> <span itemprop="keywords">',
+                \esc_html__('Tags: ', 'grotto-wp-posts').'</span> <span itemprop="keywords">',
             ', ',
             '</span></span>',
             $this->post->get()->ID
@@ -228,7 +228,7 @@ class Info
 
         return '<a class="edit-post-link" href="'.
             \get_edit_post_link($this->post->get()->ID).
-            '"  itemprop="url">'.\esc_html__('Edit').'</a>';
+            '"  itemprop="url">'.\esc_html__('Edit', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -245,11 +245,11 @@ class Info
 
         return '<a class="delete-post-link" onclick="return confirm(\''.
             \sprintf(
-                \esc_html__('Delete %s?'),
+                \esc_html__('Delete %s?', 'grotto-wp-posts'),
                 \esc_attr(\get_the_title($this->post->get()))
             ).
             '\')" href="'.\esc_attr(\get_delete_post_link($this->post->get()->ID)).
-            '"  itemprop="url">'.\esc_html__('Delete').'</a>';
+            '"  itemprop="url">'.\esc_html__('Delete', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -321,7 +321,7 @@ class Info
         return '<a class="facebook-link social-link share-link" rel="external nofollow noopener" href="https://www.facebook.com/sharer/sharer.php?u='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&display=popup" target="_blank" itemprop="url"><i class="fab fa-facebook fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Share').'</a>';
+            \esc_html__('Share', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -340,7 +340,7 @@ class Info
             '?text='.\urlencode_deep(\get_the_title($this->post->get())).
             '&url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             $via.'" target="_blank" itemprop="url"><i class="fab fa-twitter fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Tweet').'</a>';
+            \esc_html__('Tweet', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -351,7 +351,7 @@ class Info
         return '<a class="googleplus-link social-link share-link" rel="external nofollow noopener" href="https://plus.google.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fab fa-google-plus fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Google+').'</a>';
+            \esc_html__('Google+', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -364,7 +364,7 @@ class Info
             '&media='.\urlencode_deep(\wp_get_attachment_url(\get_post_thumbnail_id($this->post->get()))).
             '&description='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fab fa-pinterest fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Pin').'</a>';
+            \esc_html__('Pin', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -376,7 +376,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fab fa-linkedin fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('LinkedIn').'</a>';
+            \esc_html__('LinkedIn', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -388,7 +388,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fas fa-share fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Buffer').'</a>';
+            \esc_html__('Buffer', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -400,7 +400,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fab fa-digg fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Digg').'</a>';
+            \esc_html__('Digg', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -413,7 +413,7 @@ class Info
         '&title='.\urlencode_deep(\get_the_title($this->post->get())).
         '&caption='.\urlencode_deep(\get_the_excerpt($this->post->get())).
         '" target="_blank" itemprop="url"><i class="fab fa-tumblr fa-sm" aria-hidden="true"></i> '.
-        \esc_html__('Tumblr').'</a>';
+        \esc_html__('Tumblr', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -425,7 +425,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
             '" target="_blank" itemprop="url"><i class="fab fa-reddit fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Reddit').'</a>';
+            \esc_html__('Reddit', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -435,7 +435,7 @@ class Info
      */
     // protected function render_delicious_link(): string
     // {
-    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fab fa-delicious fa-sm" aria-hidden="true"></i> '.\esc_html__('Delicious').'</a>';
+    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fab fa-delicious fa-sm" aria-hidden="true"></i> '.\esc_html__('Delicious', 'grotto-wp-posts').'</a>';
     // }
 
     /**
@@ -448,7 +448,7 @@ class Info
         '&n='.\urlencode_deep(\get_the_title($this->post->get())).
         '&t='.\urlencode_deep(\get_the_excerpt($this->post->get())).
         '" target="_blank" itemprop="url"><i class="fab fa-blogger fa-sm" aria-hidden="true"></i> '.
-        \esc_html__('Blogger').'</a>';
+        \esc_html__('Blogger', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -459,7 +459,7 @@ class Info
         return '<a class="pocket-link social-link share-link" rel="external nofollow noopener" href="https://getpocket.com/save?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fab fa-get-pocket fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Pocket').'</a>';
+            \esc_html__('Pocket', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -470,7 +470,7 @@ class Info
         return '<a class="skype-link social-link share-link" rel="external nofollow noopener" href="https://web.skype.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fab fa-skype fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Skype').'</a>';
+            \esc_html__('Skype', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -485,7 +485,7 @@ class Info
         return '<a class="viber-link social-link share-link" rel="external nofollow" href="viber://forward?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" itemprop="url"><i class="fab fa-viber fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Viber').'</a>';
+            \esc_html__('Viber', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -500,7 +500,7 @@ class Info
         return '<a class="whatsapp-link social-link share-link" rel="external nofollow" href="whatsapp://send?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" itemprop="url"><i class="fab fa-whatsapp fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('WhatsApp').'</a>';
+            \esc_html__('WhatsApp', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -516,7 +516,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
             '" itemprop="url"><i class="fab fa-telegram fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Telegram').'</a>';
+            \esc_html__('Telegram', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -527,7 +527,7 @@ class Info
         return '<a class="vk-link social-link share-link" rel="external nofollow noopener" href="https://vk.com/share.php?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '" target="_blank" itemprop="url"><i class="fab fa-vk fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('VK').'</a>';
+            \esc_html__('VK', 'grotto-wp-posts').'</a>';
     }
 
     /**

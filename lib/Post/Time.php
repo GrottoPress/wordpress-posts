@@ -88,13 +88,13 @@ class Time
                 \current_time('timestamp')
             )) { // If same day
                 return \sprintf(
-                    \esc_html__('Today %s'),
+                    \esc_html__('Today %s', 'grotto-wp-posts'),
                     \date(\get_option('time_format'), $this->timestamp)
                 );
             }
 
             return \sprintf(
-                \esc_html__('Yesterday %s'),
+                \esc_html__('Yesterday %s', 'grotto-wp-posts'),
                 \date(\get_option('time_format'), $this->timestamp)
             );
         }
@@ -114,7 +114,7 @@ class Time
     private function render_difference(): string
     {
         if (($period = $this->secondsSince()) < 60) {
-            return \esc_html__('Few seconds ago');
+            return \esc_html__('Few seconds ago', 'grotto-wp-posts');
         }
 
         if (($period = $this->minutesSince()) < 60) {
@@ -165,7 +165,7 @@ class Time
     private function render_mixed(): string
     {
         if (($period = $this->secondsSince()) < 60) {
-            return \esc_html__('Few seconds ago');
+            return \esc_html__('Few seconds ago', 'grotto-wp-posts');
         }
 
         if (($period = $this->minutesSince()) < 60) {

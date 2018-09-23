@@ -62,7 +62,7 @@ class Comments
     {
         return \apply_filters(
             'grotto_wp_post_no_comments_text',
-            \esc_html__('Leave a comment'),
+            \esc_html__('Leave a comment', 'grotto-wp-posts'),
             $this->count()
         );
     }
@@ -72,7 +72,7 @@ class Comments
         return \apply_filters(
             'grotto_wp_post_one_comment_text',
             \sprintf(
-                \esc_html__('%s comment'),
+                \esc_html__('%s comment', 'grotto-wp-posts'),
                 '<span class="comments-number" itemprop="commentCount">1</span>'
             ),
             $this->count()
@@ -84,7 +84,7 @@ class Comments
         return \apply_filters(
             'grotto_wp_post_more_comments_text',
             \sprintf(
-                \esc_html__('%s comments'),
+                \esc_html__('%s comments', 'grotto-wp-posts'),
                 '<span class="comments-number" itemprop="commentCount">'.\number_format_i18n($this->count()).
                     '</span>'
             ),
@@ -96,7 +96,7 @@ class Comments
     {
         return \apply_filters(
             'grotto_wp_post_more_comments_text',
-            \esc_html__('Comments closed'),
+            \esc_html__('Comments closed', 'grotto-wp-posts'),
             $this->count()
         );
     }

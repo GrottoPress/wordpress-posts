@@ -124,7 +124,7 @@ class Post
         if ($paging && $content && $more) {
             $content .= \wp_link_pages([
                 'before' => '<nav class="page-links pagination">'
-                   .\esc_html__('Pages: '),
+                   .\esc_html__('Pages: ', 'grotto-wp-posts'),
                 'after' => '</nav>',
                 'echo' => 0,
             ]);

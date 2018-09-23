@@ -119,42 +119,72 @@ class Time
 
         if (($period = $this->minutesSince()) < 60) {
             return \sprintf(
-                \esc_html(\_n('1 minute ago', '%s minutes ago', $period)),
+                \esc_html(\_n(
+                    '1 minute ago',
+                    '%s minutes ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->hoursSince()) < 24) {
             return \sprintf(
-                \esc_html(\_n('1 hour ago', '%s hours ago', $period)),
+                \esc_html(\_n(
+                    '1 hour ago',
+                    '%s hours ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->daysSince()) < 7) {
             return \sprintf(
-                \esc_html(\_n('1 day ago', '%s days ago', $period)),
+                \esc_html(\_n(
+                    '1 day ago',
+                    '%s days ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->weeksSince()) < 4) {
             return \sprintf(
-                \esc_html(\_n('1 week ago', '%s weeks ago', $period)),
+                \esc_html(\_n(
+                    '1 week ago',
+                    '%s weeks ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->monthsSince()) < 12) {
             return \sprintf(
-                \esc_html(\_n('1 month ago', '%s months ago', $period)),
+                \esc_html(\_n(
+                    '1 month ago',
+                    '%s months ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         $period = $this->yearsSince();
         return sprintf(
-            \esc_html(\_n('1 year ago', '%s years ago', $period)),
+            \esc_html(\_n(
+                '1 year ago',
+                '%s years ago',
+                $period,
+                'grotto-wp-posts'
+            )),
             \number_format_i18n($period)
         );
     }
@@ -170,35 +200,60 @@ class Time
 
         if (($period = $this->minutesSince()) < 60) {
             return \sprintf(
-                \esc_html(\_n('1 minute ago', '%s minutes ago', $period)),
+                \esc_html(\_n(
+                    '1 minute ago',
+                    '%s minutes ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->hoursSince()) < 24) {
             return \sprintf(
-                \esc_html(\_n('1 hour ago', '%s hours ago', $period)),
+                \esc_html(\_n(
+                    '1 hour ago',
+                    '%s hours ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->daysSince()) < 7) {
             return \sprintf(
-                \esc_html(\_n('1 day ago', '%s days ago', $period)),
+                \esc_html(\_n(
+                    '1 day ago',
+                    '%s days ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->weeksSince()) < 4) {
             return \sprintf(
-                \esc_html(\_n('1 week ago', '%s weeks ago', $period)),
+                \esc_html(\_n(
+                    '1 week ago',
+                    '%s weeks ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }
 
         if (($period = $this->monthsSince()) < 4) {
             return \sprintf(
-                \esc_html(\_n('1 month ago', '%s months ago', $period)),
+                \esc_html(\_n(
+                    '1 month ago',
+                    '%s months ago',
+                    $period,
+                    'grotto-wp-posts'
+                )),
                 \number_format_i18n($period)
             );
         }

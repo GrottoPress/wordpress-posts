@@ -37,8 +37,8 @@
       "npm run build"
     ],
     "post-install-cmd": [
-      "npm install",
       "chmod +x ./bin/*",
+      "npm install",
       "npm run build"
     ],
     "test": [
@@ -50,7 +50,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GrottoPress\\WordPress\\": "lib/"
+      "GrottoPress\\WordPress\\": "src/lib/"
     }
   },
   "autoload-dev": {

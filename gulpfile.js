@@ -10,9 +10,9 @@ const cssnano = require('cssnano')
 const mqpacker = require('css-mqpacker')
 const mqsort = require('sort-css-media-queries')
 
-const styles_src = ['./assets/styles/**/*.scss']
+const styles_src = ['./src/assets/styles/**/*.scss']
 const styles_dest = './dist/styles'
-const vendor_assets = './assets/vendor'
+const vendor_assets = './src/assets/vendor'
 
 gulp.task('styles', () =>
     gulp.src(styles_src)

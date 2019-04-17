@@ -1,212 +1,177 @@
-# Copyright (C) 2018 WordPress Posts
-# This file is distributed under the same license as the WordPress Posts package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress Posts\n"
-"Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2018-09-22 23:59:23+00:00\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2019-04-17T20:46:27+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.1.0\n"
+"X-Domain: grotto-wp-posts\n"
 
-#: lib/Post/Comments.php:65
+#: Post/Comments.php:65
 msgid "Leave a comment"
 msgstr ""
 
-#: lib/Post/Comments.php:75
+#: Post/Comments.php:75
 msgid "%s comment"
 msgstr ""
 
-#: lib/Post/Comments.php:87
+#: Post/Comments.php:87
 msgid "%s comments"
 msgstr ""
 
-#: lib/Post/Comments.php:99
+#: Post/Comments.php:99
 msgid "Comments closed"
 msgstr ""
 
-#: lib/Post/Info.php:193
+#: Post/Info.php:193
 msgid "Categories:"
 msgstr ""
 
-#: lib/Post/Info.php:210
+#: Post/Info.php:210
 msgid "Tags: "
 msgstr ""
 
-#: lib/Post/Info.php:231
+#: Post/Info.php:231
 msgid "Edit"
 msgstr ""
 
-#: lib/Post/Info.php:248
+#: Post/Info.php:248
 msgid "Delete %s?"
 msgstr ""
 
-#: lib/Post/Info.php:252
+#: Post/Info.php:252
 msgid "Delete"
 msgstr ""
 
-#: lib/Post/Info.php:324
+#: Post/Info.php:324
 msgid "Share"
 msgstr ""
 
-#: lib/Post/Info.php:343
+#: Post/Info.php:343
 msgid "Tweet"
 msgstr ""
 
-#: lib/Post/Info.php:354
+#: Post/Info.php:354
 msgid "Google+"
 msgstr ""
 
-#: lib/Post/Info.php:367
+#: Post/Info.php:367
 msgid "Pin"
 msgstr ""
 
-#: lib/Post/Info.php:379
+#: Post/Info.php:379
 msgid "LinkedIn"
 msgstr ""
 
-#: lib/Post/Info.php:391
+#: Post/Info.php:391
 msgid "Buffer"
 msgstr ""
 
-#: lib/Post/Info.php:403
+#: Post/Info.php:403
 msgid "Digg"
 msgstr ""
 
-#: lib/Post/Info.php:416
+#: Post/Info.php:416
 msgid "Tumblr"
 msgstr ""
 
-#: lib/Post/Info.php:428
+#: Post/Info.php:428
 msgid "Reddit"
 msgstr ""
 
-#: lib/Post/Info.php:451
+#: Post/Info.php:451
 msgid "Blogger"
 msgstr ""
 
-#: lib/Post/Info.php:462
+#: Post/Info.php:462
 msgid "Pocket"
 msgstr ""
 
-#: lib/Post/Info.php:473
+#: Post/Info.php:473
 msgid "Skype"
 msgstr ""
 
-#: lib/Post/Info.php:488
+#: Post/Info.php:488
 msgid "Viber"
 msgstr ""
 
-#: lib/Post/Info.php:503
+#: Post/Info.php:503
 msgid "WhatsApp"
 msgstr ""
 
-#: lib/Post/Info.php:519
+#: Post/Info.php:519
 msgid "Telegram"
 msgstr ""
 
-#: lib/Post/Info.php:530
+#: Post/Info.php:530
 msgid "VK"
 msgstr ""
 
-#: lib/Post/Time.php:91
+#: Post/Time.php:91
 msgid "Today %s"
 msgstr ""
 
-#: lib/Post/Time.php:97
+#: Post/Time.php:97
 msgid "Yesterday %s"
 msgstr ""
 
-#: lib/Post/Time.php:117 lib/Post/Time.php:168
+#: Post/Time.php:117
+#: Post/Time.php:198
 msgid "Few seconds ago"
 msgstr ""
 
-#: lib/Post/Time.php:122 lib/Post/Time.php:173
+#: Post/Time.php:122
+#: Post/Time.php:203
 msgid "1 minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] ""
-msgstr[1] ""
 
-#: lib/Post/Time.php:129 lib/Post/Time.php:180
+#: Post/Time.php:134
+#: Post/Time.php:215
 msgid "1 hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] ""
-msgstr[1] ""
 
-#: lib/Post/Time.php:136 lib/Post/Time.php:187
+#: Post/Time.php:146
+#: Post/Time.php:227
 msgid "1 day ago"
 msgid_plural "%s days ago"
 msgstr[0] ""
-msgstr[1] ""
 
-#: lib/Post/Time.php:143 lib/Post/Time.php:194
+#: Post/Time.php:158
+#: Post/Time.php:239
 msgid "1 week ago"
 msgid_plural "%s weeks ago"
 msgstr[0] ""
-msgstr[1] ""
 
-#: lib/Post/Time.php:150 lib/Post/Time.php:201
+#: Post/Time.php:170
+#: Post/Time.php:251
 msgid "1 month ago"
 msgid_plural "%s months ago"
 msgstr[0] ""
-msgstr[1] ""
 
-#: lib/Post/Time.php:157
+#: Post/Time.php:182
 msgid "1 year ago"
 msgid_plural "%s years ago"
 msgstr[0] ""
-msgstr[1] ""
 
-#: lib/Post.php:127
-msgid "Pages: "
-msgstr ""
-
-#: lib/Posts.php:336
+#: Posts.php:336
 msgid "read more"
 msgstr ""
 
-#: lib/Posts.php:367
+#: Posts.php:367
 msgid "&larr; Previous"
 msgstr ""
 
-#: lib/Posts.php:368
+#: Posts.php:368
 msgid "Next &rarr;"
 msgstr ""
 
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:53
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:162
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:220
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:230
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:234
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:242
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:246
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:258
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:270
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:275
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:316
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:324
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:354
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:364
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:372
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:392
-msgid "foo"
-msgstr ""
-
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:159
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:171
-msgid "some"
-msgstr ""
-
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:174
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:182
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:185
-msgid "lorem ipsum"
-msgstr ""
-
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:332
-#: vendor/lucatume/args/tests/unit/ArgsTest.php:342
-msgid "23"
+#: Post.php:127
+msgid "Pages: "
 msgstr ""

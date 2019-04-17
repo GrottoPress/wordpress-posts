@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-17T20:46:27+00:00\n"
+"POT-Creation-Date: 2019-04-17T21:03:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: grotto-wp-posts\n"
@@ -48,67 +48,63 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: Post/Info.php:324
+#: Post/Info.php:302
 msgid "Share"
 msgstr ""
 
-#: Post/Info.php:343
+#: Post/Info.php:321
 msgid "Tweet"
 msgstr ""
 
-#: Post/Info.php:354
-msgid "Google+"
-msgstr ""
-
-#: Post/Info.php:367
+#: Post/Info.php:334
 msgid "Pin"
 msgstr ""
 
-#: Post/Info.php:379
+#: Post/Info.php:346
 msgid "LinkedIn"
 msgstr ""
 
-#: Post/Info.php:391
+#: Post/Info.php:358
 msgid "Buffer"
 msgstr ""
 
-#: Post/Info.php:403
+#: Post/Info.php:370
 msgid "Digg"
 msgstr ""
 
-#: Post/Info.php:416
+#: Post/Info.php:383
 msgid "Tumblr"
 msgstr ""
 
-#: Post/Info.php:428
+#: Post/Info.php:395
 msgid "Reddit"
 msgstr ""
 
-#: Post/Info.php:451
+#: Post/Info.php:418
 msgid "Blogger"
 msgstr ""
 
-#: Post/Info.php:462
+#: Post/Info.php:429
 msgid "Pocket"
 msgstr ""
 
-#: Post/Info.php:473
+#: Post/Info.php:440
 msgid "Skype"
 msgstr ""
 
-#: Post/Info.php:488
+#: Post/Info.php:455
 msgid "Viber"
 msgstr ""
 
-#: Post/Info.php:503
+#: Post/Info.php:470
 msgid "WhatsApp"
 msgstr ""
 
-#: Post/Info.php:519
+#: Post/Info.php:486
 msgid "Telegram"
 msgstr ""
 
-#: Post/Info.php:530
+#: Post/Info.php:497
 msgid "VK"
 msgstr ""
 

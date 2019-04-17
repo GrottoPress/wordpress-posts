@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Update gulp to version 4
 
+### Removed
+- Remove support for [Google+](https://blog.google/technology/safety-security/project-strobe/)
+
 ## 0.13.0 - 2018-10-06
 
 ### Changed

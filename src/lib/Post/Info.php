@@ -275,28 +275,6 @@ class Info
     }
 
     /**
-     * Called if $type === 'plusone_button'
-     */
-    protected function render_plusone_button(): string
-    {
-        \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
-
-        return '<div class="plusone" data-size="medium" data-href="'.
-            \wp_get_shortlink($this->post->get()->ID).'"></div>';
-    }
-
-    /**
-     * Called if $type === 'googleshare_button'
-     */
-    protected function render_googleshare_button(): string
-    {
-        \wp_enqueue_script('plusone', 'https://apis.google.com/js/platform.js');
-
-        return '<div class="g-plus" data-action="share" data-size="medium" data-href="'.
-            \wp_get_shortlink($this->post->get()->ID).'"></div>';
-    }
-
-    /**
      * Called if $type === 'sharethis_button'
      */
     protected function render_sharethis_button(): string
@@ -341,17 +319,6 @@ class Info
             '&url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             $via.'" target="_blank" itemprop="url"><i class="fab fa-twitter fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Tweet', 'grotto-wp-posts').'</a>';
-    }
-
-    /**
-     * Called if $type === 'googleplus_link'
-     */
-    protected function render_googleplus_link(): string
-    {
-        return '<a class="googleplus-link social-link share-link" rel="external nofollow noopener" href="https://plus.google.com/share?url='.
-            \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fab fa-google-plus fa-sm" aria-hidden="true"></i> '.
-            \esc_html__('Google+', 'grotto-wp-posts').'</a>';
     }
 
     /**

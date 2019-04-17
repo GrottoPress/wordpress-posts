@@ -11,6 +11,7 @@ const postcss = require('gulp-postcss')
 const cssnano = require('cssnano')
 const mqpacker = require('css-mqpacker')
 const mqsort = require('sort-css-media-queries')
+const shell = require('shelljs')
 
 const paths = {
     styles: {
@@ -59,6 +60,14 @@ function _watch(done)
     done()
 }
 
+function _clean(done)
+{
+    shell.rm('-rf', paths.styles.dest, paths.vendor.dest.assets)
+
+    done()
+}
+
+exports.clean = _clean
 exports.styles = _styles
 exports.vendor = _vendor
 exports.watch = _watch

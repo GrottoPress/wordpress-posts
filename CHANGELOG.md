@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Add PHP 7.3 to travis-ci build matrix
+- Add `.gitattributes`
 
 ## 0.13.0 - 2018-10-06
 

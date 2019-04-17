@@ -46,7 +46,7 @@ $posts = new Posts([
         'position' => 'top' // either 'top' or 'side' of image
         'tag' => 'h1', // 'h2' by default,
         'before' => [
-            'types' => ['share_link', 'tweet_link', 'googleplus_link'],
+            'types' => ['share_link', 'tweet_link'],
         ],
         'after' => [
             'types' => ['author_name', 'published_date', 'comments_link'],
@@ -140,12 +140,9 @@ The following are possible values you may supply to `$args['title']['before']['t
 - `edit_link`
 - `delete_link`
 - `tweet_button`
-- `plusone_button`
-- `googleshare_button`
 - `sharethis_button`
 - `share_link`
 - `tweet_link`
-- `googleplus_link`
 - `pin_link`
 - `linkedin_link`
 - `buffer_link`

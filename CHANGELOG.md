@@ -1,8 +1,22 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## 0.14.0 - 2019-04-17
+
+### Added
+- Add PHP 7.3 to travis-ci build matrix
+- Add `.gitattributes`
+- Set up [WP-CLI](https://packagist.org/packages/wp-cli/wp-cli-bundle)
+
+### Changed
+- Update gulp to version 4
+
+### Removed
+- Remove support for [Google+](https://blog.google/technology/safety-security/project-strobe/)
 
 ## 0.13.0 - 2018-10-06
 

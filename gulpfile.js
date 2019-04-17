@@ -60,6 +60,13 @@ function _watch(done)
     done()
 }
 
+function _chmod(done)
+{
+    shell.chmod('-R', 'a+x', './bin', './vendor/bin', './node_modules/.bin')
+
+    done()
+}
+
 function _clean(done)
 {
     shell.rm('-rf', paths.styles.dest, paths.vendor.dest.assets)
@@ -67,6 +74,7 @@ function _clean(done)
     done()
 }
 
+exports.chmod = _chmod
 exports.clean = _clean
 exports.styles = _styles
 exports.vendor = _vendor

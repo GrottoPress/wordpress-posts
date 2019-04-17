@@ -1,10 +1,8 @@
 /** export-ignore
 /dist -export-ignore
 /dist/** -export-ignore
-/src/lang -export-ignore
-/src/lang/** -export-ignore
-/src/lib -export-ignore
-/src/lib/** -export-ignore
+/src -export-ignore
+/src/** -export-ignore
 /.security.txt -export-ignore
 /composer.json -export-ignore
 /composer.lock -export-ignore

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add PHP 7.3 to travis-ci build matrix
 - Add `.gitattributes`
+- Set up [WP-CLI](https://packagist.org/packages/wp-cli/wp-cli-bundle)
 
 ### Changed
 - Update gulp to version 4

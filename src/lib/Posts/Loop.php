@@ -185,13 +185,13 @@ class Loop
 
         $out .= '<'.($title_tag = \sanitize_key(
             $this->posts->args['title']['tag']
-        )).' class="entry-title" itemprop="name headline">';
+        )).' class="entry-title">';
 
         $anchor_title = ($title_words > 0)
             ? ' title="'.\esc_attr(\wp_strip_all_tags($title, true)).'" ' : '';
 
         if ($title_link = $this->posts->args['title']['link']) {
-            $out .= '<a itemprop="url" href="'.\get_permalink($post->get()).
+            $out .= '<a href="'.\get_permalink($post->get()).
                 '" '. $anchor_title.' rel="bookmark">';
         }
 
@@ -235,7 +235,7 @@ class Loop
         }
 
         $out .= '<div '.$this->textOffset($post).
-            ' class="entry-summary" itemprop="description">';
+            ' class="entry-summary">';
         $out .= $excerpt;
         $out .= '</div><!-- .entry-summary -->';
 
@@ -263,7 +263,7 @@ class Loop
             return $out;
         }
 
-        $out .= '<div class="entry-content" itemprop="articleBody">';
+        $out .= '<div class="entry-content">';
         $out .= $content;
         $out .= '</div><!-- .entry-content -->';
 
@@ -283,7 +283,7 @@ class Loop
 
         $out .= '<article data-post-id="'.\absint($post->get()->ID).
             '" class="'.\esc_attr($this->postClass($post, $count)).
-            '" itemscope itemtype="http://schema.org/Article">';
+            '">';
 
         return $out;
     }

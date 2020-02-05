@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Fix deprecation notice in codeception
 
+### Removed
+- Remove HTML microdata attributes
+
 ## 0.14.1 - 2019-04-17
 
 ### Fixed

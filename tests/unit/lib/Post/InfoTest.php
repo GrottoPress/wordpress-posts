@@ -53,7 +53,7 @@ class InfoTest extends AbstractTestCase
         ]);
 
         $sep = '<span class="meta-sep">--</span>';
-        $date = '<time class="published entry-date" itemprop="datePublished" datetime="10-10-10">10-10-10</time>';
+        $date = '<time class="published entry-date" datetime="10-10-10">10-10-10</time>';
 
         $this->assertSame(
             "avatar {$sep} Filter hook applied {$sep} {$date}",

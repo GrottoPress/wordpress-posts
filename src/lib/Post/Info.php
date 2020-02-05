@@ -134,9 +134,17 @@ class Info
      */
     protected function render_updated_date(): string
     {
-        return '<time class="updated entry-date" itemprop="dateModified" datetime="'
-            .\esc_attr(\get_the_modified_time('Y-m-d\TH:i:sO', '', $this->post->get())).'">'
-            .\get_the_modified_time(\get_option('date_format'), '', $this->post->get())
+        return '<time class="updated entry-date" datetime="'.
+            \esc_attr(\get_the_modified_time(
+                'Y-m-d\TH:i:sO',
+                '',
+                $this->post->get()
+            )).'">'
+            .\get_the_modified_time(
+                \get_option('date_format'),
+                '',
+                $this->post->get()
+            )
         .'</time>';
     }
 
@@ -145,7 +153,7 @@ class Info
      */
     protected function render_updated_time(): string
     {
-        return '<time class="updated entry-date" itemprop="dateModified" datetime="'
+        return '<time class="updated entry-date" datetime="'
             .\esc_attr(\get_the_modified_time(
                 'Y-m-d\TH:i:sO',
                 '',
@@ -163,7 +171,7 @@ class Info
      */
     protected function render_published_date(): string
     {
-        return '<time class="published entry-date" itemprop="datePublished" datetime="'.
+        return '<time class="published entry-date" datetime="'.
            \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->get())).'">'.
            \get_the_date(\get_option('date_format'), $this->post->get()).
         '</time>';
@@ -174,7 +182,7 @@ class Info
      */
     protected function render_published_time(): string
     {
-        return '<time class="published entry-date" itemprop="datePublished" datetime="'.
+        return '<time class="published entry-date" datetime="'.
            \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->get())).'">'.
            \get_the_time(\get_option('time_format'), $this->post->get()).
         '</time>';
@@ -189,11 +197,12 @@ class Info
             return '';
         }
 
-        return '<span class="category-links"><span class="meta-title">'.
-            \esc_html__('Categories:', 'grotto-wp-posts').
-        '</span> <span itemprop="articleSection">'.
+        return '<span class="category-links">
+            <span class="meta-title">'.
+                \esc_html__('Categories:', 'grotto-wp-posts').
+            '</span> '.
             \get_the_category_list(', ', '', $this->post->get()->ID).
-        '</span></span>';
+        '</span>';
     }
 
     /**
@@ -206,10 +215,12 @@ class Info
         }
 
         return \get_the_tag_list(
-            '<span class="tag-links"><span class="meta-title">'.
-                \esc_html__('Tags: ', 'grotto-wp-posts').'</span> <span itemprop="keywords">',
+            '<span class="tag-links">
+                <span class="meta-title">'.
+                    \esc_html__('Tags: ', 'grotto-wp-posts').
+                '</span> ',
             ', ',
-            '</span></span>',
+            '</span>',
             $this->post->get()->ID
         );
     }
@@ -228,7 +239,7 @@ class Info
 
         return '<a class="edit-post-link" href="'.
             \get_edit_post_link($this->post->get()->ID).
-            '"  itemprop="url">'.\esc_html__('Edit', 'grotto-wp-posts').'</a>';
+        '">'.\esc_html__('Edit', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -243,13 +254,13 @@ class Info
             return '';
         }
 
-        return '<a class="delete-post-link" onclick="return confirm(\''.
+        return '<a class="delete-post-link" onClick="return confirm(\''.
             \sprintf(
                 \esc_html__('Delete %s?', 'grotto-wp-posts'),
                 \esc_attr(\get_the_title($this->post->get()))
             ).
             '\')" href="'.\esc_attr(\get_delete_post_link($this->post->get()->ID)).
-            '"  itemprop="url">'.\esc_html__('Delete', 'grotto-wp-posts').'</a>';
+        '">'.\esc_html__('Delete', 'grotto-wp-posts').'</a>';
     }
 
     /**
@@ -298,7 +309,7 @@ class Info
     {
         return '<a class="facebook-link social-link share-link" rel="external nofollow noopener" href="https://www.facebook.com/sharer/sharer.php?u='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '&display=popup" target="_blank" itemprop="url"><i class="fab fa-facebook fa-sm" aria-hidden="true"></i> '.
+            '&display=popup" target="_blank"><i class="fab fa-facebook fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Share', 'grotto-wp-posts').'</a>';
     }
 
@@ -317,7 +328,7 @@ class Info
         return '<a class="tweet-link social-link share-link" rel="external nofollow noopener" href="https://twitter.com/intent/tweet'.
             '?text='.\urlencode_deep(\get_the_title($this->post->get())).
             '&url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            $via.'" target="_blank" itemprop="url"><i class="fab fa-twitter fa-sm" aria-hidden="true"></i> '.
+            $via.'" target="_blank"><i class="fab fa-twitter fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Tweet', 'grotto-wp-posts').'</a>';
     }
 
@@ -330,7 +341,7 @@ class Info
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&media='.\urlencode_deep(\wp_get_attachment_url(\get_post_thumbnail_id($this->post->get()))).
             '&description='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fab fa-pinterest fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-pinterest fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Pin', 'grotto-wp-posts').'</a>';
     }
 
@@ -342,7 +353,7 @@ class Info
         return '<a class="linkedin-link social-link share-link" rel="external nofollow noopener" href="https://www.linkedin.com/shareArticle?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fab fa-linkedin fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-linkedin fa-sm" aria-hidden="true"></i> '.
             \esc_html__('LinkedIn', 'grotto-wp-posts').'</a>';
     }
 
@@ -354,7 +365,7 @@ class Info
         return '<a class="buffer-link social-link share-link" rel="external nofollow noopener" href="https://buffer.com/add?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fas fa-share fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fas fa-share fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Buffer', 'grotto-wp-posts').'</a>';
     }
 
@@ -366,7 +377,7 @@ class Info
         return '<a class="digg-link social-link share-link" rel="external nofollow noopener" href="https://digg.com/submit?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fab fa-digg fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-digg fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Digg', 'grotto-wp-posts').'</a>';
     }
 
@@ -379,7 +390,7 @@ class Info
         \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
         '&title='.\urlencode_deep(\get_the_title($this->post->get())).
         '&caption='.\urlencode_deep(\get_the_excerpt($this->post->get())).
-        '" target="_blank" itemprop="url"><i class="fab fa-tumblr fa-sm" aria-hidden="true"></i> '.
+        '" target="_blank"><i class="fab fa-tumblr fa-sm" aria-hidden="true"></i> '.
         \esc_html__('Tumblr', 'grotto-wp-posts').'</a>';
     }
 
@@ -391,7 +402,7 @@ class Info
         return '<a class="reddit-link social-link share-link" rel="external nofollow noopener" href="https://reddit.com/submit?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&title='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" target="_blank" itemprop="url"><i class="fab fa-reddit fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-reddit fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Reddit', 'grotto-wp-posts').'</a>';
     }
 
@@ -402,7 +413,7 @@ class Info
      */
     // protected function render_delicious_link(): string
     // {
-    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank" itemprop="url"><i class="fab fa-delicious fa-sm" aria-hidden="true"></i> '.\esc_html__('Delicious', 'grotto-wp-posts').'</a>';
+    //     return '<a class="delicious-link social-link share-link" rel="external nofollow noopener" href="https://delicious.com/save?url='.\urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).'&title='.\urlencode_deep(\get_the_title($this->post->get())).'&v=5&provider='.\urlencode_deep(\get_bloginfo('name')).'&noui&jump=close" target="_blank"><i class="fab fa-delicious fa-sm" aria-hidden="true"></i> '.\esc_html__('Delicious', 'grotto-wp-posts').'</a>';
     // }
 
     /**
@@ -414,7 +425,7 @@ class Info
         \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
         '&n='.\urlencode_deep(\get_the_title($this->post->get())).
         '&t='.\urlencode_deep(\get_the_excerpt($this->post->get())).
-        '" target="_blank" itemprop="url"><i class="fab fa-blogger fa-sm" aria-hidden="true"></i> '.
+        '" target="_blank"><i class="fab fa-blogger fa-sm" aria-hidden="true"></i> '.
         \esc_html__('Blogger', 'grotto-wp-posts').'</a>';
     }
 
@@ -425,7 +436,7 @@ class Info
     {
         return '<a class="pocket-link social-link share-link" rel="external nofollow noopener" href="https://getpocket.com/save?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fab fa-get-pocket fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-get-pocket fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Pocket', 'grotto-wp-posts').'</a>';
     }
 
@@ -436,7 +447,7 @@ class Info
     {
         return '<a class="skype-link social-link share-link" rel="external nofollow noopener" href="https://web.skype.com/share?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fab fa-skype fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-skype fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Skype', 'grotto-wp-posts').'</a>';
     }
 
@@ -451,7 +462,7 @@ class Info
 
         return '<a class="viber-link social-link share-link" rel="external nofollow" href="viber://forward?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" itemprop="url"><i class="fab fa-viber fa-sm" aria-hidden="true"></i> '.
+            '"><i class="fab fa-viber fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Viber', 'grotto-wp-posts').'</a>';
     }
 
@@ -466,7 +477,7 @@ class Info
 
         return '<a class="whatsapp-link social-link share-link" rel="external nofollow" href="whatsapp://send?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" itemprop="url"><i class="fab fa-whatsapp fa-sm" aria-hidden="true"></i> '.
+            '"><i class="fab fa-whatsapp fa-sm" aria-hidden="true"></i> '.
             \esc_html__('WhatsApp', 'grotto-wp-posts').'</a>';
     }
 
@@ -482,7 +493,7 @@ class Info
         return '<a class="telegram-link social-link share-link" rel="external nofollow" href="tg://msg_url?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
-            '" itemprop="url"><i class="fab fa-telegram fa-sm" aria-hidden="true"></i> '.
+            '"><i class="fab fa-telegram fa-sm" aria-hidden="true"></i> '.
             \esc_html__('Telegram', 'grotto-wp-posts').'</a>';
     }
 
@@ -493,7 +504,7 @@ class Info
     {
         return '<a class="vk-link social-link share-link" rel="external nofollow noopener" href="https://vk.com/share.php?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
-            '" target="_blank" itemprop="url"><i class="fab fa-vk fa-sm" aria-hidden="true"></i> '.
+            '" target="_blank"><i class="fab fa-vk fa-sm" aria-hidden="true"></i> '.
             \esc_html__('VK', 'grotto-wp-posts').'</a>';
     }
 
@@ -504,15 +515,14 @@ class Info
      */
     protected function updatedAgo(string $format): string
     {
-        return '<time class="updated entry-date" itemprop="dateModified" datetime="'.
+        return '<time class="updated entry-date" datetime="'.
             \esc_attr(\get_the_modified_time(
                 'Y-m-d\TH:i:sO',
                 '',
                 $this->post->get()
             )).
             '">'.$this->post->time('updated')->render($format)
-        .'</time>
-        </span>';
+        .'</time>';
     }
 
     /**
@@ -522,7 +532,7 @@ class Info
      */
     protected function publishedAgo(string $format): string
     {
-        return '<time class="published entry-date" itemprop="dateModified" datetime="'.
+        return '<time class="published entry-date" datetime="'.
             \esc_attr(\get_the_date('Y-m-d\TH:i:sO', $this->post->get())).'">'.
             $this->post->time('published')->render($format).
         '</time>';

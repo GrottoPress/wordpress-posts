@@ -37,14 +37,15 @@ class Author
         }
 
         if ($url = $this->postsUrl()) {
-            $link .= '<span class="author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <a rel="author nofollow" class="url fn n" itemprop="url" href="'.\esc_attr($url).'">
-                <span itemprop="name">'.$this->meta('display_name').'</span></a>
+            $link .= '<span class="author">
+                <a rel="author nofollow" class="url" href="'.
+                    \esc_attr($url).'">'
+                .$this->meta('display_name').'</a>
             </span>';
         } else {
-            $link .= '<span class="author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">'.$this->meta('display_name').'</span>
-            </span>';
+            $link .= '<span class="author">'.
+                $this->meta('display_name').
+            '</span>';
         }
 
         if ($after) {

@@ -308,7 +308,7 @@ class Posts
     {
         /**
          * @filter grotto_wp_posts_args
-         * @var string $args
+         * @var array $args
          */
         $args = \apply_filters('grotto_wp_posts_args', $args);
 

@@ -36,7 +36,7 @@ class Comments
         }
 
         return '<a class="comments-link post-'.$this->post->get()->ID.
-            '-comments-link" itemprop="discussionUrl" href="'.
+            '-comments-link" href="'.
             \esc_attr(\get_comments_link($this->post->get())).'">'.
             $this->text().'</a>';
     }
@@ -73,7 +73,7 @@ class Comments
             'grotto_wp_post_one_comment_text',
             \sprintf(
                 \esc_html__('%s comment', 'grotto-wp-posts'),
-                '<span class="comments-number" itemprop="commentCount">1</span>'
+                '<span class="comments-number">1</span>'
             ),
             $this->count()
         );
@@ -85,8 +85,9 @@ class Comments
             'grotto_wp_post_more_comments_text',
             \sprintf(
                 \esc_html__('%s comments', 'grotto-wp-posts'),
-                '<span class="comments-number" itemprop="commentCount">'.\number_format_i18n($this->count()).
-                    '</span>'
+                '<span class="comments-number">'.
+                    \number_format_i18n($this->count()).
+                '</span>'
             ),
             $this->count()
         );

@@ -77,7 +77,7 @@ class Post
         }
 
         if ($more_text) {
-            $more_text = '<span class="ellipsis">...</span> <a class="more-link" itemprop="url" href="'.
+            $more_text = '<span class="ellipsis">...</span> <a class="more-link" href="'.
             \get_permalink($this->get()).'">'
                .\sanitize_text_field($more_text)
             .'</a>';
@@ -165,17 +165,13 @@ class Post
         }
 
         $attr['class'] = $attr['class'] ?? '';
-        $attr['itemprop'] = $attr['itemprop'] ?? '';
 
         $attr['class'] .= " thumb {$class}";
         $attr['class'] = \trim($attr['class']);
 
-        $attr['itemprop'] .= ' image';
-        $attr['itemprop'] = \trim($attr['itemprop']);
-
         if ($link) {
             $out .= '<a class="image-link post-thumb-link" href="'.
-                \get_permalink($this->get()).'" rel="bookmark" itemprop="url">';
+                \get_permalink($this->get()).'" rel="bookmark">';
         }
 
         $out .= \get_the_post_thumbnail($this->get(), $size, $attr);

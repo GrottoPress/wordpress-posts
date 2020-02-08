@@ -64,7 +64,7 @@ class Pagination
         }
 
         $out .= '<nav class="pagination '.$position.
-        '" itemprop="pagination">';
+        '">';
             $out .= $links;
         $out .= '</nav><!-- .pagination -->';
 

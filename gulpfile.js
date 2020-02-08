@@ -1,23 +1,22 @@
 'use strict'
 
-const { src, dest, watch, series } = require('gulp')
+const { dest, series, src, watch } = require('gulp')
 
-const rename = require('gulp-rename')
-const newer = require('gulp-newer')
+const cssnano = require('cssnano')
 const filter = require('gulp-filter')
+const newer = require('gulp-newer')
+const postcss = require('gulp-postcss')
+const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
 const sass = require('gulp-sass')
-const postcss = require('gulp-postcss')
-const cssnano = require('cssnano')
-const mqpacker = require('css-mqpacker')
-const mqsort = require('sort-css-media-queries')
-const shell = require('shelljs')
+const sh = require('shelljs')
 
 const paths = {
     styles: {
-        src: ['./src/assets/styles/**/*.scss'],
         dest: './dist/styles',
-        mapDest: '.'
+        mapDest: '.',
+        src: ['./src/assets/styles/*.scss'],
+        watchSrc: ['./src/assets/styles/**/*.scss']
     },
     vendor: {
         dest: {
@@ -26,12 +25,26 @@ const paths = {
     }
 }
 
+function _chmod(done)
+{
+    sh.chmod('-R', 'a+x', './bin', './vendor/bin', './node_modules/.bin')
+
+    done()
+}
+
+function _clean(done)
+{
+    sh.rm('-rf', paths.styles.dest, paths.vendor.dest.assets)
+
+    done()
+}
+
 function _styles(done)
 {
     src(paths.styles.src, {sourcemaps: true})
         .pipe(newer(paths.styles.dest))
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([mqpacker({sort: mqsort}), cssnano()]))
+        .pipe(postcss([cssnano()]))
         .pipe(rename({'suffix': '.min'}))
         .pipe(dest(paths.styles.dest, {sourcemaps: paths.styles.mapDest}))
         .pipe(filter(['**/*.css']))
@@ -55,21 +68,7 @@ function _vendor(done)
 
 function _watch(done)
 {
-    watch(paths.styles.src, {ignoreInitial: false}, _styles)
-
-    done()
-}
-
-function _chmod(done)
-{
-    shell.chmod('-R', 'a+x', './bin', './vendor/bin', './node_modules/.bin')
-
-    done()
-}
-
-function _clean(done)
-{
-    shell.rm('-rf', paths.styles.dest, paths.vendor.dest.assets)
+    watch(paths.styles.watchSrc, {ignoreInitial: false}, _styles)
 
     done()
 }

@@ -8,7 +8,7 @@ const newer = require('gulp-newer')
 const postcss = require('gulp-postcss')
 const rename = require('gulp-rename')
 const rtlcss = require('gulp-rtlcss')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('sass'))
 const sh = require('shelljs')
 
 const paths = {

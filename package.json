@@ -20,15 +20,16 @@
 		"@grottopress/scss": "^0.5.1"
 	},
 	"devDependencies": {
-		"cssnano": "^4.1.10",
-		"cssnano-preset-advanced": "^4.0.7",
+		"cssnano": "^6.0.0",
+		"cssnano-preset-advanced": "^6.0.0",
 		"gulp": "^4.0.2",
-		"gulp-filter": "^6.0.0",
+		"gulp-filter": "^7.0.0",
 		"gulp-newer": "^1.4.0",
-		"gulp-postcss": "^8.0.0",
+		"gulp-postcss": "^9.0.0",
 		"gulp-rename": "^2.0.0",
-		"gulp-rtlcss": "^1.4.0",
-		"gulp-sass": "^4.0.2",
+		"gulp-rtlcss": "^2.0.0",
+		"gulp-sass": "^5.1.0",
+		"sass": "^1.62.0",
 		"shelljs": "^0.8.3"
 	},
 	"scripts": {

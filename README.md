@@ -2,7 +2,7 @@
 
 Query and display posts in WordPress.
 
-## Usage
+## Installation
 
 Install via composer:
 
@@ -10,18 +10,7 @@ Install via composer:
 composer require grottopress/wordpress-posts
 ```
 
-You may use the styles defined in `dist/styles` in your theme (or plugin):
-
-```php
-\add_action('wp_enqueue_scripts', function () {
-    \wp_enqueue_style(
-        'wordpress-posts',
-        \get_template_directory_uri().'/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
-    );
-});
-```
-
-Use thus:
+## Usage
 
 ```php
 <?php
@@ -61,7 +50,18 @@ $posts = new Posts([
 echo $posts->render();
 ```
 
-## Arguments
+You may use the styles defined in `dist/styles` in your theme (or plugin):
+
+```php
+\add_action('wp_enqueue_scripts', function () {
+    \wp_enqueue_style(
+        'wordpress-posts',
+        \get_template_directory_uri().'/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
+    );
+});
+```
+
+### Arguments
 
 Full list of arguments, with their defaults, are as follows:
 
@@ -163,3 +163,17 @@ The following are possible values you may supply to `$args['title']['before']['t
 ## Social media icons
 
 If you would like to show icons for social links, you need to install [font awesome v5](https://fontawesome.com/).
+
+## Development
+
+Run tests with `composer run test`.
+
+## Contributing
+
+1. [Fork it](https://github.com/GrottoPress/wordpress-posts/fork)
+1. Switch to the `master` branch: `git checkout master`
+1. Create your feature branch: `git checkout -b my-new-feature`
+1. Make your changes, updating changelog and documentation as appropriate.
+1. Commit your changes: `git commit`
+1. Push to the branch: `git push origin my-new-feature`
+1. Submit a new *Pull Request* against the `GrottoPress:master` branch.

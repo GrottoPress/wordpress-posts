@@ -24,7 +24,6 @@
   },
   "require": {
     "php": ">=7.0",
-    "grottopress/mobile-detector": "^0.2",
     "grottopress/getter": "^0.4"
   },
   "require-dev": {

@@ -5,7 +5,6 @@ namespace GrottoPress\WordPress\Post;
 
 use GrottoPress\WordPress\Post;
 use GrottoPress\WordPress\Posts\AbstractTestCase;
-use GrottoPress\Mobile\Detector;
 use WP_Post;
 use Codeception\Util\Stub;
 use tad\FunctionMocker\FunctionMocker;
@@ -47,7 +46,7 @@ class InfoTest extends AbstractTestCase
                 'supported' => true,
             ]),
             'get' => $get,
-        ]), Stub::makeEmpty(Detector::class), [
+        ]), [
             'types' => ['avatar__40', 'filter_hook', 'published_date'],
             'separator' => '--',
         ]);

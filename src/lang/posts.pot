@@ -7,10 +7,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-17T21:03:00+00:00\n"
+"POT-Creation-Date: 2023-04-18T15:43:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.1.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: grotto-wp-posts\n"
+
+#: Post.php:126
+msgid "Pages: "
+msgstr ""
 
 #: Post/Comments.php:65
 msgid "Leave a comment"
@@ -24,87 +28,87 @@ msgstr ""
 msgid "%s comments"
 msgstr ""
 
-#: Post/Comments.php:99
+#: Post/Comments.php:100
 msgid "Comments closed"
 msgstr ""
 
-#: Post/Info.php:193
+#: Post/Info.php:194
 msgid "Categories:"
 msgstr ""
 
-#: Post/Info.php:210
+#: Post/Info.php:212
 msgid "Tags: "
 msgstr ""
 
-#: Post/Info.php:231
+#: Post/Info.php:234
 msgid "Edit"
 msgstr ""
 
-#: Post/Info.php:248
+#: Post/Info.php:251
 msgid "Delete %s?"
 msgstr ""
 
-#: Post/Info.php:252
+#: Post/Info.php:255
 msgid "Delete"
 msgstr ""
 
-#: Post/Info.php:302
+#: Post/Info.php:305
 msgid "Share"
 msgstr ""
 
-#: Post/Info.php:321
+#: Post/Info.php:324
 msgid "Tweet"
 msgstr ""
 
-#: Post/Info.php:334
+#: Post/Info.php:337
 msgid "Pin"
 msgstr ""
 
-#: Post/Info.php:346
+#: Post/Info.php:349
 msgid "LinkedIn"
 msgstr ""
 
-#: Post/Info.php:358
+#: Post/Info.php:361
 msgid "Buffer"
 msgstr ""
 
-#: Post/Info.php:370
+#: Post/Info.php:373
 msgid "Digg"
 msgstr ""
 
-#: Post/Info.php:383
+#: Post/Info.php:386
 msgid "Tumblr"
 msgstr ""
 
-#: Post/Info.php:395
+#: Post/Info.php:398
 msgid "Reddit"
 msgstr ""
 
-#: Post/Info.php:418
+#: Post/Info.php:421
 msgid "Blogger"
 msgstr ""
 
-#: Post/Info.php:429
+#: Post/Info.php:432
 msgid "Pocket"
 msgstr ""
 
-#: Post/Info.php:440
+#: Post/Info.php:443
 msgid "Skype"
 msgstr ""
 
-#: Post/Info.php:455
+#: Post/Info.php:454
 msgid "Viber"
 msgstr ""
 
-#: Post/Info.php:470
+#: Post/Info.php:465
 msgid "WhatsApp"
 msgstr ""
 
-#: Post/Info.php:486
+#: Post/Info.php:477
 msgid "Telegram"
 msgstr ""
 
-#: Post/Info.php:497
+#: Post/Info.php:488
 msgid "VK"
 msgstr ""
 
@@ -126,35 +130,41 @@ msgstr ""
 msgid "1 minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] ""
+msgstr[1] ""
 
 #: Post/Time.php:134
 #: Post/Time.php:215
 msgid "1 hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] ""
+msgstr[1] ""
 
 #: Post/Time.php:146
 #: Post/Time.php:227
 msgid "1 day ago"
 msgid_plural "%s days ago"
 msgstr[0] ""
+msgstr[1] ""
 
 #: Post/Time.php:158
 #: Post/Time.php:239
 msgid "1 week ago"
 msgid_plural "%s weeks ago"
 msgstr[0] ""
+msgstr[1] ""
 
 #: Post/Time.php:170
 #: Post/Time.php:251
 msgid "1 month ago"
 msgid_plural "%s months ago"
 msgstr[0] ""
+msgstr[1] ""
 
 #: Post/Time.php:182
 msgid "1 year ago"
 msgid_plural "%s years ago"
 msgstr[0] ""
+msgstr[1] ""
 
 #: Posts.php:336
 msgid "read more"
@@ -166,8 +176,4 @@ msgstr ""
 
 #: Posts.php:368
 msgid "Next &rarr;"
-msgstr ""
-
-#: Post.php:127
-msgid "Pages: "
 msgstr ""

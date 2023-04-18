@@ -4,7 +4,6 @@ declare (strict_types = 1);
 namespace GrottoPress\WordPress\Post;
 
 use GrottoPress\WordPress\Post;
-use GrottoPress\Mobile\Detector;
 
 class Info
 {
@@ -33,16 +32,9 @@ class Info
      */
     protected $after;
 
-    /**
-     * @var Detector
-     */
-    private $mobileDetector;
-
-    public function __construct(Post $post, Detector $detector, array $args)
+    public function __construct(Post $post, array $args)
     {
         $this->post = $post;
-        $this->mobileDetector = $detector;
-
         $this->setArgs($args);
         $this->sanitizeAttributes();
     }
@@ -456,10 +448,6 @@ class Info
      */
     protected function render_viber_link(): string
     {
-        if (!$this->mobileDetector->isSmart()) {
-            return '';
-        }
-
         return '<a class="viber-link social-link share-link" rel="external nofollow" href="viber://forward?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '"><i class="fab fa-viber fa-sm" aria-hidden="true"></i> '.
@@ -471,10 +459,6 @@ class Info
      */
     protected function render_whatsapp_link(): string
     {
-        if (!$this->mobileDetector->isSmart()) {
-            return '';
-        }
-
         return '<a class="whatsapp-link social-link share-link" rel="external nofollow" href="whatsapp://send?text='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '"><i class="fab fa-whatsapp fa-sm" aria-hidden="true"></i> '.
@@ -486,10 +470,6 @@ class Info
      */
     protected function render_telegram_link(): string
     {
-        if (!$this->mobileDetector->isSmart()) {
-            return '';
-        }
-
         return '<a class="telegram-link social-link share-link" rel="external nofollow" href="tg://msg_url?url='.
             \urlencode_deep(\wp_get_shortlink($this->post->get()->ID)).
             '&text='.\urlencode_deep(\get_the_title($this->post->get())).
@@ -573,7 +553,6 @@ class Info
         }
 
         unset($vars['post']);
-        unset($vars['mobileDetector']);
 
         foreach ($vars as $key => $value) {
             $this->$key = $args[$key] ?? null;

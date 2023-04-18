@@ -3,7 +3,6 @@ declare (strict_types = 1);
 
 namespace GrottoPress\WordPress;
 
-use GrottoPress\Mobile\Detector;
 use WP_Post;
 use WP_Post_Type;
 
@@ -29,7 +28,7 @@ class Post
 
     public function info(array $args): Post\Info
     {
-        return new Post\Info($this, new Detector(), $args);
+        return new Post\Info($this, $args);
     }
 
     public function author(): Post\Author

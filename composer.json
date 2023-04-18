@@ -33,14 +33,6 @@
     "wp-cli/wp-cli-bundle": "^2.1"
   },
   "scripts": {
-    "post-update-cmd": [
-      "npm update",
-      "npm run build"
-    ],
-    "post-install-cmd": [
-      "npm install",
-      "npm run build"
-    ],
     "test": [
       "./vendor/bin/codecept run unit"
     ],

@@ -27,7 +27,7 @@ const paths = {
 
 function _chmod(done)
 {
-    sh.chmod('-R', 'a+x', './bin', './vendor/bin', './node_modules/.bin')
+    sh.chmod('-R', 'a+x', './vendor/bin', './node_modules/.bin')
 
     done()
 }

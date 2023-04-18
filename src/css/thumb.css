@@ -7,13 +7,12 @@
     .avatar {
         float: left;
         margin-right: 10px;
+        @apply mr-3 float-left;
     }
 
     .entry-meta {
         .avatar {
-            float: none;
-            margin-right: 0;
-            @include inline-block;
+            @apply inline-block mr-0 float-none;
         }
     }
 }
@@ -25,7 +24,7 @@
         > .thumb,
         > a > .thumb,
         > .avatar {
-            float: left;
+            @apply float-left;
         }
     }
 }
@@ -35,9 +34,7 @@
         > .thumb,
         > a > .thumb,
         > .avatar {
-            float: right;
-            margin-right: 0;
-            margin-left: 10px;
+            @apply float-right mr-0 ml-3;
         }
     }
 }
@@ -51,6 +48,7 @@
         > .avatar {
             float: none;
             margin-right: 0;
+            @apply float-none mr-0;
         }
     }
 }

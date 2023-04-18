@@ -4,16 +4,13 @@
 
 .post-wrap {
     .entry-content {
-        line-height: 180%;
-        font-size: 1.14em;
-        @include paragraph;
-        @include clearfix;
+        @apply flow-root my-5 first:mt-0 last:mb-0 text-[1.14em] leading-[180%];
     }
 }
 
 .show-content > .post-wrap {
     .more-link {
-        font-size: 0.93em;
+        @apply text-[0.93em];
     }
 
     > header,
@@ -22,6 +19,6 @@
     > .entry-summary,
     > header > .entry-meta,
     > footer > .entry-meta {
-       @include paragraph;
+       @apply my-5 first:mt-0 last:mb-0;
     }
 }

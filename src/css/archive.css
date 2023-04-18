@@ -1,0 +1,26 @@
+/**
+ * Archive
+ */
+
+.archive-posts {
+    > .post-wrap,
+    > li > .post-wrap {
+        @apply border-b border-gray-300 last:pb-0 last:border-b-0;
+    }
+
+    > li > .post-wrap {
+        @apply pb-2 my-2 first:mt-0 last:mb-0;
+    }
+
+    > .post-wrap {
+        @apply pb-3 my-3 first:mt-0 last:mb-0;
+    }
+
+    &.big > .post-wrap {
+        @apply pb-4 my-4 first:mt-0 last:mb-0;
+    }
+
+    &.show-content > .post-wrap {
+        @apply pb-5 my-5 first:mt-0 last:mb-0;
+    }
+}

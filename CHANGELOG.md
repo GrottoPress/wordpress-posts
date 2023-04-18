@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased] - 
 
+### Changed
+- Replace SCSS with [Tailwind CSS](https://tailwindcss.com)
+- Replace gulp with [Laravel Mix](https://laravel-mix.com/)
+
 ### Removed
 - Remove `grottopress/mobile-detector` package
 

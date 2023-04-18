@@ -8,12 +8,11 @@
         .entry-title,
         .entry-summary,
         .entry-meta {
-            @include paragraph(map-get($gwpp-gutter, tiny));
+            @apply my-2 first:mt-0 last:mb-0;
         }
 
         .entry-title {
-            font-weight: normal;
-            font-size: 1em;
+            @apply font-normal text-[1em];
         }
     }
 }

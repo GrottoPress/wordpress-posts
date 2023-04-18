@@ -50,13 +50,15 @@ $posts = new Posts([
 echo $posts->render();
 ```
 
-You may use the styles defined in `dist/styles` in your theme (or plugin):
+You may use the styles defined in `dist/css` in your theme (or plugin):
 
 ```php
 \add_action('wp_enqueue_scripts', function () {
+    $css = \is_rtl() ? 'posts-rtl.css' : 'posts.css';
+
     \wp_enqueue_style(
         'wordpress-posts',
-        \get_template_directory_uri().'/vendor/grottopress/wordpress-posts/dist/styles/posts.min.css'
+        \get_stylesheet_directory_uri()."/vendor/grottopress/wordpress-posts/dist/css/$css"
     );
 });
 ```

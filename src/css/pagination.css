@@ -1,0 +1,30 @@
+/**
+ * Pagination
+ */
+
+.posts-wrap {
+    .pagination {
+        @apply text-gray-400 text-[1em] font-bold my-3 first:mt-0 last:mb-0;
+
+        .page-numbers,
+        a {
+            @apply p-2;
+        }
+
+        .page-numbers {
+            &.dots {
+                @apply p-0;
+            }
+
+            &.current {
+                @apply underline;
+            }
+        }
+    }
+
+    &.big {
+        .pagination {
+            @apply my-5 first:mt-0 last:mb-0;
+        }
+    }
+}

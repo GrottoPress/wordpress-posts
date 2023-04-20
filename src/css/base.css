@@ -3,7 +3,7 @@
  */
 
 .posts-wrap {
-    @apply my-5 first:mt-0 last:mb-0 text-sm leading-[160%];
+    @apply my-5 first:mt-0 last:mb-0 text-sm;
 }
 
 .post-wrap {
@@ -20,7 +20,7 @@
     }
 
     .entry-meta {
-        @apply block text-[0.93em] text-gray-400;
+        @apply block text-[0.93em] text-gray-500;
     }
 
     > header,

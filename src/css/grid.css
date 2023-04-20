@@ -3,8 +3,22 @@
  */
 
 .layout-grid.posts-wrap {
+    @apply sm:flex sm:flex-wrap sm:items-start sm:justify-between;
+
     > .post-wrap {
-        @apply my-4 first:mt-0 last:mb-0;
+        @apply mt-4 first:mt-0 sm:w-[49%] lg:w-[32.5%] 2xl:w-[24.35%];
+
+        &:nth-child(2) {
+            @apply sm:mt-0;
+        }
+
+        &:nth-child(3) {
+            @apply lg:mt-0;
+        }
+
+        &:nth-child(4) {
+            @apply 2xl:mt-0;
+        }
 
         &.big > header > .entry-title {
             @apply text-[1.43em];
@@ -12,22 +26,6 @@
     }
 
     .pagination {
-        @apply my-4 first:mt-0 last:mb-0 text-center;
-    }
-}
-
-.layout-grid.posts-wrap {
-    @apply md:flex md:flex-wrap md:items-start md:justify-between;
-
-    > .post-wrap {
-        @apply mt-5 first:mt-0 md:w-[49%] xl:w-[32.5%];
-
-        &:nth-child(2) {
-            @apply md:mt-0;
-        }
-
-        &:nth-child(3) {
-            @apply xl:mt-0;
-        }
+        @apply mt-4 first:mt-0 text-center;
     }
 }

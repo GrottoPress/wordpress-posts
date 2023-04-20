@@ -5,8 +5,6 @@
 .post-wrap {
     .thumb,
     .avatar {
-        float: left;
-        margin-right: 10px;
         @apply mr-3 float-left;
     }
 
@@ -46,8 +44,6 @@
         > .thumb,
         > a > .thumb,
         > .avatar {
-            float: none;
-            margin-right: 0;
             @apply float-none mr-0;
         }
     }

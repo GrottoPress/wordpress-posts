@@ -4,7 +4,7 @@
 
 .posts-wrap {
     .pagination {
-        @apply text-gray-400 text-[1em] font-bold my-3 first:mt-0 last:mb-0;
+        @apply text-gray-500 text-[1em] font-bold mt-3 first:mt-0;
 
         .page-numbers,
         a {
@@ -24,7 +24,7 @@
 
     &.big {
         .pagination {
-            @apply my-5 first:mt-0 last:mb-0;
+            @apply mt-5 first:mt-0;
         }
     }
 }

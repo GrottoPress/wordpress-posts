@@ -45,11 +45,11 @@
         > .entry-summary,
         > footer > .entry-meta,
         > header > .entry-meta {
-            @apply my-3  first:mt-0 last:mb-0;
+            @apply my-3 first:mt-0 last:mb-0;
         }
 
         > header > .entry-title {
-            @aaply text-[1.43em] xl:text-[1.71em];
+            @apply text-[1.43em] xl:text-[1.71em];
         }
     }
 }

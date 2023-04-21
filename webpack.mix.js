@@ -5,6 +5,8 @@ let rtlcss = require('rtlcss')
 mix.setResourceRoot('../')
 mix.setPublicPath(path.resolve('./'))
 
+mix.disableNotifications()
+
 mix.webpackConfig({
   watchOptions: { ignored: [
     path.posix.resolve(__dirname, './node_modules'),

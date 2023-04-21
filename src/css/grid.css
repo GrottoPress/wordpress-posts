@@ -6,7 +6,7 @@
     @apply sm:flex sm:flex-wrap sm:items-start sm:justify-between;
 
     > .post-wrap {
-        @apply mt-4 first:mt-0 sm:w-[49%] lg:w-[32.5%] 2xl:w-[24.35%];
+        @apply mt-4 first:mt-0 sm:w-[49%] lg:w-[32.5%] /*2xl:w-[24.35%]*/;
 
         &:nth-child(2) {
             @apply sm:mt-0;
@@ -16,9 +16,9 @@
             @apply lg:mt-0;
         }
 
-        &:nth-child(4) {
+        /* &:nth-child(4) {
             @apply 2xl:mt-0;
-        }
+        } */
 
         &.big > header > .entry-title {
             @apply text-[1.43em];

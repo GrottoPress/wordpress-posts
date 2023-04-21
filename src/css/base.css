@@ -3,7 +3,7 @@
  */
 
 .posts-wrap {
-    @apply my-5 first:mt-0 last:mb-0 text-[14px] leading-[1.5];
+    @apply my-5 first:mt-0 last:mb-0 text-[0.875rem] leading-[1.5];
 }
 
 .post-wrap {

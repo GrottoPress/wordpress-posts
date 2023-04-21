@@ -362,8 +362,8 @@ class Posts
             'pagination' => [
                 'position' => [],
                 'key' => '',
-                'mid_size' => null,
-                'end_size' => null,
+                'mid_size' => 2,
+                'end_size' => 1,
                 'prev_text' => \esc_html__('&larr; Previous', 'grotto-wp-posts'),
                 'next_text' => \esc_html__('Next &rarr;', 'grotto-wp-posts'),
             ],

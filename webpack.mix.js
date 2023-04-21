@@ -8,10 +8,10 @@ mix.setPublicPath(path.resolve('./'))
 mix.disableNotifications()
 
 mix.webpackConfig({
-  watchOptions: { ignored: [
-    path.posix.resolve(__dirname, './node_modules'),
-    path.posix.resolve(__dirname, './dist'),
-  ] }
+    watchOptions: { ignored: [
+        path.posix.resolve(__dirname, './node_modules'),
+        path.posix.resolve(__dirname, './dist'),
+    ] }
 })
 
 // mix.js('src/js/posts.js', 'dist/js')
@@ -26,7 +26,7 @@ mix.postCss(
 ).sourceMaps()
 
 if (mix.inProduction()) {
-  mix.version()
+    mix.version()
 } else {
-  Mix.manifest.refresh = _ => void 0
+    Mix.manifest.refresh = _ => void 0
 }

@@ -8,6 +8,10 @@
         @apply mr-3 float-left;
     }
 
+    .thumb {
+        @apply mb-1;
+    }
+
     .entry-meta {
         .avatar {
             @apply inline-block mr-0 float-none;

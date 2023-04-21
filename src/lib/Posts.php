@@ -241,13 +241,13 @@ class Posts
 
     private function paginationDefaults()
     {
-        if (!\in_array(
+        if (\in_array(
             ['top', 'bottom'],
             $this->args['pagination']['position']
         )) {
-            $this->args['wp_query']['paged'] = $this->pagination->currentPage;
-        } else {
             $this->args['wp_query']['paged'] = 1;
+        } else {
+            $this->args['wp_query']['paged'] = $this->pagination->currentPage;
         }
 
         if (!isset($this->args['wp_query']['offset'])) {

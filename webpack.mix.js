@@ -21,7 +21,6 @@ mix.postCss('src/css/posts.css', 'dist/css').sourceMaps()
 mix.postCss(
     'src/css/posts-rtl.css',
     'dist/css',
-    undefined,
     [rtlcss()]
 ).sourceMaps()
 

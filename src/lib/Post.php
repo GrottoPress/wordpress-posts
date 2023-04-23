@@ -150,7 +150,12 @@ class Post
             if (0 === \stripos($size, 'avatar__')) {
                 $size = \absint(\str_ireplace('avatar__', '', $size));
 
-                return \get_avatar($this->get()->post_author, $size);
+                return \get_avatar(
+                    $this->get()->post_author,
+                    $size,
+                    '',
+                    $this->author()->meta('display_name')
+                );
             }
 
             $size_split = \explode(',', $size);

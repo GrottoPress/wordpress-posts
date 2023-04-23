@@ -55,7 +55,7 @@ class Loop
         }
 
         /**
-         * @filter grotto_query_posts_loop
+         * @filter grotto_wp_posts_loop
          *
          * @var string $out
          * @var WP_Query $query

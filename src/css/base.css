@@ -7,12 +7,12 @@
 }
 
 .post-wrap {
-    @apply flow-root my-3 first:mt-0 last:mb-0;
+    @apply flow-root mt-3 first:mt-0;
 
     .entry-title,
     .entry-summary,
     .entry-meta {
-        @apply my-2 first:mt-0 last:mb-0;
+        @apply mt-2 first:mt-0;
     }
 
     .entry-title {
@@ -25,7 +25,7 @@
 
     > header,
     > footer {
-        @apply my-3 first:mt-0 last:mb-0;
+        @apply mt-3 first:mt-0;
     }
 
     > header {
@@ -39,13 +39,13 @@
 
 .big {
     > .post-wrap {
-        @apply my-5 first:mt-0 last:mb-0;
+        @apply mt-5 first:mt-0;
 
         > header > .entry-title,
         > .entry-summary,
         > footer > .entry-meta,
         > header > .entry-meta {
-            @apply my-3 first:mt-0 last:mb-0;
+            @apply mt-3 first:mt-0;
         }
 
         > header > .entry-title {

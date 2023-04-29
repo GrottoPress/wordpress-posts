@@ -9,18 +9,18 @@
     }
 
     > li > .post-wrap {
-        @apply pb-2 my-2 first:mt-0 last:mb-0;
+        @apply pb-2 mt-2 first:mt-0;
     }
 
     > .post-wrap {
-        @apply pb-3 my-3 first:mt-0 last:mb-0;
+        @apply pb-3 mt-3 first:mt-0;
     }
 
     &.big > .post-wrap {
-        @apply pb-4 my-4 first:mt-0 last:mb-0;
+        @apply pb-4 mt-4 first:mt-0;
     }
 
     &.show-content > .post-wrap {
-        @apply pb-5 my-5 first:mt-0 last:mb-0;
+        @apply pb-5 mt-5 first:mt-0;
     }
 }

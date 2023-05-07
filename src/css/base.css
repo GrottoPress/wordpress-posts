@@ -11,7 +11,8 @@
 
     .entry-title,
     .entry-summary,
-    .entry-meta {
+    .entry-meta,
+    > footer {
         @apply my-2 first:mt-0 last:mb-0;
     }
 
@@ -21,10 +22,6 @@
 
     .entry-meta {
         @apply block text-[0.93em] text-gray-500;
-    }
-
-    > footer {
-        @apply my-3 first:mt-0 last:mb-0;
     }
 
     .more-link {
@@ -39,7 +36,8 @@
         > header > .entry-title,
         > .entry-summary,
         > footer > .entry-meta,
-        > header > .entry-meta {
+        > header > .entry-meta,
+        > footer {
             @apply my-3 first:mt-0 last:mb-0;
         }
 

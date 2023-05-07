@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Restore bottom margins for post items
+- Make archive posts divider lighter
 
 ## [0.16.4] - 2023-04-29
 

@@ -4,7 +4,7 @@
 
 .posts-wrap {
     .pagination {
-        @apply text-gray-500 text-[1em] font-bold mt-3 first:mt-0;
+        @apply text-neutral-500 text-[1em] font-bold mt-3 first:mt-0;
 
         .page-numbers,
         a {

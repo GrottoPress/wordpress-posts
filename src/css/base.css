@@ -21,7 +21,7 @@
     }
 
     .entry-meta {
-        @apply block text-[0.93em] text-gray-500;
+        @apply block text-[0.93em] text-neutral-500;
     }
 
     .more-link {

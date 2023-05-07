@@ -9,13 +9,21 @@ use WP_Post_Type;
 class Post
 {
     /**
-     * @var int
+     * @var int|WP_Post
      */
-    protected $id;
+    protected $post;
 
-    public function __construct(int $id = 0)
+    /**
+     * @var WP_Post
+     */
+    private $post_object;
+
+    /**
+     * @var int|WP_Post
+     */
+    public function __construct($post = null)
     {
-        $this->id = $id;
+        $this->post = $post;
     }
 
     /**
@@ -43,7 +51,7 @@ class Post
 
     public function get(): WP_Post
     {
-        return \get_post($this->id);
+        return $this->post_object ?: \get_post($this->post);
     }
 
     public function type(): WP_Post_Type
@@ -80,9 +88,9 @@ class Post
             \get_permalink($this->get()).'">'
                .\sanitize_text_field($more_text)
             .'</a>';
-        } else {
+        } /*else {
             $more_text = \apply_filters('excerpt_more', ' [&hellip;]');
-        }
+        }*/
 
         $excerpt = $this->get()->post_excerpt
             ? $this->get()->post_excerpt : $this->get()->post_content;

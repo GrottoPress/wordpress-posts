@@ -4,7 +4,7 @@
 
 .post-wrap {
     .entry-content {
-        @apply flow-root mt-5 first:mt-0 text-[1.14em];
+        @apply flow-root my-5 first:mt-0 last:mb-0 text-[1.14em];
     }
 }
 
@@ -13,12 +13,11 @@
         @apply text-[0.93em];
     }
 
-    > header,
     > footer,
     > header > .entry-title,
     > .entry-summary,
     > header > .entry-meta,
     > footer > .entry-meta {
-       @apply mt-5 first:mt-0;
+       @apply my-5 first:mt-0 last:mb-0;
     }
 }

@@ -85,11 +85,7 @@ class Loop
         $out .=' class="posts-wrap'.($this->posts->args['class']
             ? ' '.\esc_attr($this->posts->args['class']) : '').'"';
 
-        if ($this->posts->args['id']) {
-            $out .= ' id="'.\sanitize_title($this->posts->args['id']).'"';
-        }
-
-        $out .= '>';
+        $out .= ' id="'.$this->posts->id.'">';
 
         return $out;
     }

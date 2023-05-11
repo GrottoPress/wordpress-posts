@@ -80,10 +80,8 @@ class Pagination
     {
         if ($key = $this->posts->args['pagination']['key']) {
             $this->key = \sanitize_key($key);
-        } elseif ($id = $this->posts->args['id']) {
-            $this->key = \sanitize_key("{$id}-pag");
         } else {
-            $this->key = 'pag';
+            $this->key = "page_{$this->posts->id}";
         }
     }
 
@@ -128,8 +126,7 @@ class Pagination
         $args['prev_next'] = ($this->posts->args['pagination']['prev_text']
             && $this->posts->args['pagination']['next_text']);
 
-        $args['add_fragment'] = ($this->posts->args['id']
-            ? "#{$this->posts->args['id']}" : '');
+        $args['add_fragment'] = "#{$this->posts->id}";
 
         return $args;
     }

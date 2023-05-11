@@ -15,6 +15,11 @@ class Posts
     protected $args;
 
     /**
+     * @var string
+     */
+    private $id;
+
+    /**
      * @var Posts\Loop
      */
     private $loop;
@@ -35,6 +40,13 @@ class Posts
     protected function getArgs(): array
     {
         return $this->args;
+    }
+
+    private function getId(): string
+    {
+        $json = \wp_json_encode($this->getArgs());
+
+        return $this->id ?: \substr(\md5($json), 0, 10);
     }
 
     private function getPagination(): Posts\Pagination
@@ -318,7 +330,6 @@ class Posts
     private function defaultArgs(): array
     {
         return [
-            'id' => '',
             'class' => 'small',
             'tag' => 'div',
             'layout' => '',

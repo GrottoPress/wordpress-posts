@@ -20,7 +20,6 @@ use GrottoPress\WordPress\Posts;
 
 // Instantiate Posts
 $posts = new Posts([
-    'id' => 'my-awesome-posts',
     'image' => [
         'size' => 'some-size', //could be array (eg: array(150,150)) or string (eg: 'post-thubnail')
         'margin' => '0 10px 0 0',
@@ -69,7 +68,6 @@ Full list of arguments, with their defaults, are as follows:
 
 ```php
 $args = [
-    'id' => '', // Unique ID
     'class' => 'small', // Wrapper HTML classes
     'tag' => 'div', // Wrapper HTML tag. Use 'ul' for list posts.
     'layout' => 'stack', // 'stack' or 'grid'

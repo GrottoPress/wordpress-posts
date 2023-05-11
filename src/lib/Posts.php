@@ -44,9 +44,12 @@ class Posts
 
     private function getId(): string
     {
-        $json = \wp_json_encode($this->getArgs());
+        if (!$this->id) {
+            $json = \wp_json_encode($this->getArgs());
+            $this->id = \substr(\md5($json), 0, 10);
+        }
 
-        return $this->id ?: \substr(\md5($json), 0, 10);
+        return $this->id;
     }
 
     private function getPagination(): Posts\Pagination

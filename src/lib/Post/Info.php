@@ -10,7 +10,7 @@ class Info
     /**
      * @var Post
      */
-    private $post;
+    protected $post;
 
     /**
      * @var array

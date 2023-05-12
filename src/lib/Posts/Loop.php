@@ -12,7 +12,7 @@ class Loop
     /**
      * @var Posts
      */
-    private $posts;
+    protected $posts;
 
     public function __construct(Posts $posts)
     {

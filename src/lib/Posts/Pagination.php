@@ -14,7 +14,7 @@ class Pagination
     /**
      * @var Posts
      */
-    private $posts;
+    protected $posts;
 
     /**
      * @var string $key Query arg whose value would be used for pagination.

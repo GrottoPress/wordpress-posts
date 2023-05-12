@@ -17,17 +17,17 @@ class Posts
     /**
      * @var string
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Posts\Loop
      */
-    private $loop;
+    protected $loop;
 
     /**
      * @var Posts\Pagination
      */
-    private $pagination;
+    protected $pagination;
 
     public function __construct(array $args = [])
     {
@@ -42,7 +42,7 @@ class Posts
         return $this->args;
     }
 
-    private function getId(): string
+    protected function getId(): string
     {
         if (!$this->id) {
             $json = \wp_json_encode($this->getArgs());
@@ -52,7 +52,7 @@ class Posts
         return $this->id;
     }
 
-    private function getPagination(): Posts\Pagination
+    protected function getPagination(): Posts\Pagination
     {
         return $this->pagination;
     }

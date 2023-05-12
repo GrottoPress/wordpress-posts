@@ -10,7 +10,7 @@ class Comments
     /**
      * @var Post
      */
-    private $post;
+    protected $post;
 
     public function __construct(Post $post)
     {

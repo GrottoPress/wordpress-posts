@@ -10,7 +10,7 @@ class Time
     /**
      * @var Post
      */
-    private $post;
+    protected $post;
 
     /**
      * @var string $context 'published' or 'updated'
@@ -20,7 +20,7 @@ class Time
     /**
      * @var string
      */
-    private $timestamp;
+    protected $timestamp;
 
     /**
      * @param string $context 'published' or 'updated'

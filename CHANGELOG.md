@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased] - 
 
+### Fixed
+- Internationalize dates
+
 ### Changed
 - Automatically set posts wrapper element's unique `id`
 

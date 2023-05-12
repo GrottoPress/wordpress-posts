@@ -83,29 +83,29 @@ class Time
     private function render_actual(): string
     {
         if ($this->hoursSince() < 24) {
-            if (\date('D', $this->timestamp) === \date(
+            if (\date_i18n('D', $this->timestamp) === \date_i18n(
                 'D',
                 \current_time('timestamp')
             )) { // If same day
                 return \sprintf(
                     \esc_html__('Today %s', 'grotto-wp-posts'),
-                    \date(\get_option('time_format'), $this->timestamp)
+                    \date_i18n(\get_option('time_format'), $this->timestamp)
                 );
             }
 
             return \sprintf(
                 \esc_html__('Yesterday %s', 'grotto-wp-posts'),
-                \date(\get_option('time_format'), $this->timestamp)
+                \date_i18n(\get_option('time_format'), $this->timestamp)
             );
         }
 
         if ($this->daysSince() < 7) {
-            return \date('l', $this->timestamp).' '.
-                \date(\get_option('time_format'), $this->timestamp);
+            return \date_i18n('l', $this->timestamp).' '.
+                \date_i18n(\get_option('time_format'), $this->timestamp);
         }
 
-        return date(\get_option('date_format'), $this->timestamp).
-            ' ('.\date(\get_option('time_format'), $this->timestamp).')';
+        return \date_i18n(\get_option('date_format'), $this->timestamp).
+            ' ('.\date_i18n(\get_option('time_format'), $this->timestamp).')';
     }
 
     /**
@@ -259,12 +259,13 @@ class Time
         }
 
         if (($period = $this->monthsSince()) < 12) {
-            return \date(\get_option('date_format'), $this->timestamp).
-                ' ('.\date(\get_option('time_format'), $this->timestamp).')';
+            return \date_i18n(\get_option('date_format'), $this->timestamp).
+                ' ('.\date_i18n(\get_option('time_format'), $this->timestamp).
+                ')';
         }
 
-        return \date(\get_option('date_format'), $this->timestamp).
-            ' ('.\date(\get_option('time_format'), $this->timestamp).')';
+        return \date_i18n(\get_option('date_format'), $this->timestamp).
+            ' ('.\date_i18n(\get_option('time_format'), $this->timestamp).')';
     }
 
     /**

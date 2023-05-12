@@ -51,7 +51,8 @@ class Post
 
     public function get(): WP_Post
     {
-        return $this->post_object ?: \get_post($this->post);
+        return $this->post_object = $this->post_object ?:
+            \get_post($this->post);
     }
 
     public function type(): WP_Post_Type

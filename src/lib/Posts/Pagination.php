@@ -81,7 +81,7 @@ class Pagination
         if ($key = $this->posts->args['pagination']['key']) {
             $this->key = \sanitize_key($key);
         } else {
-            $this->key = "page_{$this->posts->id}";
+            $this->key = "page-{$this->posts->id}";
         }
     }
 

@@ -4,7 +4,7 @@
 
 .post-wrap {
     .entry-content {
-        @apply flow-root my-5 first:mt-0 last:mb-0 text-[1.14em];
+        @apply clear-self my-5 first:mt-0 last:mb-0 text-[1.14em];
     }
 }
 

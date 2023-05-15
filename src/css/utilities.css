@@ -1,0 +1,7 @@
+/**
+ * Utilities
+ */
+
+.clear-self {
+    @apply after:table after:content-[''] after:clear-both;
+}

@@ -7,7 +7,7 @@
 }
 
 .post-wrap {
-    @apply flow-root mt-3 first:mt-0;
+    @apply clear-self mt-3 first:mt-0;
 
     .entry-title,
     .entry-summary,

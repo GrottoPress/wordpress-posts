@@ -10,9 +10,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add `.clear-self` utility class
 
-### Changed
-- Simplify `.layout-grid` styles
-
 ## [0.17.0] - 2023-05-12
 
 ### Fixed

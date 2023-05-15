@@ -6,7 +6,7 @@
     @apply sm:-m-2 sm:flex sm:flex-wrap sm:items-start;
 
     > .post-wrap {
-        @apply sm:p-2 sm:w-1/2 lg:w-1/3;
+        @apply sm:mt-0 sm:p-2 sm:w-1/2 lg:w-1/3;
 
         &.big > header > .entry-title {
             @apply text-[1.43em];

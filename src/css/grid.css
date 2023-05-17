@@ -32,6 +32,6 @@
     }
 
     .pagination {
-        @apply mt-4 first:mt-0 text-center;
+        @apply mt-4 first:mt-0 w-full text-center;
     }
 }

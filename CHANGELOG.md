@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Add missing `header` and `footer` styles for lists
+- Add margin between header and image when post title is at `top` position
 
 ## [0.17.2] - 2023-05-17
 

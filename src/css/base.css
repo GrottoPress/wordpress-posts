@@ -12,8 +12,9 @@
     .entry-title,
     .entry-summary,
     .entry-meta,
+    > header,
     > footer {
-        @apply my-2 first:mt-0 last:mb-0;
+        @apply mb-2 last:mb-0;
     }
 
     .entry-title {
@@ -37,8 +38,9 @@
         > .entry-summary,
         > footer > .entry-meta,
         > header > .entry-meta,
+        > header,
         > footer {
-            @apply my-3 first:mt-0 last:mb-0;
+            @apply mb-3 last:mb-0;
         }
 
         > header > .entry-title {

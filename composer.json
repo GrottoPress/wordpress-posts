@@ -24,7 +24,7 @@
   },
   "require": {
     "php": ">=7.0",
-    "grottopress/getter": "^0.4"
+    "grottopress/getter": "^1.0"
   },
   "require-dev": {
     "codeception/codeception": "^4.1",
